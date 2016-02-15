@@ -1,0 +1,17 @@
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Applications/Unity/Project/Tower Defense/obj/Debug/Assembly-CSharp-firstpass.dll
+/Applications/Unity/Project/Tower Defense/obj/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/UnityEngine.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/UnityEditor.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/UnityEngine.Networking.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/UnityEngine.UI.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Mono.Cecil.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Unity.DataContract.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Unity.CecilTools.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Applications/Unity/Project/Tower Defense/Temp/bin/Debug/Mono.Cecil.Mdb.dll
