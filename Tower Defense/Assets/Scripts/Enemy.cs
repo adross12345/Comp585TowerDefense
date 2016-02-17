@@ -3,21 +3,24 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
+
 	// Use this for initialization
 	void Start () {
-	
-		// Navigate to Castle
-		GameObject castle = GameObject.Find("Castle");
-		if (castle)
-			GetComponent<NavMeshAgent>().destination = castle.transform.position;
-		
+
+		//Moves enemy toward castle
+		GameObject castle = GameObject.Find ("Castle");
+
+		if (castle) {
+			GetComponent<NavMeshAgent> ().destination = castle.transform.position;
+		}
 	}
 
 	void OnTriggerEnter(Collider co) {
-		// If castle then deal Damage
+
+		//If the value equals castle then the enemy will deal damage
 		if (co.name == "Castle") {
-			co.GetComponentInChildren<Health>().decrease();
-			Destroy(gameObject);	
+			co.GetComponentInChildren<TowerHealth> ().decrease ();
+			Destroy (gameObject);	
 		}
 	}
 }
