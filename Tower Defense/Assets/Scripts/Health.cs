@@ -10,13 +10,12 @@ public class EnemyHealth : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
 		//Face the camera
 		transform.forward = Camera.main.transform.forward;
 	}
 
 	// Return the current Health by counting the '-'
-	/*public int current() {
+	public int current() {
 		return tm.text.Length;
 	}
 
@@ -26,5 +25,5 @@ public class EnemyHealth : MonoBehaviour {
 			tm.text = tm.text.Remove(tm.text.Length - 1);
 		else
 			Destroy(transform.parent.gameObject);
-	}*/
+	}
 }

@@ -13,7 +13,7 @@ public class CannonFire : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider co) {
-		// Was it a Monster? Then Shoot it
+		// If it is an "enemy" shoot
 		if (co.GetComponent<Enemy>()) {
 			GameObject g = (GameObject)Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 			g.GetComponent<Bullet>().target = co.transform;
