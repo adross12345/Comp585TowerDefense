@@ -37,6 +37,11 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	public void setTexture(Texture tex){
+		MeshRenderer mr = this.GetComponent<MeshRenderer> ();
+		mr.material.mainTexture = tex;
+	}
+
 	public abstract void OnTriggerEnter (Collider co);
 	
 	// Update is called once per frame

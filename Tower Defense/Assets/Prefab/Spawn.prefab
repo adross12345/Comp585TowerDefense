@@ -39,7 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09211b566e6414d51b0fcfbbde7e4ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 119220, guid: 0d9bf85442bfc6547916ad4815cc78a8, type: 2}
+  monsterPrefab: {fileID: 11427468, guid: 0d9bf85442bfc6547916ad4815cc78a8, type: 2}
+  allyPrefab: {fileID: 11464774, guid: 4c16bfb651abb0742a41c68416c77275, type: 2}
   interval: 3
 --- !u!1001 &100100000
 Prefab:
@@ -51,7 +52,13 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: monsterPrefab
       value: 
-      objectReference: {fileID: 119220, guid: 0d9bf85442bfc6547916ad4815cc78a8, type: 2}
+      objectReference: {fileID: 11427468, guid: 0d9bf85442bfc6547916ad4815cc78a8,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: allyPrefab
+      value: 
+      objectReference: {fileID: 11464774, guid: 4c16bfb651abb0742a41c68416c77275,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 163234}
