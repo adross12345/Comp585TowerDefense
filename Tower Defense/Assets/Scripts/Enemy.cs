@@ -1,21 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
-
-
-	// Use this for initialization
-	void Start () {
-
-		//Moves enemy toward castle
-		GameObject castle = GameObject.Find ("Castle");
-
-		if (castle) {
-			GetComponent<NavMeshAgent> ().destination = castle.transform.position;
-		}
+public class Enemy : Unit {
+	public static double ENEMY_IDENTITY = 0.0;
+	public void Start(){
+		this.identity = ENEMY_IDENTITY;
+		base.Start ();
 	}
 
-	void OnTriggerEnter(Collider co) {
+	public override void OnTriggerEnter(Collider co) {
 
 		//If the value equals castle then the enemy will deal damage
 		if (co.name == "Castle") {

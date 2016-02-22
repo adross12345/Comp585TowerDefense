@@ -6,12 +6,12 @@ public class Bullet : MonoBehaviour {
 	//Speed
 	public int speed = 10;
 
-	public Transform Enemy;
+	public Transform target;
 
 	void FixedUpdate(){
 
-		if (Enemy) {
-			Vector3 dir = Enemy.position - transform.position;
+		if (target) {
+			Vector3 dir = target.position - transform.position;
 			GetComponent<Rigidbody> ().velocity = dir.normalized * speed;
 		}
 		else {
@@ -21,13 +21,13 @@ public class Bullet : MonoBehaviour {
 
 	void OnTriggerEnter(Collider co){
 	
-		Health health = co.GetComponentsInChildren(Health);
-
-		if (health) {
-			EnemyHealth.decrease();
-			Destroy (gameObject);
-
-		}
+//		Health health = co.GetComponentsInChildren(Health);
+//
+//		if (health) {
+//			health.decrease();
+//			Destroy (gameObject);
+//
+//		}
 	
 	}
 }
