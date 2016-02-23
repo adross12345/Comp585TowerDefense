@@ -6,7 +6,9 @@ public class Enemy : Unit {
 	public void Start(){
 		this.identity = ENEMY_IDENTITY;
 		base.Start ();
+		gameObject.tag = "Enemy";
 	}
+
 
 	public override void OnTriggerEnter(Collider co) {
 
