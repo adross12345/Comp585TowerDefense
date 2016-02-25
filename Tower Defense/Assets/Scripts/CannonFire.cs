@@ -24,12 +24,13 @@ public class CannonFire : MonoBehaviour {
 	public static Vector3 CalculateInterceptCourse(Vector3 aTargetPos, Vector3 aTargetSpeed,
 											Vector3 aInterceptorPos, float aInterceptorSpeed)
 	{
+		
 		Vector3 targetDir = aTargetPos - aInterceptorPos;
 		float speed1 = aInterceptorSpeed * aInterceptorSpeed;
 		float speed2 = aTargetSpeed.sqrMagnitude;
 		float fDot1 = Vector3.Dot(targetDir, aTargetSpeed);
 		float targetDist2 = targetDir.sqrMagnitude;
-		float d = (fDot1 * fDot1) - targetDist2 * (tSpeed2 - iSpeed2);
+		float d = (fDot1 * fDot1) - targetDist2 * (speed1 - speed2);
 		if (d < 0.1f)  
 			return Vector3.zero;
 		float sqrt = Mathf.Sqrt(d);

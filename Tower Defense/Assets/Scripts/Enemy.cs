@@ -14,7 +14,7 @@ public class Enemy : Unit {
 
 		//If the value equals castle then the enemy will deal damage
 		if (co.name == "Castle") {
-			co.GetComponentInChildren<TowerHealth> ().decrease ();
+		//	co.GetComponentInChildren<TowerHealth> ().decrease ();
 			Destroy (gameObject);	
 		}
 	}

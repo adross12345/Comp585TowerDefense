@@ -12,7 +12,7 @@ public class Ally : Unit {
 
 		//If the value equals castle then the enemy will deal damage
 		if (co.name == "Castle") {
-			co.GetComponentInChildren<TowerHealth> ().decrease ();
+			//co.GetComponentInChildren<CastleHealth> ().decrease ();
 			Destroy (gameObject);	
 		}
 	}
