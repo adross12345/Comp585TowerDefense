@@ -3,19 +3,48 @@ using System.Collections;
 
 public class Enemy : Unit {
 	public static double ENEMY_IDENTITY = 0.0;
+	double identity;
+	float damage = 1f;
+	int speed;
+	public GameObject enemy;
+	public GameObject castle;
+
+
+	public float maxHealth = 1.00f;
+	public float curHealth = 0f;
+	public GameObject healthBar;
+
 	public void Start(){
 		this.identity = ENEMY_IDENTITY;
+		curHealth = maxHealth;
+		//Tests enemy Healthbar
+		InvokeRepeating ("decreaseHealth", 1f, 1f);
 		base.Start ();
-		gameObject.tag = "Enemy";
 	}
 
+	public override void OnTriggerEnter(Collider castle) {
 
-	public override void OnTriggerEnter(Collider co) {
+		float damage = 10f;
+		CastleHealth.changeDamage(damage);
+		Destroy (enemy);	
 
-		//If the value equals castle then the enemy will deal damage
-		if (co.name == "Castle") {
-		//	co.GetComponentInChildren<TowerHealth> ().decrease ();
-			Destroy (gameObject);	
+	}
+
+	//Decreases castle health when enemy reaches castle.
+	void decreaseHealth()
+	{
+		curHealth -= .10f;
+		float calcHealth = curHealth / maxHealth;
+		setHealthBar (calcHealth);
+		if (curHealth <= 0f) {
+			Destroy (gameObject);
 		}
 	}
+
+	public void setHealthBar(float enemyHealth)
+	{
+		healthBar.transform.localScale = new Vector3(curHealth, 
+			healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+	}
+
 }

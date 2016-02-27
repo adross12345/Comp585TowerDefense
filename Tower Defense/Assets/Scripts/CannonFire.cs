@@ -1,54 +1,86 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CannonFire : MonoBehaviour {
+public class CannonFire : Unit {
 
-	//Finds closest enemy and adds them to a list
-	GameObject FindClosestEnemy() {
-		GameObject[] gos;
-		gos = GameObject.FindGameObjectsWithTag("Enemy");
-		GameObject closest = null;
-		float distance = Mathf.Infinity;
-		Vector3 position = transform.position;
-		foreach (GameObject go in gos) {
-			Vector3 diff = go.transform.position - position;
-			float curDistance = diff.sqrMagnitude;
-			if (curDistance < distance) {
-				closest = go;
-				distance = curDistance;
+
+	public GameObject myProjectile;
+	public GameObject muzzelPos;
+	public GameObject enemy; 
+	float reloadTime = 1f;
+	float turnSpeed = 5f;
+	float firePauseTime = .25f;
+	float errorAmount = .001f;
+	Transform myTarget;
+	Transform[] muzzlePositions;
+	Transform turretBall;
+
+
+	private float nextFireTime;
+	private float nextMoveTime;
+	private Quaternion desiredRotation;
+	private float aimError;
+
+
+	void Update () 
+	{
+		if(myTarget)
+		{
+			if(Time.time >= nextMoveTime)
+			{
+				CalculateAimPosition(myTarget.position);
+				turretBall.rotation = Quaternion.Lerp(turretBall.rotation, desiredRotation, Time.deltaTime*turnSpeed);
+			}
+
+			if(Time.time >= nextFireTime)
+			{
+				FireProjectile();
 			}
 		}
-		return closest;
 	}
 
-	public static Vector3 CalculateInterceptCourse(Vector3 aTargetPos, Vector3 aTargetSpeed,
-											Vector3 aInterceptorPos, float aInterceptorSpeed)
+	//Picks up the target that comes into the turrents range
+//	public void OnTriggerEnter(Collider enemy)
+//	{
+		
+//			nextFireTime = Time.time+(reloadTime*.5);
+//		myTarget = enemy.gameObject.transform;
+//	}
+
+
+	public void OnTriggerExit(Collider other)
+	{
+		if(other.gameObject.transform == myTarget)
+		{
+			myTarget = null;
+		}
+	}
+
+	//these errors are because of the onTriggerEnter method
+	void CalculateAimPosition(Vector3 targetPos)
+	{
+		float aimPoint = Vector3(targetPos.x+aimError, targetPos.y+aimError, targetPos.z+aimError);
+		desiredRotation = Quaternion.LookRotation(aimPoint);
+	}
+
+
+	void CalculateAimError()
+	{
+		aimError = Random.Range(-errorAmount, errorAmount);
+	}
+
+
+	void FireProjectile()
 	{
 		
-		Vector3 targetDir = aTargetPos - aInterceptorPos;
-		float speed1 = aInterceptorSpeed * aInterceptorSpeed;
-		float speed2 = aTargetSpeed.sqrMagnitude;
-		float fDot1 = Vector3.Dot(targetDir, aTargetSpeed);
-		float targetDist2 = targetDir.sqrMagnitude;
-		float d = (fDot1 * fDot1) - targetDist2 * (speed1 - speed2);
-		if (d < 0.1f)  
-			return Vector3.zero;
-		float sqrt = Mathf.Sqrt(d);
-		float S1 = (-fDot1 - sqrt) / targetDist2;
-		float S2 = (-fDot1 + sqrt) / targetDist2;
-		if (S1 < 0.0001f)
-		{
-			if (S2 < 0.0001f)
-				return Vector3.zero;
-			else
-				return (S2) * targetDir + aTargetSpeed;
-		}
-		else if (S2 < 0.0001f)
-			return (S1) * targetDir + aTargetSpeed;
-		else if (S1 < S2)
-			return (S2) * targetDir + aTargetSpeed;
-		else
-			return (S1) * targetDir + aTargetSpeed;
-	}
+		nextFireTime = Time.time+reloadTime;
+		nextMoveTime = Time.time+firePauseTime;
+		CalculateAimError();
+
+
+		//Instantiate(myProjectile, muzzlePos.position, muzzlePos.rotation);
+
+
+	}﻿
 
 }
