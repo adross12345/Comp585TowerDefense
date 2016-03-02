@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Ally : Unit {
 	public static double ALLY_IDENTITY = 1.0;
-	public void Start(){
+
+	new public void Awake(){
 		this.identity = ALLY_IDENTITY;
 		base.Start ();
 	}

@@ -3,30 +3,24 @@ using System.Collections;
 
 public class Enemy : Unit {
 	public static double ENEMY_IDENTITY = 0.0;
-	double identity;
 	float damage = 1f;
-	int speed;
+
 	public GameObject enemy;
 	public GameObject castle;
 
-
-	public float maxHealth = 1.00f;
-	public float curHealth = 0f;
-	public GameObject healthBar;
-
-	public void Start(){
+	new public void Awake(){
 		this.identity = ENEMY_IDENTITY;
-		curHealth = maxHealth;
 		//Tests enemy Healthbar
-		InvokeRepeating ("decreaseHealth", 1f, 1f);
+//		InvokeRepeating ("decreaseHealth", 1f, 1f);
 		base.Start ();
 	}
 
-	public override void OnTriggerEnter(Collider castle) {
-
-		float damage = 10f;
-		CastleHealth.changeDamage(damage);
-		Destroy (enemy);	
+	public override void OnTriggerEnter(Collider co) {
+		if (co.name == "Castle") {
+			float damage = 10f;
+			CastleHealth.changeDamage (damage);
+			Destroy (enemy);	
+		}
 
 	}
 

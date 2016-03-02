@@ -3,17 +3,22 @@ using System.Collections;
 
 public abstract class Unit : MonoBehaviour {
 	public double identity;
+	public int speed;
+	public float maxHealth = 1.00f;
+	public float curHealth = 0f;
+	public GameObject healthBar;
+	public double[] weights;
+
 	// Use this for initialization
 	protected void Start () {
+
+		curHealth = maxHealth;
 		//Moves enemy toward castle
 		GameObject castle = GameObject.Find ("Castle");
 
 		if (castle) {
 			GetComponent<NavMeshAgent> ().destination = castle.transform.position;
 		}
-		//TODO change
-//		NeuralNode node = new NeuralNode ();
-//		node.LearnUnits (this);
 	}
 
 	public void addNoise(float noise){
