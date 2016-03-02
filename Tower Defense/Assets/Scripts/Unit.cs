@@ -15,9 +15,9 @@ public abstract class Unit : MonoBehaviour {
 		curHealth = maxHealth;
 		//Moves enemy toward castle
 		GameObject castle = GameObject.Find ("Castle");
-
+		Debug.Log ("starting");
 		if (castle) {
-			GetComponent<NavMeshAgent> ().destination = castle.transform.position;
+			GetComponent<NavMeshAgent>().destination = castle.transform.position;
 		}
 	}
 
