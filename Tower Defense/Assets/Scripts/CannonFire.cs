@@ -40,12 +40,11 @@ public class CannonFire : Unit {
 	}
 
 	//Picks up the target that comes into the turrents range
-//	public void OnTriggerEnter(Collider enemy)
-//	{
-		
-//			nextFireTime = Time.time+(reloadTime*.5);
-//		myTarget = enemy.gameObject.transform;
-//	}
+	public override void OnTriggerEnter(Collider other)
+	{
+		nextFireTime = (float)(Time.time+(reloadTime*.5));
+		myTarget = enemy.gameObject.transform;
+	}
 
 
 	public void OnTriggerExit(Collider other)
@@ -59,8 +58,9 @@ public class CannonFire : Unit {
 	//these errors are because of the onTriggerEnter method
 	void CalculateAimPosition(Vector3 targetPos)
 	{
-		float aimPoint = Vector3(targetPos.x+aimError, targetPos.y+aimError, targetPos.z+aimError);
-		desiredRotation = Quaternion.LookRotation(aimPoint);
+		Vector3 aimPoint;
+		//aimPoint = Vector3(enemy.x + aimError, enemy.y + aimError, enemy.z + aimError);
+		//desiredRotation = Quaternion.LookRotation(aimPoint);
 	}
 
 
@@ -79,7 +79,6 @@ public class CannonFire : Unit {
 
 
 		//Instantiate(myProjectile, muzzlePos.position, muzzlePos.rotation);
-
 
 	}﻿
 
