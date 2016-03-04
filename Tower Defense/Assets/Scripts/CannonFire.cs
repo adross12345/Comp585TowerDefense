@@ -4,6 +4,34 @@ using System.Collections;
 public class CannonFire : MonoBehaviour {
 
 
+	public GameObject projectile;
+	public GameObject firePoint;
+	float firePauseTime = .25f;
+
+	float fireInterval = 1f;
+	float turnSpeed = 5f;
+
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Enemy") 
+		{
+			Debug.Log ("Reached");
+			Vector3 aimPoint = new Vector3(other.transform.position.x, other.transform.position.y, 
+				other.transform.position.z);
+			transform.rotation = Quaternion.LookRotation(aimPoint);
+		}
+	}
+
+	void FireProjectile()
+	{
+		float nextFireTime = Time.time + fireInterval;
+		float nextMoveTime = Time.time + firePauseTime;
+		Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
+	}﻿
+}
+
+	/*****
 	public GameObject myProjectile;
 	public GameObject firePoint;
 	public GameObject enemy; 
@@ -27,7 +55,7 @@ public class CannonFire : MonoBehaviour {
 		{
 			if(Time.time >= nextMoveTime)
 			{
-				CalculateAimPosition(myTarget.position);
+				CalculateAimPosition(enemy);
 				turretBall.rotation = Quaternion.Lerp(turretBall.rotation, desiredRotation, Time.deltaTime*turnSpeed);
 			}
 
@@ -53,33 +81,11 @@ public class CannonFire : MonoBehaviour {
 			myTarget = null;
 		}
 	}
-
-	//these errors are because of the onTriggerEnter method
-	void CalculateAimPosition(Vector3 targetPos)
-	{
-		Debug.Log ("Reached");
-		Vector3 aimPoint = new Vector3(enemy.transform.position.x + aimError, enemy.transform.position.y + aimError, 
-			enemy.transform.position.z + aimError);
-		//transform.rotation.SetLookRotation = Quaternion.LookRotation(aimPoint);
-
-		//SetLookRotation
-	}
-
-
+	
 	void CalculateAimError()
 	{
 		aimError = Random.Range(-errorAmount, errorAmount);
 	}
 
 
-	void FireProjectile()
-	{
-		
-		nextFireTime = Time.time+reloadTime;
-		nextMoveTime = Time.time+firePauseTime;
-		CalculateAimError();
-		Instantiate(myProjectile, firePoint.transform.position, firePoint.transform.rotation);
-
-	}﻿
-
-}
+	**/

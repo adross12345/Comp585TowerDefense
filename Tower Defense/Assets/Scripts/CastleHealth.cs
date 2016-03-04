@@ -5,6 +5,7 @@ public class CastleHealth : MonoBehaviour {
 
 	public float maxHealth = 1.00f;
 	public float curHealth = 0f;
+	public static float damage = 0f;
 	public GameObject healthBar;
 	public GameObject castle;
 	public GameObject enemy;
@@ -18,11 +19,13 @@ public class CastleHealth : MonoBehaviour {
 		//Tests the Tower Health Bar
 		//InvokeRepeating ("decreaseHealth", 1f, 1f);
 	}
-		
+
+
+
 	//Decreases castle health when enemy reaches castle.
-	void decreaseHealth()
+	void decreaseHealth(float damage)
 	{
-		curHealth -= .10f;
+		curHealth -= damage / 100;
 		float calcHealth = curHealth / maxHealth;
 		setHealthBar (calcHealth);
 		if (curHealth <= 0f) {
@@ -30,10 +33,17 @@ public class CastleHealth : MonoBehaviour {
 		}
 	}
 
-	public static float changeDamage(float value)
+	public static void changeDamage(float value)
 	{
-	//	decreaseHealth(value);
-		return 0f;
+		damage = value;
+	}
+
+	public void OnTriggerEnter(Collider co) {
+		Debug.Log ("Castle Hit");
+		if (co.tag == "Enemy") {
+			decreaseHealth(damage);	
+		}
+
 	}
 
 	public void setHealthBar(float castleHealth)

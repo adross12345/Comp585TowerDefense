@@ -33355,6 +33355,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 13597226, guid: 0b1a0dc30036b4abd98819fcbe32f7b7, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13597226, guid: 0b1a0dc30036b4abd98819fcbe32f7b7, type: 2}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11424528, guid: 0b1a0dc30036b4abd98819fcbe32f7b7, type: 2}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 122168, guid: 3604e666e978544c998ac2c58347c645, type: 2}
+    - target: {fileID: 13549684, guid: 0b1a0dc30036b4abd98819fcbe32f7b7, type: 2}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 13597226, guid: 0b1a0dc30036b4abd98819fcbe32f7b7, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b1a0dc30036b4abd98819fcbe32f7b7, type: 2}
   m_IsPrefabParent: 0
