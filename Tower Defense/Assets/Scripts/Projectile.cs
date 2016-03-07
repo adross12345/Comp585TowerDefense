@@ -3,17 +3,19 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
-	public float mySpeed = 10;
-	public float myRange = 10;
+	private float mySpeed = 10;
+	private float myRange = 10;
+	private GameObject projectile;
 
 	private float distance;
 
-	void Update(){
+	void Start(){
 		transform.Translate(Vector3.forward * Time.deltaTime * mySpeed);
 		distance += Time.deltaTime * mySpeed;
 		if (distance >= myRange) {
 			Destroy (gameObject);
 		}
 	}
+		
 
 }

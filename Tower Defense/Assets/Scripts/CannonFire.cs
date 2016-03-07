@@ -6,20 +6,29 @@ public class CannonFire : MonoBehaviour {
 
 	public GameObject projectile;
 	public GameObject firePoint;
+	private Transform myTarget;
 	float firePauseTime = .25f;
 
 	float fireInterval = 1f;
 	float turnSpeed = 5f;
+	private float nextFireTime;
+	private float nextMoveTime;
+	private Vector3[] enemyPosition;
+	private Quaternion desiredRotation;
+	private float aimError;
 
 
+	//Picks up the target that comes into the turrents range
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Enemy") 
+		if (other.gameObject.tag == "Enemy") 
 		{
+			nextFireTime = (float)(Time.time+(fireInterval*.5));
 			Debug.Log ("Reached");
 			Vector3 aimPoint = new Vector3(other.transform.position.x, other.transform.position.y, 
 				other.transform.position.z);
 			transform.rotation = Quaternion.LookRotation(aimPoint);
+			FireProjectile ();
 		}
 	}
 
