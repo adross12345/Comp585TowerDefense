@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CastleHealth : MonoBehaviour {
@@ -9,6 +10,9 @@ public class CastleHealth : MonoBehaviour {
 	public GameObject healthBar;
 	public GameObject castle;
 	public GameObject enemy;
+
+    [SerializeField]
+    private Text healthText = null;
 
 
 
