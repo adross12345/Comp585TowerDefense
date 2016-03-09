@@ -116,23 +116,29 @@ public class ColorHistNode : NeuralNode {
 		if (tex is Texture2D) {
 			Texture2D tex2D = (Texture2D)tex;
 			Color[] pixels = tex2D.GetPixels ();
-			if (tex2D.width == unitWidth && tex2D.height == unitHeight) {
-				//This is really IMPORTANT.
-				//The last spot in unit features is reserved for the unit identity (0 for Enemy, 1 for Ally)
-				//Don't iterate over unitFeatures or its full length.
-				double[] unitFeatures = new double[numBins * numBins * numBins];
-				int divisor = 256 / numBins;
-				double increment = 1.0 / (unitWidth * unitHeight);
+			calculateZ (pixels);
+		}
+		return res;
+	}
 
-				//Assigns the pixel values for each of the colors in the pattern increasing green, then increasing blue, then increasing red
-				for (int i = 0; i < pixels.Length; i++) {
-					Color c = pixels [i];
-					unitFeatures [(((int)(c.r * 255)) / divisor * numBins * numBins) + (((int)(c.b * 255))/divisor * numBins) + (((int)(c.g * 255)) / divisor)] += increment;
-				}
-				res = calculateZ (unitFeatures);
-			} else {
-				Debug.Log ("Unit has incorrect dimensions to be analyzed: " + unit.ToString());
+	public override double calculateZ(Color[] pixels){
+		double res = 0;
+		if (pixels.Length == unitHeight*unitWidth) {
+			//This is really IMPORTANT.
+			//The last spot in unit features is reserved for the unit identity (0 for Enemy, 1 for Ally)
+			//Don't iterate over unitFeatures or its full length.
+			double[] unitFeatures = new double[numBins * numBins * numBins];
+			int divisor = 256 / numBins;
+			double increment = 1.0 / (unitWidth * unitHeight);
+
+			//Assigns the pixel values for each of the colors in the pattern increasing green, then increasing blue, then increasing red
+			for (int i = 0; i < pixels.Length; i++) {
+				Color c = pixels [i];
+				unitFeatures [(((int)(c.r * 255)) / divisor * numBins * numBins) + (((int)(c.b * 255))/divisor * numBins) + (((int)(c.g * 255)) / divisor)] += increment;
 			}
+			res = calculateZ (unitFeatures);
+		} else {
+			Debug.Log ("Unit has incorrect dimensions to be analyzed");
 		}
 		return res;
 	}

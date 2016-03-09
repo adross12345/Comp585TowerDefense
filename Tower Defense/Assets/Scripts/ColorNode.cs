@@ -48,7 +48,7 @@ public class ColorNode : NeuralNode {
 			}
 		}//for
 
-
+		Debug.Log (featureLength);
 		weights = new double[featureLength];
 		b = 0;
 
@@ -96,22 +96,28 @@ public class ColorNode : NeuralNode {
 		if (tex is Texture2D) {
 			Texture2D tex2D = (Texture2D)tex;
 			Color[] pixels = tex2D.GetPixels ();
-			if (pixels.Length * 3 == weights.Length) {
-				//This is really IMPORTANT.
-				//The last spot in unit features is reserved for the unit identity (0 for Enemy, 1 for Ally)
-				//Don't iterate over unitFeatures or its full length.
-				double[] unitFeatures = new double[weights.Length];
-				//Assigns the pixel values for each of the colors in the pattern {r,g,b,r,g,b,...)
-				for (int i = 0; i < pixels.Length; i++) {
-					Color c = pixels [i];
-					unitFeatures [3 * i] = c.r;
-					unitFeatures [3 * i + 1] = c.g;
-					unitFeatures [3 * i + 2] = c.b;
-				}
-				res = calculateZ (unitFeatures);
-			} else {
-				Debug.Log ("Unit has incorrect dimensions to be analyzed: " + unit.ToString());
+			res = calculateZ (pixels);
+		}
+		return res;
+	}
+
+	public override double calculateZ(Color[] pixels){
+		double res = 0;
+		if (pixels.Length * 3 == weights.Length) {
+			//This is really IMPORTANT.
+			//The last spot in unit features is reserved for the unit identity (0 for Enemy, 1 for Ally)
+			//Don't iterate over unitFeatures or its full length.
+			double[] unitFeatures = new double[weights.Length];
+			//Assigns the pixel values for each of the colors in the pattern {r,g,b,r,g,b,...)
+			for (int i = 0; i < pixels.Length; i++) {
+				Color c = pixels [i];
+				unitFeatures [3 * i] = c.r;
+				unitFeatures [3 * i + 1] = c.g;
+				unitFeatures [3 * i + 2] = c.b;
 			}
+			res = calculateZ (unitFeatures);
+		} else {
+			Debug.Log ("Unit has incorrect dimensions to be analyzed");
 		}
 		return res;
 	}

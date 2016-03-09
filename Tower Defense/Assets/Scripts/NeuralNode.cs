@@ -11,6 +11,22 @@ public abstract class NeuralNode : ScriptableObject {
 	protected int iters = 100;
 	protected List<PhantomUnit> trainingSet;
 
+	public enum NodeType{FULLCOLOR, COLORHIST, GRAYSCALE, CONVOLVED}
+
+	public static NeuralNode create(NodeType nodeType){
+		NeuralNode res = null;
+		if (nodeType == NodeType.FULLCOLOR) {
+			res = ScriptableObject.CreateInstance<ColorNode> ();
+		}else if (nodeType == NodeType.COLORHIST) {
+			res = ScriptableObject.CreateInstance<ColorHistNode> ();
+		}else if (nodeType == NodeType.GRAYSCALE) {
+			res = ScriptableObject.CreateInstance<GrayscaleNode> ();
+		}else if (nodeType == NodeType.CONVOLVED) {
+			res = ScriptableObject.CreateInstance<ConvolvedNode> ();
+		}
+		return res;
+	}
+
 	public void Start () {
 	}
 
@@ -24,6 +40,8 @@ public abstract class NeuralNode : ScriptableObject {
 	public abstract double calculateZ (double[] features);
 
 	public abstract double calculateZ (Unit unit);
+
+	public abstract double calculateZ (Color[] pixels);
 
 	public abstract Texture2D getAllyTexture ();
 
@@ -58,7 +76,20 @@ public abstract class NeuralNode : ScriptableObject {
 		pu.Initialize (tex, unit.identity);
 		trainingSet.Add (pu);
 	}
-	
+
+	public void AddToTrainingSet(PhantomUnit pu){
+		trainingSet.Add (pu);
+	}
+
+	public void AddToTrainingSet(Color[] pixels, double identity, int width, int height){
+		Texture2D tex = new Texture2D (width, height);
+		tex.SetPixels (pixels);
+		tex.Apply ();
+		PhantomUnit pu = ScriptableObject.CreateInstance<PhantomUnit>();
+		pu.Initialize (tex, identity);
+		trainingSet.Add (pu);
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
