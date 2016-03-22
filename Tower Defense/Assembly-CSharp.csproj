@@ -53,9 +53,12 @@
      <Compile Include="Assets\Scripts\CastleHealth.cs" />
      <Compile Include="Assets\Scripts\ColorHistNode.cs" />
      <Compile Include="Assets\Scripts\ColorNode.cs" />
+     <Compile Include="Assets\Scripts\CombinationNode.cs" />
+     <Compile Include="Assets\Scripts\ConvolvedNode.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\GrayscaleNode.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
+     <Compile Include="Assets\Scripts\HealthManager.cs" />
      <Compile Include="Assets\Scripts\NeuralNode.cs" />
      <Compile Include="Assets\Scripts\PhantomUnit.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />

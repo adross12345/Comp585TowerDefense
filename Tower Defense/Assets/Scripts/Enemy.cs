@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Enemy : Unit {
 	public static double ENEMY_IDENTITY = 0.0;
-	float damage = 1f;
 
 	public GameObject enemy;
 	public GameObject castle;
@@ -17,15 +16,13 @@ public class Enemy : Unit {
 
 	public override void OnTriggerEnter(Collider co) {
 		if (co.name == "Castle") {
-			float damage = 10f;
-			CastleHealth.changeDamage (damage);
 			Destroy (enemy);	
 		}
 
 	}
 
-	//Decreases castle health when enemy reaches castle.
-	void decreaseHealth()
+	//Decreases enemy health when hit by projectile.
+	void decreaseHealth(float damage)
 	{
 		curHealth -= .10f;
 		float calcHealth = curHealth / maxHealth;

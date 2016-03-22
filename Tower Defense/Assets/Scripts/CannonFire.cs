@@ -7,13 +7,8 @@ public class CannonFire : MonoBehaviour {
 	public GameObject projectile;
 	public GameObject firePoint;
 	private Transform myTarget;
-	float firePauseTime = .25f;
 
-	float fireInterval = 1f;
-	float turnSpeed = 5f;
-	private float nextFireTime;
-	private float nextMoveTime;
-	private Vector3[] enemyPosition;
+
 	private Quaternion desiredRotation;
 	private float aimError;
 
@@ -23,19 +18,18 @@ public class CannonFire : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Enemy") 
 		{
-			nextFireTime = (float)(Time.time+(fireInterval*.5));
 			Debug.Log ("Reached");
 			Vector3 aimPoint = new Vector3(other.transform.position.x, other.transform.position.y, 
 				other.transform.position.z);
-			transform.rotation = Quaternion.LookRotation(aimPoint);
+			transform.LookAt (aimPoint);
+			//transform.rotation = Quaternion.LookRotation(gameObject);
+
 			FireProjectile ();
 		}
 	}
 
 	void FireProjectile()
 	{
-		float nextFireTime = Time.time + fireInterval;
-		float nextMoveTime = Time.time + firePauseTime;
 		Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
 	}﻿
 }
