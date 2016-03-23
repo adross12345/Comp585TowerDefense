@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : Unit {
 	public static double ENEMY_IDENTITY = 0.0;
+	float damage = 1f;
 
 	public GameObject enemy;
 	public GameObject castle;
@@ -20,8 +21,8 @@ public class Enemy : Unit {
 		}
 	}
 
-	//Decreases enemy health when hit by projectile.
-	void decreaseHealth(float damage)
+	//Decreases castle health when enemy reaches castle.
+	void decreaseHealth()
 	{
 		curHealth -= .10f;
 		float calcHealth = curHealth / maxHealth;
@@ -36,4 +37,5 @@ public class Enemy : Unit {
 		healthBar.transform.localScale = new Vector3(curHealth, 
 			healthBar.transform.localScale.y, healthBar.transform.localScale.z);
 	}
+
 }

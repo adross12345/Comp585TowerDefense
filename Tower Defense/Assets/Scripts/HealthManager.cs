@@ -17,6 +17,6 @@ public class HealthManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         health = GameObject.Find("Castle").GetComponent<CastleHealth>();
-        amountHealth.text = (int)(health.curHealth * 100) + "/100";
+		amountHealth.text = (int)Mathf.Round((health.curHealth * 100)) + "/100";
     }
 }
