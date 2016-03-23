@@ -18,7 +18,6 @@ public class Enemy : Unit {
 		if (co.name == "Castle") {
 			Destroy (enemy);	
 		}
-
 	}
 
 	//Decreases enemy health when hit by projectile.
@@ -37,5 +36,4 @@ public class Enemy : Unit {
 		healthBar.transform.localScale = new Vector3(curHealth, 
 			healthBar.transform.localScale.y, healthBar.transform.localScale.z);
 	}
-
 }
