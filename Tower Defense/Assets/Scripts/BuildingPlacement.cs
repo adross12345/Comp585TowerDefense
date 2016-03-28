@@ -43,6 +43,7 @@ public class BuildingPlacement : MonoBehaviour {
 			if (Input.GetMouseButtonDown(0)) {
 				if (IsLegalPosition(p)) {
 					hasPlaced = true;	
+					placeableBuilding.SetSelected (false);
 				}
 			}
 		}
@@ -85,7 +86,9 @@ public class BuildingPlacement : MonoBehaviour {
 	public void SetItem(GameObject b) {
 		hasPlaced = false;
 		currentBuilding = ((GameObject)Instantiate(b)).transform;
-		Component bf = currentBuilding.GetComponent ("Turret");
+//		GameObject go = transform.Find ("BuildingFootprint").gameObject;
+//		placeableBuilding = (PlaceableBuilding)go;
 		placeableBuilding = currentBuilding.GetComponentsInChildren<PlaceableBuilding>()[0];
+		placeableBuilding.SetSelected (true);
 	}
 }

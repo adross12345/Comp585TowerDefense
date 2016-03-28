@@ -5,7 +5,7 @@ public abstract class Unit : MonoBehaviour {
 	public double identity;
 	public int speed;
 	public float maxHealth = 1.00f;
-	public float curHealth = 0f;
+	public float curHealth = 1.00f;
 	public GameObject healthBar;
 	public double[] weights;
 
@@ -15,10 +15,30 @@ public abstract class Unit : MonoBehaviour {
 		curHealth = maxHealth;
 		//Moves enemy toward castle
 		GameObject castle = GameObject.Find ("Castle");
-		Debug.Log ("starting");
 		if (castle) {
 			GetComponent<NavMeshAgent>().destination = castle.transform.position;
 		}
+	}
+
+	//Decreases health when enemy gets hit.
+	//Returns true if the enemy died due to it.
+	public bool decreaseHealth(float damage)
+	{
+		bool res = false;
+		curHealth -= damage;
+		float calcHealth = curHealth / maxHealth;
+		setHealthBar (calcHealth);
+		if (curHealth <= 0f) {
+			Destroy (gameObject);
+			res = true;
+		}
+		return res;
+	}
+
+	public void setHealthBar(float healthPercent)
+	{
+		healthBar.transform.localScale = new Vector3(curHealth, 
+			healthBar.transform.localScale.y, healthBar.transform.localScale.z);
 	}
 
 	public void addNoise(float noise){

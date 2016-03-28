@@ -21,21 +21,4 @@ public class Enemy : Unit {
 		}
 	}
 
-	//Decreases castle health when enemy reaches castle.
-	void decreaseHealth()
-	{
-		curHealth -= .10f;
-		float calcHealth = curHealth / maxHealth;
-		setHealthBar (calcHealth);
-		if (curHealth <= 0f) {
-			Destroy (gameObject);
-		}
-	}
-
-	public void setHealthBar(float enemyHealth)
-	{
-		healthBar.transform.localScale = new Vector3(curHealth, 
-			healthBar.transform.localScale.y, healthBar.transform.localScale.z);
-	}
-
 }

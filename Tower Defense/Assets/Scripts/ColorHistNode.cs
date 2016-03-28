@@ -58,8 +58,6 @@ public class ColorHistNode : NeuralNode {
 				Debug.Log ("I'm not sure what Texture this is or what to do with it.");
 			}
 		}//for
-
-
 		weights = new double[featureLength];
 		b = 0;
 
@@ -116,7 +114,7 @@ public class ColorHistNode : NeuralNode {
 		if (tex is Texture2D) {
 			Texture2D tex2D = (Texture2D)tex;
 			Color[] pixels = tex2D.GetPixels ();
-			calculateZ (pixels);
+			res = calculateZ (pixels);
 		}
 		return res;
 	}
@@ -124,9 +122,6 @@ public class ColorHistNode : NeuralNode {
 	public override double calculateZ(Color[] pixels){
 		double res = 0;
 		if (pixels.Length == unitHeight*unitWidth) {
-			//This is really IMPORTANT.
-			//The last spot in unit features is reserved for the unit identity (0 for Enemy, 1 for Ally)
-			//Don't iterate over unitFeatures or its full length.
 			double[] unitFeatures = new double[numBins * numBins * numBins];
 			int divisor = 256 / numBins;
 			double increment = 1.0 / (unitWidth * unitHeight);

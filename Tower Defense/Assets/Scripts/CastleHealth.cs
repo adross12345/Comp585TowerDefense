@@ -41,7 +41,6 @@ public class CastleHealth : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter(Collider co) {
-		Debug.Log ("Castle Hit");
 		if (co.tag == "Enemy") {
 			float damage = 10f;
 			CastleHealth.changeDamage (damage);

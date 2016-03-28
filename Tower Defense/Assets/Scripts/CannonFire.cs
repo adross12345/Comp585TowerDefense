@@ -1,100 +1,121 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CannonFire : MonoBehaviour {
+	public NeuralNode node;
+	public float range;
+	private Unit myTarget;
+	private List<Unit> targetsInRange;
+	private int targetsSeen;
+	private bool isAILearned;
 
-
-	public GameObject projectile;
+	public Projectile projectile;
 	public GameObject firePoint;
-	private Transform myTarget;
+
 	float firePauseTime = .25f;
 
-	float fireInterval = 1f;
-	float turnSpeed = 5f;
+	float fireInterval = 0.5f;
 	private float nextFireTime;
-	private float nextMoveTime;
-	private Vector3[] enemyPosition;
-	private Quaternion desiredRotation;
-	private float aimError;
 
+	void Awake(){
+		targetsInRange = new List<Unit> ();
+		node = NeuralNode.create (NeuralNode.NodeType.COLORHIST);
+		targetsSeen = 0;
+		isAILearned = false;
+		SetRange (this.range);
+		transform.Find ("Range").gameObject.GetComponent<MeshRenderer> ().enabled = false;
+	}
 
-	//Picks up the target that comes into the turrents range
+	void SetRange(float newRange){
+		this.range = newRange;
+		SphereCollider sc = GetComponent<SphereCollider> ();
+		sc.radius = newRange;
+		Debug.Log (transform.name);
+		Transform rangeIndicator = transform.Find ("Range");
+		rangeIndicator.localScale = new Vector3 (newRange * 2, 0, newRange * 2);
+	}
+
+	//Picks up the target that comes into the turrets range
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Enemy") 
-		{
-			nextFireTime = (float)(Time.time+(fireInterval*.5));
-			Debug.Log ("Reached");
-			Vector3 aimPoint = new Vector3(other.transform.position.x, other.transform.position.y, 
-				other.transform.position.z);
-			transform.rotation = Quaternion.LookRotation(aimPoint);
-			FireProjectile ();
+		Unit u = other.gameObject.GetComponent<Unit> ();
+		if(u != null){
+			targetsInRange.Add (u);
+			if (targetsSeen < 4) {
+				node.AddToTrainingSet (u);
+			}
+			targetsSeen++;
+		}
+	}
+
+	void OnTriggerExit(Collider other){
+		Unit u = other.gameObject.GetComponent<Unit> ();
+		if(u != null){
+			targetsInRange.Remove (u);
+			if (myTarget == u) {
+				myTarget = null;
+			}
 		}
 	}
 
 	void FireProjectile()
 	{
-		float nextFireTime = Time.time + fireInterval;
-		float nextMoveTime = Time.time + firePauseTime;
-		Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
+		if (myTarget != null) {
+			nextFireTime = Time.time + fireInterval;
+			transform.LookAt(myTarget.transform);
+			Projectile proj = Instantiate (projectile, firePoint.transform.position, firePoint.transform.rotation) as Projectile;
+			proj.setTarget (myTarget.gameObject);
+		}
 	}﻿
-}
 
-	/*****
-	public GameObject myProjectile;
-	public GameObject firePoint;
-	public GameObject enemy; 
-	float reloadTime = 1f;
-	float turnSpeed = 5f;
-	float firePauseTime = .25f;
-	float errorAmount = .001f;
-	Transform myTarget;
-	Transform turretBall;
-
-
-	private float nextFireTime;
-	private float nextMoveTime;
-	private Quaternion desiredRotation;
-	private float aimError;
-
-
-	void Update () 
-	{
-		if(myTarget)
-		{
-			if(Time.time >= nextMoveTime)
-			{
-				CalculateAimPosition(enemy);
-				turretBall.rotation = Quaternion.Lerp(turretBall.rotation, desiredRotation, Time.deltaTime*turnSpeed);
+	void Update(){
+		if (targetsSeen >= 4 && !isAILearned) {
+			node.LearnUnits ();
+			Debug.Log ("Stuff learned");
+			isAILearned = true;
+		}
+		if (isAILearned) {
+			if (myTarget == null) {
+				try{
+					if (targetsInRange.Count > 0) {
+						//TODO change this to be able to target strong/weak/first/last
+						Unit u = targetsInRange [0];
+						while (u == null) {
+							targetsInRange.RemoveAt (0);
+							if (targetsInRange.Count > 0) {
+								u = targetsInRange [0];
+							} else {
+								throw new UnityException ();
+							}
+						}
+						double z = node.calculateZ (u);
+						//Do AI animation
+						if (z < 0) {
+							//target is an enemy
+							myTarget = u;
+						} else {
+							//Target is an ally. Next update will find another target.
+							targetsInRange.Remove(u);
+						}
+					}
+				}catch(UnityException e){
+					//There were no more valid targets to check.
+				}
 			}
-
-			if(Time.time >= nextFireTime)
-			{
-				FireProjectile();
-			}
+		}
+		if (Time.time >= nextFireTime) {
+			FireProjectile ();
 		}
 	}
 
-	//Picks up the target that comes into the turrents range
-	public void OnTriggerEnter(Collider enemy)
-	{
-		nextFireTime = (float)(Time.time+(reloadTime*.5));
-		myTarget = enemy.gameObject.transform;
-	}
-
-
-	public void OnTriggerExit(Collider enemy)
-	{
-		if(enemy.gameObject.transform == myTarget)
-		{
-			myTarget = null;
-		}
-	}
-	
-	void CalculateAimError()
-	{
-		aimError = Random.Range(-errorAmount, errorAmount);
-	}
-
-
-	**/
+//	public void KilledTarget(GameObject o){
+//		Unit u = other.gameObject.GetComponent<Unit> ();
+//		if(u != null){
+//			targetsInRange.Remove (u);
+//			if (myTarget == u) {
+//				myTarget = null;
+//			}
+//		}
+//	}
+}//Cannonfire
