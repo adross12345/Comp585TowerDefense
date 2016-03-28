@@ -6,6 +6,7 @@ public abstract class Unit : MonoBehaviour {
 	public int speed;
 	public float maxHealth = 1.00f;
 	public float curHealth = 1.00f;
+	//Need to find a way to link healthbar to each instance of enemy/ally
 	public GameObject healthBar;
 	public double[] weights;
 
@@ -37,8 +38,8 @@ public abstract class Unit : MonoBehaviour {
 
 	public void setHealthBar(float healthPercent)
 	{
-		healthBar.transform.localScale = new Vector3(curHealth, 
-			healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+		this.healthBar.transform.localScale = new Vector3(curHealth, 
+			this.healthBar.transform.localScale.y, this.healthBar.transform.localScale.z);
 	}
 
 	public void addNoise(float noise){

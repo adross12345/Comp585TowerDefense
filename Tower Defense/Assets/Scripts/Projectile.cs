@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){	
-		if(other.gameObject==target){
+		if(other.gameObject == target){
 			Unit u = other.gameObject.GetComponent<Unit> ();
 			if (u != null) {
 				u.decreaseHealth (myDamage);

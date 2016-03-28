@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class Enemy : Unit {
 	public static double ENEMY_IDENTITY = 0.0;
 	float damage = 1f;
@@ -15,10 +16,14 @@ public class Enemy : Unit {
 		base.Start ();
 	}
 
+
 	public override void OnTriggerEnter(Collider co) {
 		if (co.name == "Castle") {
 			Destroy (enemy);	
+		} else if (co.name == "Projectile") {
+			decreaseHealth (10f);
 		}
 	}
+
 
 }

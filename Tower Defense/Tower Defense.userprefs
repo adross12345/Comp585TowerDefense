@@ -2,12 +2,19 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CannonFire.cs">
     <Files>
+<<<<<<< Updated upstream
       <File FileName="Assets\Scripts\PlaceableBuilding.cs" Line="25" Column="107" />
       <File FileName="Assets\Scripts\CannonFire.cs" Line="66" Column="39" />
       <File FileName="Assets\Scripts\Spawn.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ColorHistNode.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BuildingPlacement.cs" Line="46" Column="44" />
+=======
+      <File FileName="Assets/Scripts/CannonFire.cs" Line="35" Column="3" />
+      <File FileName="Assets/Scripts/Projectile.cs" Line="20" Column="16" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="38" Column="3" />
+      <File FileName="Assets/Scripts/HealthManager.cs" Line="23" Column="1" />
+>>>>>>> Stashed changes
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
