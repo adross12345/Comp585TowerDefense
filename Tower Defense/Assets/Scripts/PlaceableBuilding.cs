@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PlaceableBuilding : MonoBehaviour {
+    public Sprite allySprite;
+    public Sprite enemySprite;
 
 	[HideInInspector]
 	public List<Collider> colliders = new List<Collider>();
@@ -20,10 +22,16 @@ public class PlaceableBuilding : MonoBehaviour {
 //				rng.gameObject.GetComponent<MeshRenderer> ().enabled = true;
 				transform.parent.Find("Turret").Find ("Range").gameObject.GetComponent<MeshRenderer> ().enabled = true;
 				isShowingRange = true;
-			}
-		} else if(isShowingRange) {
+
+                // Add nodes to UI
+                //allySprite = Sprite.Create(transform.parent.Find("Turret").GetComponent<CannonFire>().node.getAllyTexture(), new Rect(0, 0, 32, 32), new Vector2(0.5f, 0.5f));
+                //enemySprite = Sprite.Create(transform.parent.Find("Turret").GetComponent<CannonFire>().node.getEnemyTexture(), new Rect(0, 0, 32, 32), new Vector2(0.5f, 0.5f));
+            }
+        } else if(isShowingRange) {
 			transform.parent.Find("Turret").Find ("Range").gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			isShowingRange = false;
+
+            // Remove nodes from UI
 		}
 
 	}
