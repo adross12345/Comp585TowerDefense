@@ -7,7 +7,7 @@ public class BuildingPlacement : MonoBehaviour {
 	
 	private PlaceableBuilding placeableBuilding;
 	private Transform currentBuilding;
-	private bool hasPlaced;
+	public bool hasPlaced;
 	
 	public LayerMask buildingsMask;
 	public LayerMask groundMask;
@@ -43,12 +43,15 @@ public class BuildingPlacement : MonoBehaviour {
 			if (Input.GetMouseButtonDown(0)) {
 				if (IsLegalPosition(p)) {
 					hasPlaced = true;	
+					Debug.Log ("Placed the tower!!!!!!!");
 					placeableBuilding.SetSelected (false);
+					placeableBuilding.SetPlaced (true);
 				}
 			}
 		}
 		else {
 			if (Input.GetMouseButtonDown(0)) {
+				// hasPlaced = true;
 				RaycastHit hit = new RaycastHit();
 				ray = new Ray(new Vector3(p.x,10,p.z), Vector3.down);
 				if (Physics.Raycast(ray, out hit,Mathf.Infinity,buildingsMask)) {
@@ -82,13 +85,18 @@ public class BuildingPlacement : MonoBehaviour {
 		}
 		return res;
 	}
-	
+
 	public void SetItem(GameObject b) {
 		hasPlaced = false;
+		Debug.Log ("Set Item");
 		currentBuilding = ((GameObject)Instantiate(b)).transform;
 //		GameObject go = transform.Find ("BuildingFootprint").gameObject;
 //		placeableBuilding = (PlaceableBuilding)go;
 		placeableBuilding = currentBuilding.GetComponentsInChildren<PlaceableBuilding>()[0];
 		placeableBuilding.SetSelected (true);
+	}
+
+	public void PlaceItem(GameObject b) {
+		
 	}
 }

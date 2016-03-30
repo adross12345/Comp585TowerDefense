@@ -34,3 +34,20 @@
 /Users/tjallen/Documents/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/tjallen/Documents/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/tjallen/Documents/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/obj/Debug/Assembly-CSharp.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/UnityEngine.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/UnityEditor.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Mono.Cecil.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Unity.DataContract.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/Stephen/Dropbox/UNC/6/COMP 585/Comp585TowerDefense/Tower Defense/Temp/bin/Debug/Assembly-CSharp.dll

@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\PhantomUnit.cs" />
      <Compile Include="Assets\Scripts\PlaceableBuilding.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
+     <Compile Include="Assets\Scripts\ShowTowerPopup.cs" />
      <Compile Include="Assets\Scripts\Spawn.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
  <Reference Include="UnityEngine.Networking">

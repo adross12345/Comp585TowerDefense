@@ -9,6 +9,7 @@ public class PlaceableBuilding : MonoBehaviour {
 	[HideInInspector]
 	public List<Collider> colliders = new List<Collider>();
 	private bool isSelected;
+	private bool isPlaced;
 	private bool isShowingRange;
 	public string bName;
 
@@ -50,6 +51,10 @@ public class PlaceableBuilding : MonoBehaviour {
 	
 	public void SetSelected(bool s) {
 		isSelected = s;	
+	}
+
+	public void SetPlaced(bool p) {
+		isPlaced = p;
 	}
 
 	

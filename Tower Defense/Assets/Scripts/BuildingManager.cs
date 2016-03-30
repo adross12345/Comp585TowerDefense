@@ -5,6 +5,7 @@ public class BuildingManager : MonoBehaviour {
 	
 	public GameObject[] buildings;
 	private BuildingPlacement buildingPlacement;
+	private bool initOnce = false;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,10 @@ public class BuildingManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (buildingPlacement.hasPlaced == true && !initOnce) {
+			ShowTowerPopup.Init (buildings [0]);
+			initOnce = true;
+		}
 	}
 	
 	void OnGUI() {
