@@ -57,6 +57,12 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -70,18 +76,23 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Ally.cs" />
     <Compile Include="Assets\Scripts\Bar.cs" />
+    <Compile Include="Assets\Scripts\BuildingManager.cs" />
+    <Compile Include="Assets\Scripts\BuildingPlacement.cs" />
     <Compile Include="Assets\Scripts\Buildspace.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CannonFire.cs" />
     <Compile Include="Assets\Scripts\CastleHealth.cs" />
     <Compile Include="Assets\Scripts\ColorHistNode.cs" />
     <Compile Include="Assets\Scripts\ColorNode.cs" />
+    <Compile Include="Assets\Scripts\CombinationNode.cs" />
+    <Compile Include="Assets\Scripts\ConvolvedNode.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\GrayscaleNode.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\HealthManager.cs" />
     <Compile Include="Assets\Scripts\NeuralNode.cs" />
     <Compile Include="Assets\Scripts\PhantomUnit.cs" />
+    <Compile Include="Assets\Scripts\PlaceableBuilding.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\Spawn.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
