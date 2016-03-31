@@ -260,8 +260,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8b6e05d7461434cbd52b81e4e1ff4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  node: {fileID: 0}
+  range: 0
   projectile: {fileID: 0}
   firePoint: {fileID: 181356}
+  aimPoint: {fileID: 158616, guid: 4bbbce203bc543e408f43f597e4c62e9, type: 2}
 --- !u!135 &13549684
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -355,6 +358,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.7071071
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: aimPoint
+      value: 
+      objectReference: {fileID: 158616, guid: 4bbbce203bc543e408f43f597e4c62e9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157940}

@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour {
 	public float mySpeed = 10;
 	public float myDamage = 0.5f;
 	private GameObject projectile;
-	private GameObject target;
+	private Unit target;
 	private CannonFire source;
 
 	private float distance;
@@ -18,22 +18,27 @@ public class Projectile : MonoBehaviour {
 		if (target != null) {
 			transform.LookAt (target.transform);
 			transform.Translate (Vector3.forward * mySpeed * Time.deltaTime);
-//			nav.destination = target.transform.position;
 		}
 	}
 
 	void OnTriggerEnter(Collider other){	
-		if(other.gameObject == target){
-			Unit u = other.gameObject.GetComponent<Unit> ();
+		Unit u = other.gameObject.GetComponent<Unit> ();
+		if(u == target){
 			if (u != null) {
 				u.decreaseHealth (myDamage);
 			}
+			target.removeFromAimedAtMe (this);
 			Destroy (gameObject);
 		}
 	}
 
-	public void setTarget(GameObject go){
-		this.target = go;
+	public void setTarget(Unit u){
+		this.target = u;
+		u.addToAimedAtMe (this);
+	}
+
+	public void killYourself(){
+		Destroy (this.gameObject);
 	}
 		
 

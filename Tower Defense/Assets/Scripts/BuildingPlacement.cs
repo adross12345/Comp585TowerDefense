@@ -37,15 +37,16 @@ public class BuildingPlacement : MonoBehaviour {
 
 
 		if (currentBuilding != null && !hasPlaced) {
-			
+			Debug.Log ("Not null");
 			currentBuilding.position = new Vector3(p.x,p.y,p.z);
 
 			if (Input.GetMouseButtonDown(0)) {
 				if (IsLegalPosition(p)) {
+					Debug.Log ("Placing Building");
 					hasPlaced = true;	
-					Debug.Log ("Placed the tower!!!!!!!");
 					placeableBuilding.SetSelected (false);
 					placeableBuilding.SetPlaced (true);
+					currentBuilding = null;
 				}
 			}
 		}
@@ -87,6 +88,13 @@ public class BuildingPlacement : MonoBehaviour {
 	}
 
 	public void SetItem(GameObject b) {
+		if (currentBuilding != null) {
+			try{
+				Destroy (currentBuilding.gameObject);
+			}catch(UnityException e){
+				Debug.Log ("This throws a null pointer exception for some reason");
+			}
+		}
 		hasPlaced = false;
 		Debug.Log ("Set Item");
 		currentBuilding = ((GameObject)Instantiate(b)).transform;

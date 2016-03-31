@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Unit : MonoBehaviour {
 	public double identity;
@@ -10,10 +11,13 @@ public abstract class Unit : MonoBehaviour {
 	public GameObject healthBar;
 	public double[] weights;
 
+	private List<Projectile> aimedAtMe;
+
 	// Use this for initialization
 	protected void Start () {
 
 		curHealth = maxHealth;
+		aimedAtMe = new List<Projectile> ();
 		//Moves enemy toward castle
 		GameObject castle = GameObject.Find ("Castle");
 		if (castle) {
@@ -66,6 +70,20 @@ public abstract class Unit : MonoBehaviour {
 	public void setTexture(Texture tex){
 		MeshRenderer mr = this.GetComponent<MeshRenderer> ();
 		mr.material.mainTexture = tex;
+	}
+
+	public void addToAimedAtMe(Projectile p){
+		aimedAtMe.Add (p);
+	}
+
+	public void removeFromAimedAtMe(Projectile p){
+		aimedAtMe.Remove (p);
+	}
+
+	void OnDestroy(){
+		foreach (Projectile p in aimedAtMe) {
+			p.killYourself ();
+		}
 	}
 
 	public abstract void OnTriggerEnter (Collider co);

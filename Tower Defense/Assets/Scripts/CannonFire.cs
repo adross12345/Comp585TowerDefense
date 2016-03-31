@@ -17,6 +17,7 @@ public class CannonFire : MonoBehaviour {
 
 	float fireInterval = 0.5f;
 	private float nextFireTime;
+	public GameObject aimPoint;
 
 	void Awake(){
 		targetsInRange = new List<Unit> ();
@@ -25,13 +26,13 @@ public class CannonFire : MonoBehaviour {
 		isAILearned = false;
 		SetRange (this.range);
 		transform.Find ("Range").gameObject.GetComponent<MeshRenderer> ().enabled = false;
+		this.aimPoint = Instantiate (aimPoint);
 	}
 
 	void SetRange(float newRange){
 		this.range = newRange;
 		SphereCollider sc = GetComponent<SphereCollider> ();
 		sc.radius = newRange;
-		Debug.Log (transform.name);
 		Transform rangeIndicator = transform.Find ("Range");
 		rangeIndicator.localScale = new Vector3 (newRange * 2, 0, newRange * 2);
 	}
@@ -63,9 +64,11 @@ public class CannonFire : MonoBehaviour {
 	{
 		if (myTarget != null) {
 			nextFireTime = Time.time + fireInterval;
-			transform.LookAt(myTarget.transform);
+			Transform targTrans = myTarget.transform;
+			aimPoint.transform.position = new Vector3(targTrans.position.x, this.transform.position.y, targTrans.position.z);
+			transform.LookAt(aimPoint.transform);
 			Projectile proj = Instantiate (projectile, firePoint.transform.position, firePoint.transform.rotation) as Projectile;
-			proj.setTarget (myTarget.gameObject);
+			proj.setTarget (myTarget);
 		}
 	}﻿
 
@@ -107,6 +110,10 @@ public class CannonFire : MonoBehaviour {
 		if (Time.time >= nextFireTime) {
 			FireProjectile ();
 		}
+	}
+
+	void OnDestroy(){
+		Destroy (aimPoint);
 	}
 
 //	public void KilledTarget(GameObject o){

@@ -9081,35 +9081,35 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 482550, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.93
       objectReference: {fileID: 0}
-    - target: {fileID: 482550, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 482550, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalPosition.z
       value: -8.38
       objectReference: {fileID: 0}
-    - target: {fileID: 482550, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 482550, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 482550, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 482550, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 482550, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
@@ -39880,6 +39880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSensitivity: 0
+  hasPlaced: 0
   buildingsMask:
     serializedVersion: 2
     m_Bits: 512
@@ -39898,7 +39899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildings:
-  - {fileID: 167566, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+  - {fileID: 133916, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
 --- !u!1 &1503500584
 GameObject:
   m_ObjectHideFlags: 0
