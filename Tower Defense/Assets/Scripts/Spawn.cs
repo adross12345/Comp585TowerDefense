@@ -9,6 +9,7 @@ public class Spawn : MonoBehaviour {
 	public static int numSpawned;
 	//TODO take this out.
 	private NeuralNode node;
+	private UnitGenerator uGen;
 
 
 
@@ -18,7 +19,8 @@ public class Spawn : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		numSpawned = 0;
-		InvokeRepeating("SpawnNext", interval, interval);
+		uGen = Camera.main.GetComponent<UnitGenerator> ();
+		InvokeRepeating("SpawnNext", 0, interval);
 //		node = NeuralNode.create (NeuralNode.NodeType.GRAYSCALE);
 //		node = ScriptableObject.CreateInstance<CombinationNode> ();
 //		NeuralNode gray = NeuralNode.create (NeuralNode.NodeType.GRAYSCALE);
@@ -30,11 +32,13 @@ public class Spawn : MonoBehaviour {
 	void SpawnNext() {
 		Unit unit = null;
 		if (numSpawned % 2 == 0) {
-			unit = Instantiate (monsterPrefab, transform.position, Quaternion.identity) as Unit;
+			unit = uGen.MakeUnit (true, transform.position, 0.1f);
+//			unit = Instantiate (monsterPrefab, transform.position, Quaternion.identity) as Unit;
 		} else {
-			unit = Instantiate (allyPrefab, transform.position, Quaternion.identity) as Unit;
+			unit = uGen.MakeUnit (false, transform.position, 0.1f);
+//			unit = Instantiate (allyPrefab, transform.position, Quaternion.identity) as Unit;
 		}
-		unit.addNoise (0.1F);
+//		unit.addNoise (0.1F);
 //		if (numSpawned <= 5) {
 //			node.AddToTrainingSet (unit);
 //			if (numSpawned == 5) {

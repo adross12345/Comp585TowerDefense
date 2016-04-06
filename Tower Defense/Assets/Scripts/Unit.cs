@@ -84,6 +84,8 @@ public abstract class Unit : MonoBehaviour {
 		foreach (Projectile p in aimedAtMe) {
 			p.killYourself ();
 		}
+		NavMeshAgent nav = gameObject.GetComponent<NavMeshAgent> ();
+		nav.enabled = false;
 		transform.position = new Vector3 (-500, -500, -500);
 		yield return new WaitForSeconds(0.1f);
 		Destroy (gameObject);

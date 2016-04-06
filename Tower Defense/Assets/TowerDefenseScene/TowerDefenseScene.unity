@@ -2713,7 +2713,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 103478255}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1491850467}
+        m_MethodName: spawnTower2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &103478255
@@ -15536,7 +15547,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1491850467}
-        m_MethodName: spawnTower
+        m_MethodName: spawnTower1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39806,6 +39817,7 @@ GameObject:
   - 81: {fileID: 1491850461}
   - 114: {fileID: 1491850467}
   - 114: {fileID: 1491850466}
+  - 114: {fileID: 1491850468}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -39912,6 +39924,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildings:
   - {fileID: 133916, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+  - {fileID: 152812, guid: 7c75c977be1cc0a4fb688bfa2e5f6331, type: 2}
+--- !u!114 &1491850468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1491850460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e9735c39d2d244490070f1156ffa46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 11449050, guid: e5c3d3023a4a18b40afa9d283f1d5c14, type: 2}
+  - {fileID: 11414554, guid: 48fb8634482a18946bae2a22aeae4d49, type: 2}
+  allies:
+  - {fileID: 11471472, guid: 4c16bfb651abb0742a41c68416c77275, type: 2}
+  - {fileID: 11476480, guid: 11f4e585053c3014e9e1aa976dd0d6d4, type: 2}
 --- !u!1 &1503500584
 GameObject:
   m_ObjectHideFlags: 0
