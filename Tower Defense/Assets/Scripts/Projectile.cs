@@ -5,23 +5,26 @@ public class Projectile : MonoBehaviour {
 
 	public float mySpeed = 10;
 	public float myDamage = 0.5f;
-	private GameObject projectile;
-	private Unit target;
-	private CannonFire source;
+	public float myRange = 999;
+//	protected GameObject projectile;
+	protected Unit target;
+	protected bool startFire = false;
+//	protected CannonFire source;
 
-	private float distance;
+	protected float distance;
 
-	void Start(){
+	protected virtual void Start(){
+		distance = 0;
 	}
 
-	void Update(){
-		if (target != null) {
+	protected virtual void Update(){
+		if (target != null && startFire) {
 			transform.LookAt (target.transform);
 			transform.Translate (Vector3.forward * mySpeed * Time.deltaTime);
 		}
 	}
 
-	void OnTriggerEnter(Collider other){	
+	protected virtual void OnTriggerEnter(Collider other){	
 		Unit u = other.gameObject.GetComponent<Unit> ();
 		if(u == target){
 			if (u != null) {
@@ -32,9 +35,10 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-	public void setTarget(Unit u){
+	public virtual void setTarget(Unit u){
 		this.target = u;
 		u.addToAimedAtMe (this);
+		startFire = true;
 	}
 
 	public void killYourself(){

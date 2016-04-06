@@ -48,7 +48,6 @@ public class ColorNode : NeuralNode {
 			}
 		}//for
 
-		Debug.Log (featureLength);
 		weights = new double[featureLength];
 		b = 0;
 

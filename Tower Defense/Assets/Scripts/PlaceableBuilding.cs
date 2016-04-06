@@ -15,6 +15,7 @@ public class PlaceableBuilding : MonoBehaviour {
 
 	void OnGUI() {
 		if (isSelected) {
+			Debug.Log ("Selected");
 //			GUI.Button(new Rect(Screen.width /2, Screen.height / 20, 100, 30), bName);	
 			if (!isShowingRange) {
 //				Transform t = transform.parent;

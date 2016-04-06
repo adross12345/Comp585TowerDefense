@@ -9,7 +9,7 @@ public class Enemy : Unit {
 	public GameObject enemy;
 	public GameObject castle;
 
-	new public void Awake(){
+	void Awake(){
 		this.identity = ENEMY_IDENTITY;
 		//Tests enemy Healthbar
 //		InvokeRepeating ("decreaseHealth", 1f, 1f);
@@ -19,9 +19,7 @@ public class Enemy : Unit {
 
 	public override void OnTriggerEnter(Collider co) {
 		if (co.name == "Castle") {
-			Destroy (enemy);	
-		} else if (co.name == "Projectile") {
-			decreaseHealth (10f);
+			DestroySelf ();	
 		}
 	}
 

@@ -11,7 +11,7 @@ public abstract class NeuralNode : ScriptableObject {
 	protected int iters = 100;
 	protected List<PhantomUnit> trainingSet;
 
-	public enum NodeType{FULLCOLOR, COLORHIST, GRAYSCALE, CONVOLVED}
+	public enum NodeType{FULLCOLOR, COLORHIST, GRAYSCALE, CONVOLVED, COMBINATION}
 
 	public static NeuralNode create(NodeType nodeType){
 		NeuralNode res = null;
@@ -23,15 +23,17 @@ public abstract class NeuralNode : ScriptableObject {
 			res = ScriptableObject.CreateInstance<GrayscaleNode> ();
 		}else if (nodeType == NodeType.CONVOLVED) {
 			res = ScriptableObject.CreateInstance<ConvolvedNode> ();
+		}else if (nodeType == NodeType.COMBINATION) {
+			res = ScriptableObject.CreateInstance<CombinationNode> ();
 		}
 		return res;
 	}
 
-	public void Start () {
+	void Start () {
 	}
 
 	// Use this for initialization
-	public void Awake () {
+	protected void Awake () {
 		trainingSet = new List<PhantomUnit> ();
 	}
 		

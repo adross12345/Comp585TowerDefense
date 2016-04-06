@@ -7,6 +7,8 @@ public class Spawn : MonoBehaviour {
 	public Unit monsterPrefab;
 	public Unit allyPrefab;
 	public static int numSpawned;
+	//TODO take this out.
+	private NeuralNode node;
 
 
 
@@ -17,7 +19,12 @@ public class Spawn : MonoBehaviour {
 	void Start() {
 		numSpawned = 0;
 		InvokeRepeating("SpawnNext", interval, interval);
-
+//		node = NeuralNode.create (NeuralNode.NodeType.GRAYSCALE);
+//		node = ScriptableObject.CreateInstance<CombinationNode> ();
+//		NeuralNode gray = NeuralNode.create (NeuralNode.NodeType.GRAYSCALE);
+//		NeuralNode color = NeuralNode.create (NeuralNode.NodeType.COLORHIST);
+//		node.AddSubNode (gray);
+//		node.AddSubNode (color);
 	}
 
 	void SpawnNext() {

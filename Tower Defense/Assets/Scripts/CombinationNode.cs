@@ -206,12 +206,15 @@ public class CombinationNode : NeuralNode {
 	}
 
 	public void AddSubNode(NeuralNode node){
+		if (subNodes == null) {
+			subNodes = new List<NeuralNode> ();
+		}
 		subNodes.Add (node);
 	}
 
 	// Use this for initialization
 	void Start () {
-
+		subNodes = new List<NeuralNode> ();
 	}
 
 	// Update is called once per frame

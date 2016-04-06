@@ -69,7 +69,7 @@ public class BuildingPlacement : MonoBehaviour {
 				}
 			}
 		}
-	}
+	}//Update()
 
 
 	bool IsLegalPosition(Vector3 position) {
@@ -89,11 +89,7 @@ public class BuildingPlacement : MonoBehaviour {
 
 	public void SetItem(GameObject b) {
 		if (currentBuilding != null) {
-			try{
-				Destroy (currentBuilding.gameObject);
-			}catch(UnityException e){
-				Debug.Log ("This throws a null pointer exception for some reason");
-			}
+			Destroy (currentBuilding.gameObject);
 		}
 		hasPlaced = false;
 		Debug.Log ("Set Item");

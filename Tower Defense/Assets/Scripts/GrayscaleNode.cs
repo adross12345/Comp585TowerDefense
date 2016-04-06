@@ -94,7 +94,7 @@ public class GrayscaleNode : NeuralNode {
 		if (tex is Texture2D) {
 			Texture2D tex2D = (Texture2D)tex;
 			Color[] pixels = tex2D.GetPixels ();
-			calculateZ (pixels);
+			res = calculateZ (pixels);
 		}
 		return res;
 	}

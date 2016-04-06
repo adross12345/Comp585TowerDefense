@@ -14,7 +14,7 @@ public abstract class Unit : MonoBehaviour {
 	private List<Projectile> aimedAtMe;
 
 	// Use this for initialization
-	protected void Start () {
+	protected virtual void Start () {
 
 		curHealth = maxHealth;
 		aimedAtMe = new List<Projectile> ();
@@ -34,7 +34,7 @@ public abstract class Unit : MonoBehaviour {
 		float calcHealth = curHealth / maxHealth;
 		setHealthBar (calcHealth);
 		if (curHealth <= 0f) {
-			Destroy (gameObject);
+			StartCoroutine(DestroySelf());
 			res = true;
 		}
 		return res;
@@ -80,11 +80,21 @@ public abstract class Unit : MonoBehaviour {
 		aimedAtMe.Remove (p);
 	}
 
-	void OnDestroy(){
+	protected IEnumerator DestroySelf(){
 		foreach (Projectile p in aimedAtMe) {
 			p.killYourself ();
 		}
+		transform.position = new Vector3 (-500, -500, -500);
+		yield return new WaitForSeconds(0.1f);
+		Destroy (gameObject);
 	}
+
+//	void OnDestroy(){
+//		foreach (Projectile p in aimedAtMe) {
+//			p.killYourself ();
+//		}
+//		transform.position = new Vector3 (0, -500, 0);
+//	}
 
 	public abstract void OnTriggerEnter (Collider co);
 	

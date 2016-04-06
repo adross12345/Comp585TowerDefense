@@ -5,23 +5,22 @@ using System.Collections.Generic;
 public class CannonFire : MonoBehaviour {
 	public NeuralNode node;
 	public float range;
-	private Unit myTarget;
-	private List<Unit> targetsInRange;
-	private int targetsSeen;
-	private bool isAILearned;
+	protected Unit myTarget;
+	protected List<Unit> targetsInRange;
+	protected int targetsSeen;
+	protected bool isAILearned;
 
 	public Projectile projectile;
-	public GameObject firePoint;
-
+	public GameObject[] firePoints;
 	float firePauseTime = .25f;
 
-	float fireInterval = 0.5f;
-	private float nextFireTime;
+	protected float fireInterval = 0.5f;
+	protected float nextFireTime;
 	public GameObject aimPoint;
 
-	void Awake(){
+	protected virtual void Awake(){
 		targetsInRange = new List<Unit> ();
-		node = NeuralNode.create (NeuralNode.NodeType.COLORHIST);
+		node = NeuralNode.create (NeuralNode.NodeType.FULLCOLOR);
 		targetsSeen = 0;
 		isAILearned = false;
 		SetRange (this.range);
@@ -29,7 +28,7 @@ public class CannonFire : MonoBehaviour {
 		this.aimPoint = Instantiate (aimPoint);
 	}
 
-	void SetRange(float newRange){
+	protected void SetRange(float newRange){
 		this.range = newRange;
 		SphereCollider sc = GetComponent<SphereCollider> ();
 		sc.radius = newRange;
@@ -38,7 +37,7 @@ public class CannonFire : MonoBehaviour {
 	}
 
 	//Picks up the target that comes into the turrets range
-	void OnTriggerEnter(Collider other)
+	protected virtual void OnTriggerEnter(Collider other)
 	{
 		Unit u = other.gameObject.GetComponent<Unit> ();
 		if(u != null){
@@ -50,7 +49,7 @@ public class CannonFire : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerExit(Collider other){
+	protected virtual void OnTriggerExit(Collider other){
 		Unit u = other.gameObject.GetComponent<Unit> ();
 		if(u != null){
 			targetsInRange.Remove (u);
@@ -60,19 +59,24 @@ public class CannonFire : MonoBehaviour {
 		}
 	}
 
-	void FireProjectile()
+	protected virtual void FireProjectile()
 	{
 		if (myTarget != null) {
 			nextFireTime = Time.time + fireInterval;
-			Transform targTrans = myTarget.transform;
-			aimPoint.transform.position = new Vector3(targTrans.position.x, this.transform.position.y, targTrans.position.z);
-			transform.LookAt(aimPoint.transform);
-			Projectile proj = Instantiate (projectile, firePoint.transform.position, firePoint.transform.rotation) as Projectile;
-			proj.setTarget (myTarget);
+			bool rotate = firePoints.Length <= 1;
+			foreach (GameObject go in firePoints) {
+				if (rotate) {
+					Transform targTrans = myTarget.transform;
+					aimPoint.transform.position = new Vector3 (targTrans.position.x, this.transform.position.y, targTrans.position.z);
+					transform.LookAt (aimPoint.transform);
+				}
+				Projectile proj = Instantiate (projectile, go.transform.position, go.transform.rotation) as Projectile;
+				proj.setTarget (myTarget);
+			}
 		}
 	}﻿
 
-	void Update(){
+	protected virtual void Update(){
 		if (targetsSeen >= 4 && !isAILearned) {
 			node.LearnUnits ();
 			Debug.Log ("Stuff learned");
@@ -112,7 +116,7 @@ public class CannonFire : MonoBehaviour {
 		}
 	}
 
-	void OnDestroy(){
+	protected void OnDestroy(){
 		Destroy (aimPoint);
 	}
 
@@ -125,4 +129,5 @@ public class CannonFire : MonoBehaviour {
 //			}
 //		}
 //	}
+
 }//Cannonfire
