@@ -5,17 +5,21 @@ using System.Collections;
 public class ShowTowerPopup : EditorWindow {
 
 	public static string towerName = "";
+	public Transform trainable;
 
 	[MenuItem("Example/ShowPopup Example")]
 	public static void Init(GameObject tower) {
-		ShowTowerPopup window = ScriptableObject.CreateInstance<ShowTowerPopup>();
-		window.position = new Rect(Screen.width / 2, Screen.height / 2, 150, 300);
-		window.ShowPopup();
+		ShowTowerPopup window = ScriptableObject.CreateInstance<ShowTowerPopup> ();
+		window.position = new Rect (Screen.width / 2, Screen.height / 2, 150, 300);
+		// trainable = ((GameObject)Instantiate (tower)).transform;
+
+
+		window.ShowPopup ();
 
 		// pause game
-		towerName = tower.ToString();
 		Time.timeScale = 0;
-		// initate training
+
+		// initTrain();
 	}
 
 	private void initTrain(GameObject tower) {
@@ -30,6 +34,15 @@ public class ShowTowerPopup : EditorWindow {
 			this.Close ();
 			Time.timeScale = 1;
 		}
+			
+		// Instanatiate background
+		//GUI.backgroundColor = Color.red;
+
+		// Instantiate tower
+
+		// Randomly spawn 10 enemies and allies
+		// Texture2d trainable = AssetDatabase.LoadAssetAtPath("Materials/Enemy1Big.png", typeof());
+		// (Texture2D) enemy = EditorGUILayout.ObjectField ("enemy", enemy, typeof(Texture2D), false);
 	}
 
 }
