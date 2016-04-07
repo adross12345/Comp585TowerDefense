@@ -3,13 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 
 public abstract class Unit : MonoBehaviour {
+	public static double ALLY_IDENTITY = 1.0;
+	public static double ENEMY_IDENTITY = 0.0;
+
 	public double identity;
-	public int speed;
+	public float speed=3;
+	public float acceleration=8;
 	public float maxHealth = 1.00f;
 	public float curHealth = 1.00f;
 	//Need to find a way to link healthbar to each instance of enemy/ally
 	public GameObject healthBar;
-	public double[] weights;
+	public float damage=10f;
+	public float money=13;
 
 	private List<Projectile> aimedAtMe;
 
@@ -21,7 +26,12 @@ public abstract class Unit : MonoBehaviour {
 		//Moves enemy toward castle
 		GameObject castle = GameObject.Find ("Castle");
 		if (castle) {
-			GetComponent<NavMeshAgent>().destination = castle.transform.position;
+			NavMeshAgent nav = GetComponent<NavMeshAgent> ();
+			if (nav.enabled) {
+				nav.destination = castle.transform.position;
+				nav.speed = speed;
+				nav.acceleration = acceleration;
+			}
 		}
 	}
 
@@ -67,6 +77,14 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	public float getMoney(){
+		return this.money;
+	}
+
+	public float getDamage(){
+		return this.damage;
+	}
+
 	public void setTexture(Texture tex){
 		MeshRenderer mr = this.GetComponent<MeshRenderer> ();
 		mr.material.mainTexture = tex;
@@ -81,6 +99,7 @@ public abstract class Unit : MonoBehaviour {
 	}
 
 	protected IEnumerator DestroySelf(){
+		Debug.Log ("Destroying");
 		foreach (Projectile p in aimedAtMe) {
 			p.killYourself ();
 		}

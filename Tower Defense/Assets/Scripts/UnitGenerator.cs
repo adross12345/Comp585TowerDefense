@@ -30,6 +30,15 @@ public class UnitGenerator : MonoBehaviour {
 		return unit;
 	}
 
+	public Unit MakeUnit(bool enemy, int index, Vector3 position, float noise, bool disableNavMesh){
+		Unit unit = MakeUnit (enemy, index, new Vector3(0,0,0), noise);
+		if (disableNavMesh) {
+			unit.gameObject.GetComponent<NavMeshAgent> ().enabled = false;
+			unit.transform.position = position;
+		}
+		return unit;
+	}
+
 	public Unit MakeUnit(bool enemy, Vector3 position){
 		Unit unit = null;
 		if (enemy) {

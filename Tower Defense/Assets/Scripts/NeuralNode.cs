@@ -79,6 +79,14 @@ public abstract class NeuralNode : ScriptableObject {
 		trainingSet.Add (pu);
 	}
 
+	public void AddToTrainingSet(Unit unit, double identity){
+		MeshRenderer mr = unit.GetComponent<MeshRenderer> ();
+		Texture tex = mr.material.mainTexture;
+		PhantomUnit pu = ScriptableObject.CreateInstance<PhantomUnit>();
+		pu.Initialize (tex, identity);
+		trainingSet.Add (pu);
+	}
+
 	public void AddToTrainingSet(PhantomUnit pu){
 		trainingSet.Add (pu);
 	}

@@ -202,13 +202,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
-  speed: 0
+  speed: 3
+  acceleration: 8
   maxHealth: 1
   curHealth: 0
   healthBar: {fileID: 180848}
-  weights: []
-  enemy: {fileID: 185882}
-  castle: {fileID: 160540, guid: 8687659e97a144d5f88dfcf7838bc63d, type: 2}
+  damage: 15
+  money: 0
 --- !u!114 &11429248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,7 +433,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: money
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 185882}

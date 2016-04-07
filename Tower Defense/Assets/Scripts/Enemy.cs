@@ -3,11 +3,6 @@ using System.Collections;
 
 
 public class Enemy : Unit {
-	public static double ENEMY_IDENTITY = 0.0;
-	float damage = 1f;
-
-	public GameObject enemy;
-	public GameObject castle;
 
 	void Awake(){
 		this.identity = ENEMY_IDENTITY;
@@ -18,8 +13,8 @@ public class Enemy : Unit {
 
 
 	public override void OnTriggerEnter(Collider co) {
-		if (co.name == "Castle") {
-			DestroySelf ();	
+		if (co.tag == "Castle") {
+			StartCoroutine(DestroySelf());
 		}
 	}
 

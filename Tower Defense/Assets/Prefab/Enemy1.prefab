@@ -196,13 +196,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
-  speed: 0
+  speed: 3
+  acceleration: 8
   maxHealth: 1
   curHealth: 0
   healthBar: {fileID: 159406}
-  weights: []
-  enemy: {fileID: 137874}
-  castle: {fileID: 160540, guid: 8687659e97a144d5f88dfcf7838bc63d, type: 2}
+  damage: 10
+  money: 0
 --- !u!114 &11454498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -460,6 +460,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: money
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

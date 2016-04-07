@@ -6,7 +6,6 @@ public class CastleHealth : MonoBehaviour {
 
 	public float maxHealth = 1.00f;
 	public float curHealth = 0f;
-	public static float damage = 0f;
 	public GameObject healthBar;
 
     [SerializeField]
@@ -32,21 +31,25 @@ public class CastleHealth : MonoBehaviour {
 		setHealthBar (calcHealth);
 		if (curHealth <= 0f) {
 			Destroy (gameObject);
+			//TODO End the game
 		}
-	}
-
-	public static void changeDamage(float value)
-	{
-		damage = value;
 	}
 
 	public void OnTriggerEnter(Collider co) {
-		if (co.tag == "Enemy") {
-			float damage = 10f;
-			CastleHealth.changeDamage (damage);
-			decreaseHealth(damage);	
+		Unit unit = co.gameObject.GetComponent<Unit> ();
+		if (co.tag == "Enemy" && unit!=null) {
+			float damage = unit.getDamage ();
+			Debug.Log (damage);
+			decreaseHealth (damage);	
+		} else if (co.tag == "Ally" && unit!=null) {
+			float damage = unit.getMoney ();
+			//TODO Add money to bank here
 		}
-
+		if (unit != null) {
+//			Debug.Log ("Made it here");
+//			unit.DestroySelf ();
+//			Debug.Log ("And here");
+		}
 	}
 
 	public void setHealthBar(float castleHealth)

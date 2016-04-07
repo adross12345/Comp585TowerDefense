@@ -9098,7 +9098,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.93
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9106,7 +9106,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -8.38
+      value: -9.09
       objectReference: {fileID: 0}
     - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -53226,6 +53226,10 @@ Prefab:
     - target: {fileID: 430120, guid: 8687659e97a144d5f88dfcf7838bc63d, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 160540, guid: 8687659e97a144d5f88dfcf7838bc63d, type: 2}
+      propertyPath: m_TagString
+      value: Castle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8687659e97a144d5f88dfcf7838bc63d, type: 2}

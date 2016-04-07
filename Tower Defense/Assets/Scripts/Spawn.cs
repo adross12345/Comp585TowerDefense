@@ -35,6 +35,8 @@ public class Spawn : MonoBehaviour {
 			unit = uGen.MakeUnit (true, transform.position, 0.1f);
 //			unit = Instantiate (monsterPrefab, transform.position, Quaternion.identity) as Unit;
 		} else {
+//			unit = uGen.MakeUnit (false, 0, new Vector3(-500,-500,-500), 0.1f, true);
+
 			unit = uGen.MakeUnit (false, transform.position, 0.1f);
 //			unit = Instantiate (allyPrefab, transform.position, Quaternion.identity) as Unit;
 		}
