@@ -96,7 +96,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133908}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: -14, y: 0, z: -11.5}
   m_LocalScale: {x: 0.15, y: 1, z: 0.15}
   m_Children:
@@ -180,8 +180,8 @@ MonoBehaviour:
   maxHealth: 1
   curHealth: 0
   healthBar: {fileID: 112228}
-  enemy: {fileID: 133908}
-  castle: {fileID: 160540, guid: 8687659e97a144d5f88dfcf7838bc63d, type: 2}
+  damage: 10
+  money: 13
 --- !u!114 &11435000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -437,6 +437,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
