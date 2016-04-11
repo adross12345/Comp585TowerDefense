@@ -39,4 +39,22 @@ public class BuildingManager : MonoBehaviour {
 		buildingPlacement.SetItem(buildings[1]);
 		initOnce = false;
 	}
+
+    public void spawnTower3() {
+        Debug.Log("spawnTower3() triggered");
+        buildingPlacement.SetItem(buildings[2]);
+        initOnce = false;
+    }
+
+    public void spawnTower4() {
+        Debug.Log("SpawnTower4() triggered");
+        buildingPlacement.SetItem(buildings[3]);
+        initOnce = false;
+    }
+
+    public void spawnTower5() {
+        Debug.Log("spawnTower5() triggered");
+        buildingPlacement.SetItem(buildings[4]);
+        initOnce = false;
+    }
 }

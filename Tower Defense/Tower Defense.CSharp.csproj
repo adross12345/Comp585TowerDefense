@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Buildspace.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\CannonFire.cs" />
+    <Compile Include="Assets\Scripts\CannonFireAOE.cs" />
     <Compile Include="Assets\Scripts\CastleHealth.cs" />
     <Compile Include="Assets\Scripts\ColorHistNode.cs" />
     <Compile Include="Assets\Scripts\ColorNode.cs" />
@@ -94,8 +95,11 @@
     <Compile Include="Assets\Scripts\PhantomUnit.cs" />
     <Compile Include="Assets\Scripts\PlaceableBuilding.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
+    <Compile Include="Assets\Scripts\ProjectileDumb.cs" />
+    <Compile Include="Assets\Scripts\ShowTowerPopup.cs" />
     <Compile Include="Assets\Scripts\Spawn.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
+    <Compile Include="Assets\Scripts\UnitGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
