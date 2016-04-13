@@ -7,6 +7,8 @@ public class CastleHealth : MonoBehaviour {
 	public float maxHealth = 1.00f;
 	public float curHealth = 0f;
 	public GameObject healthBar;
+    public int curMoney;
+    public int startMoney = 1000;
 
 	[SerializeField]
 	private Text healthText = null;
@@ -17,8 +19,10 @@ public class CastleHealth : MonoBehaviour {
 	void Start () 
 	{
 		curHealth = maxHealth;
-		//Tests the Tower Health Bar
-		//InvokeRepeating ("decreaseHealth", 1f, 1f);
+        //Tests the Tower Health Bar
+        //InvokeRepeating ("decreaseHealth", 1f, 1f);
+
+        curMoney = startMoney;
 	}
 
 
@@ -44,7 +48,8 @@ public class CastleHealth : MonoBehaviour {
 				decreaseHealth (damage);	
 			} else if (co.tag == "Ally" && unit != null) {
 				float money = unit.getMoney ();
-				//TODO Add money to bank here
+                //TODO Add money to bank here
+                curMoney += 100; // 100 is placeholder, need to determine amount of money for each kind of ally
 			}
 			if (unit != null) {
 				unit.DestroyMe ();
@@ -57,4 +62,16 @@ public class CastleHealth : MonoBehaviour {
 		healthBar.transform.localScale = new Vector3(curHealth, 
 			healthBar.transform.localScale.y, healthBar.transform.localScale.z);
 	}
+
+    public bool canPurchase(int cost) {
+        if (cost > curMoney) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public void makePurchase(int cost) {
+        curMoney -= cost;
+    }
 }

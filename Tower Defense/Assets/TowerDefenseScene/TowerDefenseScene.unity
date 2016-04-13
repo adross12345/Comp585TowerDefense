@@ -8185,7 +8185,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 264595845}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1491850467}
+        m_MethodName: spawnTower5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &264595845
@@ -16246,8 +16257,9 @@ GameObject:
   m_Component:
   - 224: {fileID: 612254530}
   - 114: {fileID: 612254529}
+  - 114: {fileID: 612254531}
   m_Layer: 5
-  m_Name: HealthManager
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16282,6 +16294,18 @@ RectTransform:
   m_AnchoredPosition: {x: 1247, y: 512}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &612254531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 612254528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb32b3bc83e26f4f8ebd8ae5c4e207c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountMoney: {fileID: 1931559792}
 --- !u!1 &613644704
 GameObject:
   m_ObjectHideFlags: 0
@@ -22632,7 +22656,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: $100
 --- !u!222 &819888247
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23233,7 +23257,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: $500
 --- !u!222 &844879047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30435,7 +30459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: $200
 --- !u!222 &1081561472
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30897,6 +30921,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1095052487}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1100694235 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 155760, guid: ab2600b6e8afa46b5bf875c330f361fe, type: 2}
+  m_PrefabInternal: {fileID: 630567997}
 --- !u!1 &1101701958
 GameObject:
   m_ObjectHideFlags: 0
@@ -33896,7 +33924,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: $300
 --- !u!222 &1207050803
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39126,7 +39154,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: $750
 --- !u!222 &1415818102
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40899,6 +40927,7 @@ MonoBehaviour:
   - {fileID: 152812, guid: 7c75c977be1cc0a4fb688bfa2e5f6331, type: 2}
   - {fileID: 1125742598}
   - {fileID: 929883624}
+  - {fileID: 1100694235}
 --- !u!114 &1491850468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40991,7 +41020,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Level #'
+  m_Text: Level 1
 --- !u!222 &1503500587
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41639,7 +41668,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: $1000
 --- !u!222 &1529125342
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -43546,7 +43575,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ___
+  m_Text: 100/100
 --- !u!222 &1592984753
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -54352,7 +54381,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $$$
+  m_Text: $1000
 --- !u!222 &1931559793
 CanvasRenderer:
   m_ObjectHideFlags: 0

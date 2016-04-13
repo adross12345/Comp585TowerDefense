@@ -29,32 +29,68 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower1() {
-		Debug.Log("spawnTower1() triggered");
-		buildingPlacement.SetItem(buildings[0]);
-		initOnce = false;
+        CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
+        if (castle.canPurchase(200)) {
+            Debug.Log("spawnTower1() triggered");
+            buildingPlacement.SetItem(buildings[0]);
+            castle.makePurchase(200);
+            initOnce = false;
+        } else {
+            // TODO Produce an alert that says you cannot make that purchase
+        }
 	}
 
 	public void spawnTower2() {
-		Debug.Log("spawnTower2() triggered");
-		buildingPlacement.SetItem(buildings[1]);
-		initOnce = false;
-	}
+        CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
+        if (castle.canPurchase(300)) {
+            Debug.Log("spawnTower2() triggered");
+            buildingPlacement.SetItem(buildings[1]);
+            castle.makePurchase(300);
+            initOnce = false;
+        } else {
+            // TODO Produce an alert that says you cannot make that purchase
+        }
+    }
 
     public void spawnTower3() {
-        Debug.Log("spawnTower3() triggered");
-        buildingPlacement.SetItem(buildings[2]);
-        initOnce = false;
+        CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
+        if (castle.canPurchase(300))
+        {
+            Debug.Log("spawnTower3() triggered");
+            buildingPlacement.SetItem(buildings[2]);
+            castle.makePurchase(500);
+            initOnce = false;
+        }
+        else {
+            // TODO Produce an alert that says you cannot make that purchase
+        }
     }
 
     public void spawnTower4() {
-        Debug.Log("SpawnTower4() triggered");
-        buildingPlacement.SetItem(buildings[3]);
-        initOnce = false;
+        CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
+        if (castle.canPurchase(750))
+        {
+            Debug.Log("spawnTower4() triggered");
+            buildingPlacement.SetItem(buildings[3]);
+            castle.makePurchase(750);
+            initOnce = false;
+        }
+        else {
+            // TODO Produce an alert that says you cannot make that purchase
+        }
     }
 
     public void spawnTower5() {
-        Debug.Log("spawnTower5() triggered");
-        buildingPlacement.SetItem(buildings[4]);
-        initOnce = false;
+        CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
+        if (castle.canPurchase(1000))
+        {
+            Debug.Log("spawnTower5() triggered");
+            buildingPlacement.SetItem(buildings[4]);
+            castle.makePurchase(1000);
+            initOnce = false;
+        }
+        else {
+            // TODO Produce an alert that says you cannot make that purchase
+        }
     }
 }
