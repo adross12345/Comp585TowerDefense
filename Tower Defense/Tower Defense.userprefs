@@ -1,17 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CastleHealth.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ShowTowerPopup.cs">
     <Files>
-      <File FileName="Assets\Scripts\CastleHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyCamo.cs" Line="4" Column="18" />
-      <File FileName="Assets\Scripts\NeuralNode.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UnitGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Unit.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Ally.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Spawn.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CannonFire.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CannonFireAOE.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ShowTowerPopup.cs" Line="41" Column="23" />
+      <File FileName="Assets/Scripts/BuildingManager.cs" Line="26" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
