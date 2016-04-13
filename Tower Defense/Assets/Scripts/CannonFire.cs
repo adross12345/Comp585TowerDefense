@@ -39,22 +39,29 @@ public class CannonFire : MonoBehaviour {
 	//Picks up the target that comes into the turrets range
 	protected virtual void OnTriggerEnter(Collider other)
 	{
-		Unit u = other.gameObject.GetComponent<Unit> ();
-		if(u != null){
-			targetsInRange.Add (u);
-			if (targetsSeen < 4) {
-				node.AddToTrainingSet (u);
+		if (other is BoxCollider) {
+			Unit u = other.gameObject.GetComponent<Unit> ();
+			if (u != null) {
+				bool willDisappear = u.EnterTower ();
+				if (!willDisappear) {
+					targetsInRange.Add (u);
+					if (targetsSeen < 4) {
+						node.AddToTrainingSet (u);
+					}
+					targetsSeen++;
+				}
 			}
-			targetsSeen++;
 		}
 	}
 
 	protected virtual void OnTriggerExit(Collider other){
-		Unit u = other.gameObject.GetComponent<Unit> ();
-		if(u != null){
-			targetsInRange.Remove (u);
-			if (myTarget == u) {
-				myTarget = null;
+		if (other is BoxCollider) {
+			Unit u = other.gameObject.GetComponent<Unit> ();
+			if (u != null) {
+				targetsInRange.Remove (u);
+				if (myTarget == u) {
+					myTarget = null;
+				}
 			}
 		}
 	}
@@ -97,10 +104,19 @@ public class CannonFire : MonoBehaviour {
 							}
 						}
 						double z = node.calculateZ (u);
+						//						Debug.Log(z);
 						//Do AI animation
-						if (z < 0) {
+						if (z <=0) {
 							//target is an enemy
 							myTarget = u;
+						}else if (z == 0) {
+							//Randomly picks if unit is ally or enemy.
+							int rand = UnityEngine.Random.Range (0, 2);
+							if (rand == 0) {
+								myTarget = u;
+							} else {
+								targetsInRange.Remove(u);
+							}
 						} else {
 							//Target is an ally. Next update will find another target.
 							targetsInRange.Remove(u);
@@ -116,18 +132,22 @@ public class CannonFire : MonoBehaviour {
 		}
 	}
 
+	public NeuralNode GetNode(){
+		return node;
+	}
+
 	protected void OnDestroy(){
 		Destroy (aimPoint);
 	}
 
-//	public void KilledTarget(GameObject o){
-//		Unit u = other.gameObject.GetComponent<Unit> ();
-//		if(u != null){
-//			targetsInRange.Remove (u);
-//			if (myTarget == u) {
-//				myTarget = null;
-//			}
-//		}
-//	}
+	//	public void KilledTarget(GameObject o){
+	//		Unit u = other.gameObject.GetComponent<Unit> ();
+	//		if(u != null){
+	//			targetsInRange.Remove (u);
+	//			if (myTarget == u) {
+	//				myTarget = null;
+	//			}
+	//		}
+	//	}
 
 }//Cannonfire

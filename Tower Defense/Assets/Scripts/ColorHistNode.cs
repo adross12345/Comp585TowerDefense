@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class ColorHistNode : NeuralNode {
 	protected int numBins;
-	protected double totalPositiveWeights;
-	protected double totalNegativeWeights;
+	public double totalPositiveWeights;
+	public double totalNegativeWeights;
 
 	new public void Awake(){
 		numBins = 8;
@@ -41,8 +41,8 @@ public class ColorHistNode : NeuralNode {
 					//Assigns the pixel values for each of the colors in the pattern increasing green, then increasing blue, then increasing red
 					for (int i = 0; i < pixels.Length; i++) {
 						Color c = pixels [i];
-//						Debug.Log ((((int)(c.r * 255)) / divisor * numBins * numBins));
-//						Debug.Log ((((int)(c.r * 255)) / divisor * numBins * numBins) + (((int)(c.b * 255))/divisor * numBins) + (((int)(c.g * 255)) / divisor));
+						//						Debug.Log ((((int)(c.r * 255)) / divisor * numBins * numBins));
+						//						Debug.Log ((((int)(c.r * 255)) / divisor * numBins * numBins) + (((int)(c.b * 255))/divisor * numBins) + (((int)(c.g * 255)) / divisor));
 						unitFeatures [(((int)(c.r * 255)) / divisor * numBins * numBins) + (((int)(c.b * 255))/divisor * numBins) + (((int)(c.g * 255)) / divisor)] += increment;
 					}
 					unitFeatures [featureLength] = u.identity;
@@ -89,6 +89,9 @@ public class ColorHistNode : NeuralNode {
 				totalPositiveWeights += d;
 			}
 		}
+		actualWeights = new double[weights.Length];
+		System.Array.Copy (weights, actualWeights, weights.Length);
+		SetNonzeroIndices ();
 		//Notice that I am clearing out the training set here.
 		//Keeping the references is not necessary and will just take up space.
 		//Being able to get rid of them is sort of the point of making a model.
@@ -203,13 +206,12 @@ public class ColorHistNode : NeuralNode {
 		return new Color (red, green, blue);
 	}
 
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-
+	public override NeuralNode Clone(){
+		ColorHistNode res = (ColorHistNode) NeuralNode.create (NodeType.COLORHIST);
+		res.SetWeights (actualWeights, this.b);
+		res.SetNonzeroIndices ();
+		res.totalNegativeWeights = this.totalNegativeWeights;
+		res.totalPositiveWeights = this.totalPositiveWeights;
+		return res;
 	}
 }

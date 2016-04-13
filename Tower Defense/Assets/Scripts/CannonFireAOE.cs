@@ -14,21 +14,21 @@ public class CannonFireAOE : CannonFire {
 	// Use this for initialization
 	protected override void Awake () {
 		base.Awake ();
-//		for (int i = 0; i < 4; i++) {
-//			Unit unit = null;
-//			if (i % 2 == 0) {
-//				unit = Instantiate (enemy, new Vector3(0,-200,0), Quaternion.identity) as Unit;
-//			} else {
-//				unit = Instantiate (ally, new Vector3(0,-200,0), Quaternion.identity) as Unit;
-//			}
-//			unit.addNoise (0.1F);
-//			node.AddToTrainingSet (unit);
-//		}
+		//		for (int i = 0; i < 4; i++) {
+		//			Unit unit = null;
+		//			if (i % 2 == 0) {
+		//				unit = Instantiate (enemy, new Vector3(0,-200,0), Quaternion.identity) as Unit;
+		//			} else {
+		//				unit = Instantiate (ally, new Vector3(0,-200,0), Quaternion.identity) as Unit;
+		//			}
+		//			unit.addNoise (0.1F);
+		//			node.AddToTrainingSet (unit);
+		//		}
 		identities = new Dictionary<Unit, UnitID> ();
 		numEnemiesInRange = 0;
 		numAlliesInRange = 0;
 	}//Start
-	
+
 	protected override void Update(){
 		if (targetsSeen >= 4 && !isAILearned) {
 			node.LearnUnits ();
@@ -74,44 +74,55 @@ public class CannonFireAOE : CannonFire {
 	protected override void OnTriggerEnter(Collider other)
 	{
 		Unit u = other.gameObject.GetComponent<Unit> ();
-		if(u != null){
-			targetsInRange.Add (u);
-			if (targetsSeen < 4) {
-				node.AddToTrainingSet (u);
-			} 
-			else if(isAILearned) {
-				double z = node.calculateZ (u);
-				UnitID uID = UnitID.Enemy;
-				//Do AI animation
-				if (z < 0) {
-					//Target is an enemy
-					numEnemiesInRange++;
-				} else {
-					//Target is an ally. Next update will find another target.
-					numAlliesInRange++;
-					uID = UnitID.Ally;
+		if(u != null && other is BoxCollider){
+			bool willDisappear = u.EnterTower ();
+			if (!willDisappear) {
+				targetsInRange.Add (u);
+				if (targetsSeen < 4) {
+					node.AddToTrainingSet (u);
+				} else if (isAILearned) {
+					double z = node.calculateZ (u);
+					UnitID uID = UnitID.Enemy;
+					//Do AI animation
+					if (z < 0) {
+						//Target is an enemy
+						numEnemiesInRange++;
+					} else if (z == 0) {
+						//Randomly picks if unit is ally or enemy.
+						int rand = UnityEngine.Random.Range (0, 2);
+						if (rand == 0) {
+							numEnemiesInRange++;
+						} else {
+							numAlliesInRange++;
+							uID = UnitID.Ally;
+						}
+					}else {
+						//Target is an ally. Next update will find another target.
+						numAlliesInRange++;
+						uID = UnitID.Ally;
+					}
+					identities [u] = uID;
 				}
-				identities[u] = uID;
+				//			Debug.Log (targetsSeen + " " + identities.Keys.Count);
+				//				foreach (UnitID uID in identities.Values) {
+				//				numEnemiesInRange = 0;
+				//				numAlliesInRange = 0;
+				//				if(uID == UnitID.Enemy){
+				//					numEnemiesInRange++;
+				//				}else{
+				//					numAlliesInRange++;
+				//				}
+				//				Debug.Log (targetsSeen + " " + uID);
+				//
+				//				}
+				targetsSeen++;
 			}
-//			Debug.Log (targetsSeen + " " + identities.Keys.Count);
-			foreach (UnitID uID in identities.Values) {
-//				numEnemiesInRange = 0;
-//				numAlliesInRange = 0;
-//				if(uID == UnitID.Enemy){
-//					numEnemiesInRange++;
-//				}else{
-//					numAlliesInRange++;
-//				}
-//				Debug.Log (targetsSeen + " " + uID);
-
-			}
-			targetsSeen++;
 		}
 	}
 
 	protected override void OnTriggerExit(Collider other){
 		Unit u = other.gameObject.GetComponent<Unit> ();
-		if (u != null) {
+		if (u != null && other is BoxCollider) {
 			targetsInRange.Remove (u);
 			if (myTarget == u) {
 				myTarget = null;

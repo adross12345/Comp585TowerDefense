@@ -212,13 +212,8 @@ public class CombinationNode : NeuralNode {
 		subNodes.Add (node);
 	}
 
-	// Use this for initialization
-	void Start () {
-		subNodes = new List<NeuralNode> ();
-	}
-
-	// Update is called once per frame
-	void Update () {
-
+	public override NeuralNode Clone(){
+		throw new UnityException ("Method not implemented");
+		return null;
 	}
 }

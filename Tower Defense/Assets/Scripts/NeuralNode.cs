@@ -4,12 +4,16 @@ using System.Collections.Generic;
 
 public abstract class NeuralNode : ScriptableObject {
 	public double[] weights;
+	protected double[] actualWeights;
 	protected double b;
 	protected double learningRate = 0.1;
 	protected int unitWidth = -1;
 	protected int unitHeight = -1;
 	protected int iters = 100;
 	protected List<PhantomUnit> trainingSet;
+	protected int[] nonzeroIndices;
+	protected List<EnemyAIConfound> enemiesToInform;
+	protected List<int> confoundedIndices;
 
 	public enum NodeType{FULLCOLOR, COLORHIST, GRAYSCALE, CONVOLVED, COMBINATION}
 
@@ -35,8 +39,11 @@ public abstract class NeuralNode : ScriptableObject {
 	// Use this for initialization
 	protected void Awake () {
 		trainingSet = new List<PhantomUnit> ();
+		nonzeroIndices = new int[0];
+		confoundedIndices = new List<int> ();
+		enemiesToInform = new List<EnemyAIConfound> ();
 	}
-		
+
 	public abstract void LearnUnits ();
 
 	public abstract double calculateZ (double[] features);
@@ -48,6 +55,8 @@ public abstract class NeuralNode : ScriptableObject {
 	public abstract Texture2D getAllyTexture ();
 
 	public abstract Texture2D getEnemyTexture ();
+
+	public abstract NeuralNode Clone ();
 
 	public static float convertToColorVal(double val){
 		float res = (float)val;
@@ -100,8 +109,64 @@ public abstract class NeuralNode : ScriptableObject {
 		trainingSet.Add (pu);
 	}
 
+	public void SetWeights(double[] newWeights, double newB){
+		actualWeights = new double[newWeights.Length];
+		this.weights = new double[newWeights.Length];
+		System.Array.Copy (newWeights, actualWeights, newWeights.Length);
+		System.Array.Copy (newWeights, weights, newWeights.Length);
+		this.b = newB;
+	}
+
+	protected void SetNonzeroIndices(){
+		List<int> nonzeros = new List<int> ();
+		for (int i = 0; i < actualWeights.Length; i++) {
+			if (actualWeights [i] != 0) {
+				nonzeros.Add (i);
+			}
+		}
+		nonzeroIndices = new int[nonzeros.Count];
+		int j = 0;
+		foreach (int index in nonzeros) {
+			nonzeroIndices [j] = index;
+			j++;
+		}
+	}//setNonzeroIndices()
+
+	public int[] GetNonzeroIndices(){
+		return nonzeroIndices;
+	}
+
+	public void ResetWeights(List<int> indices){
+		foreach (int index in indices) {
+			weights [index] = actualWeights [index];
+			confoundedIndices.Remove (index);
+		}
+	}
+
+	public void AddToConfoundedIndices(int index){
+		confoundedIndices.Add (index);
+	}
+
+	public List<int> GetConfoundedIndices(){
+		return confoundedIndices;
+	}
+
+	public void AddToEnemiesToInform(EnemyAIConfound en){
+		enemiesToInform.Add (en);
+	}
+
+	public void RemoveFromEnemiesToInform(EnemyAIConfound en){
+		enemiesToInform.Remove (en);
+	}
+
+	public void InformEnemies(List<int> revertedIndices){
+		foreach (EnemyAIConfound en in enemiesToInform) {
+			en.RevertIndices (this, revertedIndices);
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 }

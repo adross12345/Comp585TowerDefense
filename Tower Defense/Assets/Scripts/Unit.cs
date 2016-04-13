@@ -15,8 +15,9 @@ public abstract class Unit : MonoBehaviour {
 	public GameObject healthBar;
 	public float damage=10f;
 	public float money=13;
+	protected float noise;
 
-	private List<Projectile> aimedAtMe;
+	protected List<Projectile> aimedAtMe;
 
 	// Use this for initialization
 	protected virtual void Start () {
@@ -44,7 +45,7 @@ public abstract class Unit : MonoBehaviour {
 		float calcHealth = curHealth / maxHealth;
 		setHealthBar (calcHealth);
 		if (curHealth <= 0f) {
-			StartCoroutine(DestroySelf());
+			DestroyMe ();
 			res = true;
 		}
 		return res;
@@ -75,6 +76,7 @@ public abstract class Unit : MonoBehaviour {
 			newTex.Apply ();
 			mr.material.mainTexture = newTex;
 		}
+		this.noise = noise;
 	}
 
 	public float getMoney(){
@@ -98,8 +100,11 @@ public abstract class Unit : MonoBehaviour {
 		aimedAtMe.Remove (p);
 	}
 
-	protected IEnumerator DestroySelf(){
-		Debug.Log ("Destroying");
+	public void DestroyMe(){
+		StartCoroutine(DestroySelf());
+	}
+
+	protected virtual IEnumerator DestroySelf(){
 		foreach (Projectile p in aimedAtMe) {
 			p.killYourself ();
 		}
@@ -110,17 +115,26 @@ public abstract class Unit : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-//	void OnDestroy(){
-//		foreach (Projectile p in aimedAtMe) {
-//			p.killYourself ();
-//		}
-//		transform.position = new Vector3 (0, -500, 0);
-//	}
-
-	public abstract void OnTriggerEnter (Collider co);
-	
-	// Update is called once per frame
-	public void Update () {
-	
+	public virtual bool EnterTower(){
+		return false;
+		//Fill this in in submethods.
 	}
+
+	//	void OnDestroy(){
+	//		foreach (Projectile p in aimedAtMe) {
+	//			p.killYourself ();
+	//		}
+	//		transform.position = new Vector3 (0, -500, 0);
+	//	}
+
+	protected virtual void Update(){
+
+	}
+
+	public virtual void SetSplitsRemaining(int splitsRemaining){
+		//For most units this will do nothing.
+	}
+
+	protected abstract void OnTriggerEnter (Collider co);
+
 }

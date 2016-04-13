@@ -8,8 +8,8 @@ public class CastleHealth : MonoBehaviour {
 	public float curHealth = 0f;
 	public GameObject healthBar;
 
-    [SerializeField]
-    private Text healthText = null;
+	[SerializeField]
+	private Text healthText = null;
 
 
 
@@ -36,19 +36,19 @@ public class CastleHealth : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter(Collider co) {
-		Unit unit = co.gameObject.GetComponent<Unit> ();
-		if (co.tag == "Enemy" && unit!=null) {
-			float damage = unit.getDamage ();
-			Debug.Log (damage);
-			decreaseHealth (damage);	
-		} else if (co.tag == "Ally" && unit!=null) {
-			float damage = unit.getMoney ();
-			//TODO Add money to bank here
-		}
-		if (unit != null) {
-//			Debug.Log ("Made it here");
-//			unit.DestroySelf ();
-//			Debug.Log ("And here");
+		if (co is BoxCollider) {
+			Unit unit = co.gameObject.GetComponent<Unit> ();
+			if (co.tag == "Enemy" && unit != null) {
+				float damage = unit.getDamage ();
+				Debug.Log (damage);
+				decreaseHealth (damage);	
+			} else if (co.tag == "Ally" && unit != null) {
+				float money = unit.getMoney ();
+				//TODO Add money to bank here
+			}
+			if (unit != null) {
+				unit.DestroyMe ();
+			}
 		}
 	}
 

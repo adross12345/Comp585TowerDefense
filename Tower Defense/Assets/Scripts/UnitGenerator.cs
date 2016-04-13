@@ -4,6 +4,8 @@ using System.Collections;
 public class UnitGenerator : MonoBehaviour {
 	public Unit[] enemies;
 	public Unit[] allies;
+	public Vector3 forward = new Vector3(1,0,0);
+	private Vector3 up = new Vector3(0,1,0);
 
 	// Use this for initialization
 	void Start () {
@@ -14,11 +16,11 @@ public class UnitGenerator : MonoBehaviour {
 		Unit unit = null;
 		if (enemy) {
 			if (index < enemies.Length) {
-				unit = Instantiate (enemies [index], position, Quaternion.identity) as Unit;
+				unit = Instantiate (enemies [index], position, Quaternion.LookRotation(forward, up)) as Unit;
 			}
 		} else {
 			if (index < allies.Length) {
-				unit = Instantiate (allies [index], position, Quaternion.identity) as Unit;
+				unit = Instantiate (allies [index], position, Quaternion.LookRotation(forward, up)) as Unit;
 			}
 		}
 		return unit;
@@ -34,8 +36,17 @@ public class UnitGenerator : MonoBehaviour {
 		Unit unit = MakeUnit (enemy, index, new Vector3(0,0,0), noise);
 		if (disableNavMesh) {
 			unit.gameObject.GetComponent<NavMeshAgent> ().enabled = false;
-			unit.transform.position = position;
 		}
+		unit.transform.position = position;
+		return unit;
+	}
+
+	public Unit MakeUnit(bool enemy, Vector3 position, float noise, bool disableNavMesh){
+		Unit unit = MakeUnit (enemy, new Vector3(0,0,0), noise);
+		if (disableNavMesh) {
+			unit.gameObject.GetComponent<NavMeshAgent> ().enabled = false;
+		}
+		unit.transform.position = position;
 		return unit;
 	}
 
@@ -43,10 +54,10 @@ public class UnitGenerator : MonoBehaviour {
 		Unit unit = null;
 		if (enemy) {
 			int index = Random.Range (0, enemies.Length);
-			unit = Instantiate (enemies [index], position, Quaternion.identity) as Unit;
+			unit = MakeUnit (true, index, position);
 		} else {
 			int index = Random.Range (0, allies.Length);
-			unit = Instantiate (allies [index], position, Quaternion.identity) as Unit;
+			unit = MakeUnit (false, index, position);
 		}
 		return unit;
 	}

@@ -8,11 +8,6 @@ public class Ally : Unit {
 		base.Start ();
 	}
 
-	public override void OnTriggerEnter(Collider co) {
-
-		//If the value equals castle then the enemy will deal damage
-		if (co.name == "Castle") {
-			StartCoroutine(DestroySelf());
-		}
+	protected override void OnTriggerEnter(Collider co) {
 	}
 }

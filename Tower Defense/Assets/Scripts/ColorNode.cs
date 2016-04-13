@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ColorNode : NeuralNode {
-	
+
 	public override void LearnUnits(){
 		//I should probably make this a float array. 
 		//I'm not sure what kind of memory restrictions we're looking at.
@@ -70,6 +70,9 @@ public class ColorNode : NeuralNode {
 			if (misses == 0)
 				break;
 		}//for iterations
+		actualWeights = new double[weights.Length];
+		System.Array.Copy (weights, actualWeights, weights.Length);
+		SetNonzeroIndices ();
 		//Notice that I am clearing out the training set here.
 		//Keeping the references is not necessary and will just take up space.
 		//Being able to get rid of them is sort of the point of making a model.
@@ -138,7 +141,7 @@ public class ColorNode : NeuralNode {
 		newTex.Apply ();
 		return newTex;
 	}
- 
+
 	public override Texture2D getEnemyTexture(){
 		Texture2D newTex = new Texture2D (unitWidth, unitHeight);
 		for (int x = 0; x < newTex.width; x++) {
@@ -157,13 +160,10 @@ public class ColorNode : NeuralNode {
 		return newTex;
 	}
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public override NeuralNode Clone(){
+		ColorNode res = (ColorNode) NeuralNode.create (NodeType.FULLCOLOR);
+		res.SetWeights (actualWeights, this.b);
+		res.SetNonzeroIndices ();
+		return res;
 	}
 }

@@ -239,13 +239,8 @@ public class ConvolvedNode : NeuralNode {
 		return newTex;
 	}
 
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-
+	public override NeuralNode Clone(){
+		throw new UnityException ("Method not implemented");
+		return null;
 	}
 }

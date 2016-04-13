@@ -69,6 +69,9 @@ public class GrayscaleNode : NeuralNode {
 			if (misses == 0)
 				break;
 		}//for iterations
+		actualWeights = new double[weights.Length];
+		System.Array.Copy (weights, actualWeights, weights.Length);
+		SetNonzeroIndices ();
 		//Notice that I am clearing out the training set here.
 		//Keeping the references is not necessary and will just take up space.
 		//Being able to get rid of them is sort of the point of making a model.
@@ -102,15 +105,15 @@ public class GrayscaleNode : NeuralNode {
 	public override double calculateZ(Color[] pixels){
 		double res = 0;
 		if (pixels.Length == weights.Length) {
-		//This is really IMPORTANT.
-		//The last spot in unit features is reserved for the unit identity (0 for Enemy, 1 for Ally)
-		//Don't iterate over unitFeatures or its full length.
-		double[] unitFeatures = new double[weights.Length];
-		//Assigns the pixel values for each of the colors in the pattern {r,g,b,r,g,b,...)
-		for (int i = 0; i < pixels.Length; i++) {
-			Color c = pixels [i];
-			unitFeatures [i] = c.grayscale;
-		}
+			//This is really IMPORTANT.
+			//The last spot in unit features is reserved for the unit identity (0 for Enemy, 1 for Ally)
+			//Don't iterate over unitFeatures or its full length.
+			double[] unitFeatures = new double[weights.Length];
+			//Assigns the pixel values for each of the colors in the pattern {r,g,b,r,g,b,...)
+			for (int i = 0; i < pixels.Length; i++) {
+				Color c = pixels [i];
+				unitFeatures [i] = c.grayscale;
+			}
 			res = calculateZ (unitFeatures);
 		} else {
 			Debug.Log ("Unit has incorrect dimensions to be analyzed");
@@ -162,13 +165,10 @@ public class GrayscaleNode : NeuralNode {
 		return newTex;
 	}
 
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-
+	public override NeuralNode Clone(){
+		GrayscaleNode res = (GrayscaleNode) NeuralNode.create (NodeType.GRAYSCALE);
+		res.SetWeights (actualWeights, this.b);
+		res.SetNonzeroIndices ();
+		return res;
 	}
 }
