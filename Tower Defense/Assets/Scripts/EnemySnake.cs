@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemySnake : Enemy {
 	public float timeBetweenSpawns = 0.75f;
@@ -9,6 +10,7 @@ public class EnemySnake : Enemy {
 	protected Vector3 spawn;
 	protected UnitGenerator uGen;
 	protected bool keepSpawning;
+	private List<EnemyAnimated> bodyAndTail;
 
 	// Use this for initialization
 	protected override void Awake () {
@@ -23,6 +25,7 @@ public class EnemySnake : Enemy {
 		} else {
 			Debug.Log ("Spawn not found");
 		}
+		bodyAndTail = new List<EnemyAnimated> ();
 	}
 	
 	// Update is called once per frame
@@ -32,12 +35,38 @@ public class EnemySnake : Enemy {
 			float randNum = Random.Range (0f, 1f);
 			if (chanceForExtraBody > randNum) {
 				timeOfLastSpawn = Time.time;
-				uGen.MakeUnit (true, 7, spawn, this.noise);
+				EnemyAnimated body = (EnemyAnimated) uGen.MakeUnit (true, 7, spawn, this.noise);
+				body.SetTimePerTexture (9999f);
+				body.SetSpeedAndAccel (this.speed, this.acceleration);
+				bodyAndTail.Add (body);
 				numBodiesSpawned++;
 			} else {
-				uGen.MakeUnit (true, 8, spawn, this.noise);
+				EnemyAnimated tail = (EnemyAnimated) uGen.MakeUnit (true, 8, spawn, this.noise);
+				tail.SetTimePerTexture (9999f);
+				tail.SetSpeedAndAccel (this.speed, this.acceleration);
+				bodyAndTail.Add (tail);
 				keepSpawning = false;
 			}
 		}
+	}//Update()
+
+	protected override IEnumerator DestroySelf(){
+		foreach (Projectile p in aimedAtMe) {
+			p.killYourself ();
+		}
+		NavMeshAgent nav = gameObject.GetComponent<NavMeshAgent> ();
+		nav.enabled = false;
+		transform.position = new Vector3 (-500, -500, -500);
+		int i = 0;
+		foreach (EnemyAnimated bodyPart in bodyAndTail) {
+			bodyPart.SetTimePerTexture (0.2f);
+			if (i % 2 == 1) {
+				bodyPart.indexTexture += 2;
+			}
+			bodyPart.SetSpeedAndAccel (bodyPart.speed / 4, bodyPart.acceleration);
+			i++;
+		}
+		yield return new WaitForSeconds(0.1f);
+		Destroy (gameObject);
 	}
 }

@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2362962}
   - 195: {fileID: 19596946}
   - 54: {fileID: 5417168}
-  - 114: {fileID: 11487846}
+  - 114: {fileID: 11404180}
   m_Layer: 0
   m_Name: EnemySnakeBody
   m_TagString: Enemy
@@ -163,6 +163,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 1, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11404180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d56c9c8fb858843b628e47d5c7db99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identity: 0
+  speed: 0.75
+  acceleration: 8
+  maxHealth: 1
+  curHealth: 1
+  healthBar: {fileID: 138910}
+  damage: 10
+  money: 13
+  textures:
+  - {fileID: 2800000, guid: cfe848db78c782a4ea8668f4294b9694, type: 3}
+  - {fileID: 2800000, guid: 09e2137d9d897c24fbf061edb0a1fd0b, type: 3}
+  - {fileID: 2800000, guid: cfe848db78c782a4ea8668f4294b9694, type: 3}
+  - {fileID: 2800000, guid: 27d199c170e3ec74f8bee16c38905fae, type: 3}
+  timePerTexture: 0.2
+  indexTexture: 0
 --- !u!114 &11414890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,25 +280,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11487846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71f1a8a9870444b06b7fd009f890d2fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  identity: 0
-  speed: 3
-  acceleration: 8
-  maxHealth: 1
-  curHealth: 0
-  healthBar: {fileID: 138910}
-  damage: 10
-  money: 0
 --- !u!114 &11489650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,7 +440,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 106340}

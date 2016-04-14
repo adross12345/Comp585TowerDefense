@@ -7,7 +7,7 @@ public class ProjectileDumb : Projectile {
 	protected override void Start () {
 		base.Start ();
 	}
-	
+
 	// Update is called once per frame
 	protected override void Update () {
 		if (startFire) {
@@ -22,7 +22,7 @@ public class ProjectileDumb : Projectile {
 
 	protected override void OnTriggerEnter(Collider other){	
 		Unit u = other.gameObject.GetComponent<Unit> ();
-		if (u != null) {
+		if (u != null && other is BoxCollider) {
 			u.decreaseHealth (myDamage);
 			Destroy (this.gameObject);
 		}

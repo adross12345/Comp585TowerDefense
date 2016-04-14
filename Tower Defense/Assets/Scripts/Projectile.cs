@@ -6,10 +6,10 @@ public class Projectile : MonoBehaviour {
 	public float mySpeed = 10;
 	public float myDamage = 0.5f;
 	public float myRange = 999;
-//	protected GameObject projectile;
+	//	protected GameObject projectile;
 	protected Unit target;
 	protected bool startFire = false;
-//	protected CannonFire source;
+	//	protected CannonFire source;
 
 	protected float distance;
 
@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour {
 
 	protected virtual void OnTriggerEnter(Collider other){	
 		Unit u = other.gameObject.GetComponent<Unit> ();
-		if(u == target){
+		if(u == target && other is BoxCollider){
 			if (u != null) {
 				u.decreaseHealth (myDamage);
 			}
@@ -44,6 +44,6 @@ public class Projectile : MonoBehaviour {
 	public void killYourself(){
 		Destroy (this.gameObject);
 	}
-		
+
 
 }

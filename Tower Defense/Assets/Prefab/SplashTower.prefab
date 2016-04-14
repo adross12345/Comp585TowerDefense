@@ -55,6 +55,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &131744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 408376}
+  - 135: {fileID: 13547782}
+  - 54: {fileID: 5441438}
+  - 114: {fileID: 11415768}
+  m_Layer: 9
+  m_Name: BuildingFootprint
+  m_TagString: BuildingPlacement
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &144948
 GameObject:
   m_ObjectHideFlags: 1
@@ -102,24 +120,6 @@ GameObject:
   m_Layer: 0
   m_Name: SplashTower
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &173016
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 498900}
-  - 135: {fileID: 13577284}
-  - 54: {fileID: 5427192}
-  - 114: {fileID: 11450194}
-  m_Layer: 9
-  m_Name: BuildingFootprint
-  m_TagString: BuildingPlacement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,6 +173,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &408376
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 478924}
+  m_RootOrder: 1
 --- !u!4 &439750
 Transform:
   m_ObjectHideFlags: 1
@@ -241,11 +253,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: -4}
+  m_LocalPosition: {x: -0.07, y: 0, z: -8.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 498900}
   - {fileID: 488872}
+  - {fileID: 408376}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &481924
@@ -277,7 +289,7 @@ Transform:
   - {fileID: 476014}
   - {fileID: 449130}
   m_Father: {fileID: 478924}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &491406
 Transform:
   m_ObjectHideFlags: 1
@@ -290,18 +302,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 488872}
   m_RootOrder: 1
---- !u!4 &498900
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173016}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 478924}
-  m_RootOrder: 0
 --- !u!23 &2305312
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -533,12 +533,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126320}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5427192
+--- !u!54 &5441438
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173016}
+  m_GameObject: {fileID: 131744}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -560,12 +560,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11450194
+--- !u!114 &11415768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173016}
+  m_GameObject: {fileID: 131744}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d982a7bf57e5c44dbe880ea49a7e548, type: 3}
@@ -574,7 +574,7 @@ MonoBehaviour:
   allySprite: {fileID: 0}
   enemySprite: {fileID: 0}
   colliders: []
-  bName: Basic Tower
+  bName: Splash Tower
 --- !u!114 &11451740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -588,19 +588,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   node: {fileID: 0}
   range: 5
-  projectile: {fileID: 11432800, guid: 80fe9f8101da12142a55feafac394cf1, type: 2}
+  projectile: {fileID: 11468268, guid: b3a8489d2fb33e84a800191c9df1dfe5, type: 2}
   firePoints:
   - {fileID: 187388}
   aimPoint: {fileID: 158616, guid: 4bbbce203bc543e408f43f597e4c62e9, type: 2}
   numEnemiesInRange: 0
   numAlliesInRange: 0
-  cutoffRatio: 1
---- !u!135 &13577284
+  cutoffRatio: 0
+--- !u!135 &13547782
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173016}
+  m_GameObject: {fileID: 131744}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

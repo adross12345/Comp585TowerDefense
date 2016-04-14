@@ -53,7 +53,7 @@ public abstract class Unit : MonoBehaviour {
 
 	public void setHealthBar(float healthPercent)
 	{
-		this.healthBar.transform.localScale = new Vector3(curHealth, 
+		this.healthBar.transform.GetChild(2).localScale = new Vector3(curHealth, 
 			this.healthBar.transform.localScale.y, this.healthBar.transform.localScale.z);
 	}
 
@@ -113,6 +113,16 @@ public abstract class Unit : MonoBehaviour {
 		transform.position = new Vector3 (-500, -500, -500);
 		yield return new WaitForSeconds(0.1f);
 		Destroy (gameObject);
+	}
+
+	public void SetSpeedAndAccel(float speed, float accel){
+		this.speed = speed;
+		this.acceleration = accel;
+		NavMeshAgent nav = GetComponent<NavMeshAgent> ();
+		if (nav.enabled) {
+			nav.speed = speed;
+			nav.acceleration = accel;
+		}
 	}
 
 	public virtual bool EnterTower(){

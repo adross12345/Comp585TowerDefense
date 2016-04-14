@@ -24,7 +24,7 @@ public class Spawn : MonoBehaviour {
 
 		InvokeRepeating("SpawnNext", 0, interval);
 
-		//		SpawnNext ();
+//				SpawnNext ();
 
 		//		node = NeuralNode.create (NeuralNode.NodeType.GRAYSCALE);
 		//		node = ScriptableObject.CreateInstance<CombinationNode> ();
