@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySpeed: 10
   myDamage: 0.5
-  myRange: 999
+  myRange: 10
 --- !u!135 &13571574
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -96,7 +96,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: myRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mySpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 192822}

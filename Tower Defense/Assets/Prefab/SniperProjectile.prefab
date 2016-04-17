@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721be61019e7b46a0803ba3fb6a0310e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySpeed: 10
-  myDamage: 0.5
-  myRange: 999
+  mySpeed: 5
+  myDamage: 0.7
+  myRange: 40
 --- !u!135 &13516238
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -96,7 +96,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: myRange
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: myDamage
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mySpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 179914}

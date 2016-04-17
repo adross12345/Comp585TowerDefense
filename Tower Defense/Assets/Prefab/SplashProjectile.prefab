@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e77b481d62505439e8ddf239d8ca61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySpeed: 10
+  mySpeed: 3
   myDamage: 0.5
-  myRange: 999
+  myRange: 15
   splashObject: {fileID: 11455398, guid: 57c26f3e01d9e2d4984c874bdde4b2ee, type: 2}
   splashDamage: 0.25
   splashRadius: 2
@@ -99,7 +99,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: mySpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: myRange
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 118782}
