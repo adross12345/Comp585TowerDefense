@@ -1,10 +1,22 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyHydra.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CannonFireAOE.cs">
     <Files>
-      <File FileName="Assets/Scripts/UnitGenerator.cs" Line="23" Column="1" />
-      <File FileName="Assets/Scripts/BuildingPlacement.cs" Line="40" Column="1" />
-      <File FileName="Assets/Scripts/EnemyHydra.cs" Line="25" Column="4" />
+      <File FileName="Assets\Scripts\LevelSpawner.cs" Line="28" Column="61" />
+      <File FileName="Assets\Scripts\Spawn.cs" Line="49" Column="59" />
+      <File FileName="Assets\Scripts\UnitGenerator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BuildingPlacement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EnemyHydra.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NeuralNode.cs" Line="179" Column="24" />
+      <File FileName="Assets\Scripts\Unit.cs" Line="72" Column="1" />
+      <File FileName="Assets\Resources\Levels\1.txt" Line="10" Column="10" />
+      <File FileName="Assets\Scripts\EnemyCamo.cs" Line="19" Column="53" />
+      <File FileName="Assets\Scripts\ColorNode.cs" Line="5" Column="38" />
+      <File FileName="Assets\Scripts\ColorHistNode.cs" Line="14" Column="53" />
+      <File FileName="Assets\Scripts\GrayscaleNode.cs" Line="72" Column="1" />
+      <File FileName="Assets\Scripts\ConvolvedNode.cs" Line="109" Column="24" />
+      <File FileName="Assets\Scripts\CombinationNode.cs" Line="74" Column="24" />
+      <File FileName="Assets\Scripts\CannonFireAOE.cs" Line="79" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

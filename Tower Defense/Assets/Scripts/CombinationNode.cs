@@ -68,6 +68,10 @@ public class CombinationNode : NeuralNode {
 			if (misses == 0)
 				break;
 		}//for iterations
+		actualWeights = new double[weights.Length];
+		System.Array.Copy (weights, actualWeights, weights.Length);
+		actualB = b;
+		SetNonzeroIndices ();
 		//Notice that I am clearing out the training set here.
 		//Keeping the references is not necessary and will just take up space.
 		//Being able to get rid of them is sort of the point of making a model.

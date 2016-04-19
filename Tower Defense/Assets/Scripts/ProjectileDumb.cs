@@ -23,7 +23,7 @@ public class ProjectileDumb : Projectile {
 	protected override void OnTriggerEnter(Collider other){	
 		Unit u = other.gameObject.GetComponent<Unit> ();
 		if (u != null && other is BoxCollider) {
-			u.decreaseHealth (myDamage);
+			u.takeDamage (myDamage);
 			Destroy (this.gameObject);
 		}
 	}

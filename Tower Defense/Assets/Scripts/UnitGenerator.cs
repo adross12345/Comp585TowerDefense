@@ -27,6 +27,9 @@ public class UnitGenerator : MonoBehaviour {
 	}
 
 	public Unit MakeUnit(bool enemy, int index, Vector3 position, float noise){
+		if (index == -1) {
+			return MakeUnit (enemy, position, noise);
+		}
 		Unit unit = MakeUnit (enemy, index, position);
 		unit.addNoise (noise);
 		return unit;

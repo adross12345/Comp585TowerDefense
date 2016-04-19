@@ -10,6 +10,7 @@ public class Spawn : MonoBehaviour {
 	//TODO take this out.
 	private NeuralNode node;
 	private UnitGenerator uGen;
+	private LevelSpawner lvlSpawn;
 
 
 
@@ -21,7 +22,8 @@ public class Spawn : MonoBehaviour {
 		numSpawned = 0;
 		uGen = Camera.main.GetComponent<UnitGenerator> ();
 
-
+//		lvlSpawn = Camera.main.GetComponent<LevelSpawner> ();
+//		lvlSpawn.StartNextLevel ();
 		InvokeRepeating("SpawnNext", 0, interval);
 
 //				SpawnNext ();
@@ -48,7 +50,8 @@ public class Spawn : MonoBehaviour {
 
 			//			unit = Instantiate (allyPrefab, transform.position, Quaternion.identity) as Unit;
 		}
-		//		unit.addNoise (0.1F);
+//				unit.addNoise (0.1F);
+
 		//		if (numSpawned <= 5) {
 		//			node.AddToTrainingSet (unit);
 		//			if (numSpawned == 5) {

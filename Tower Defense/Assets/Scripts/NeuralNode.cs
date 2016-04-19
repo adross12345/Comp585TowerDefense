@@ -5,15 +5,18 @@ using System.Collections.Generic;
 public abstract class NeuralNode : ScriptableObject {
 	public double[] weights;
 	protected double[] actualWeights;
-	protected double b;
+	public double b;
+	protected double actualB;
 	protected double learningRate = 0.1;
-	protected int unitWidth = -1;
-	protected int unitHeight = -1;
+	protected int unitWidth = 32;
+	protected int unitHeight = 32;
 	protected int iters = 100;
 	protected List<PhantomUnit> trainingSet;
 	protected int[] nonzeroIndices;
 	protected List<EnemyAIConfound> enemiesToInform;
 	protected List<int> confoundedIndices;
+
+	public Texture2D targetTex;
 
 	public enum NodeType{FULLCOLOR, COLORHIST, GRAYSCALE, CONVOLVED, COMBINATION}
 
@@ -42,6 +45,8 @@ public abstract class NeuralNode : ScriptableObject {
 		nonzeroIndices = new int[0];
 		confoundedIndices = new List<int> ();
 		enemiesToInform = new List<EnemyAIConfound> ();
+		weights = new double[unitWidth * unitHeight * 3];
+		targetTex = new Texture2D (unitWidth, unitHeight);
 	}
 
 	public abstract void LearnUnits ();
@@ -115,6 +120,7 @@ public abstract class NeuralNode : ScriptableObject {
 		System.Array.Copy (newWeights, actualWeights, newWeights.Length);
 		System.Array.Copy (newWeights, weights, newWeights.Length);
 		this.b = newB;
+		this.actualB = newB;
 	}
 
 	protected void SetNonzeroIndices(){
@@ -163,6 +169,14 @@ public abstract class NeuralNode : ScriptableObject {
 		foreach (EnemyAIConfound en in enemiesToInform) {
 			en.RevertIndices (this, revertedIndices);
 		}
+	}
+
+	public Texture2D GetTargetTex(){
+		return targetTex;
+	}
+
+	public void SetTargetTex(Texture2D tex){
+		this.targetTex = tex;
 	}
 
 	// Update is called once per frame

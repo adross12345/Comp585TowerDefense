@@ -17,10 +17,13 @@ public class EnemyCamo : Enemy {
 		base.Awake ();
 		destination = this.GetComponent<NavMeshAgent> ().destination;
 		uGen = Camera.main.GetComponent<UnitGenerator> ();
-		MeshRenderer mr = this.GetComponent<MeshRenderer> ();
-		myTex = (Texture2D) mr.material.mainTexture;
 		nextStealthTime = -10f;
 		stealthed = false;
+	}
+
+	void Start(){
+		MeshRenderer mr = this.GetComponent<MeshRenderer> ();
+		myTex = (Texture2D) mr.material.mainTexture;
 	}
 
 	public override bool EnterTower(){

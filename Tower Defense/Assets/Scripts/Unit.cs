@@ -15,6 +15,7 @@ public abstract class Unit : MonoBehaviour {
 	public GameObject healthBar;
 	public float damage=10f;
 	public float money=13;
+	public float armor = 0f;
 	protected float noise;
 
 	protected List<Projectile> aimedAtMe;
@@ -38,10 +39,10 @@ public abstract class Unit : MonoBehaviour {
 
 	//Decreases health when enemy gets hit.
 	//Returns true if the enemy died due to it.
-	public bool decreaseHealth(float damage)
+	public bool takeDamage(float damage)
 	{
 		bool res = false;
-		curHealth -= damage;
+		curHealth -= (damage*100)/(armor+100);
 		float calcHealth = curHealth / maxHealth;
 		setHealthBar (calcHealth);
 		if (curHealth <= 0f) {
@@ -68,7 +69,6 @@ public abstract class Unit : MonoBehaviour {
 			for (int x = 0; x < newTex.width; x++) {
 				for (int y = 0; y < newTex.height; y++) {
 					Color c = pixels [y * newTex.width + x];
-					//TODO change amount of noise.
 					Color newC = new Color (c.r + Random.Range (-1*noise, noise), c.g + Random.Range (-1*noise, noise), c.b + Random.Range (-1*noise, noise), c.a);
 					newTex.SetPixel (x, y, newC);
 				}

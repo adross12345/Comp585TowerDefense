@@ -75,6 +75,9 @@ public class CannonFireAOE : CannonFire {
 	{
 		Unit u = other.gameObject.GetComponent<Unit> ();
 		if(u != null && other is BoxCollider){
+			if (myTarget == null) {
+				node.SetTargetTex ((Texture2D) u.GetComponent<MeshRenderer> ().material.mainTexture);
+			}
 			bool willDisappear = u.EnterTower ();
 			if (!willDisappear) {
 				targetsInRange.Add (u);

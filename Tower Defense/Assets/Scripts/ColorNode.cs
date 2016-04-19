@@ -72,6 +72,7 @@ public class ColorNode : NeuralNode {
 		}//for iterations
 		actualWeights = new double[weights.Length];
 		System.Array.Copy (weights, actualWeights, weights.Length);
+		actualB = b;
 		SetNonzeroIndices ();
 		//Notice that I am clearing out the training set here.
 		//Keeping the references is not necessary and will just take up space.

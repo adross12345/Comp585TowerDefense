@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour {
 		Unit u = other.gameObject.GetComponent<Unit> ();
 		if(u == target && other is BoxCollider){
 			if (u != null) {
-				u.decreaseHealth (myDamage);
+				u.takeDamage (myDamage);
 			}
 			target.removeFromAimedAtMe (this);
 			Destroy (gameObject);

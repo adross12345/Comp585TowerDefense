@@ -11,6 +11,7 @@ public class ColorHistNode : NeuralNode {
 		numBins = 8;
 		learningRate = .5;
 		base.Awake ();
+		weights = new double[numBins * numBins * numBins];
 	}
 
 	public override void LearnUnits(){
@@ -91,6 +92,7 @@ public class ColorHistNode : NeuralNode {
 		}
 		actualWeights = new double[weights.Length];
 		System.Array.Copy (weights, actualWeights, weights.Length);
+		actualB = b;
 		SetNonzeroIndices ();
 		//Notice that I am clearing out the training set here.
 		//Keeping the references is not necessary and will just take up space.
