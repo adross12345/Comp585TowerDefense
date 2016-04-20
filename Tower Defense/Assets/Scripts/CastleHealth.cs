@@ -47,9 +47,10 @@ public class CastleHealth : MonoBehaviour {
 				Debug.Log (damage);
 				decreaseHealth (damage);	
 			} else if (co.tag == "Ally" && unit != null) {
+                Debug.Log("Ally got to tower");
 				float money = unit.getMoney ();
                 //TODO Add money to bank here
-                curMoney += 100; // 100 is placeholder, need to determine amount of money for each kind of ally
+                curMoney += (int)money; // 100 is placeholder, need to determine amount of money for each kind of ally
 			}
 			if (unit != null) {
 				unit.DestroyMe ();

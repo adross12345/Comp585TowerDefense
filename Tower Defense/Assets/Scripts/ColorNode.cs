@@ -129,9 +129,9 @@ public class ColorNode : NeuralNode {
 		Texture2D newTex = new Texture2D (unitWidth, unitHeight);
 		for (int x = 0; x < newTex.width; x++) {
 			for (int y = 0; y < newTex.height; y++) {
-				float r = convertToColorVal(10 * weights [(y * newTex.width + x) * 3]);
-				float g = convertToColorVal(10 * weights [(y * newTex.width + x) * 3 + 1]);
-				float b = convertToColorVal(10 * weights [(y * newTex.width + x) * 3 + 2]);
+				float r = convertToColorVal(100 * weights [(y * newTex.width + x) * 3]);
+				float g = convertToColorVal(100 * weights [(y * newTex.width + x) * 3 + 1]);
+				float b = convertToColorVal(100 * weights [(y * newTex.width + x) * 3 + 2]);
 				//				float r = convertToColorVal(1 * weights [(y * newTex.width + x) * 3]);
 				//				float g = convertToColorVal(1 * weights [(y * newTex.width + x) * 3 + 1]);
 				//				float b = convertToColorVal(1 * weights [(y * newTex.width + x) * 3 + 2]);
@@ -150,9 +150,9 @@ public class ColorNode : NeuralNode {
 				//				float r = convertToColorVal(-1 * weights [(y * newTex.width + x) * 3]);
 				//				float g = convertToColorVal(-1 * weights [(y * newTex.width + x) * 3 + 1]);
 				//				float b = convertToColorVal(-1 * weights [(y * newTex.width + x) * 3 + 2]);
-				float r = convertToColorVal(-10 * weights [(y * newTex.width + x) * 3]);
-				float g = convertToColorVal(-10 * weights [(y * newTex.width + x) * 3 + 1]);
-				float b = convertToColorVal(-10 * weights [(y * newTex.width + x) * 3 + 2]);
+				float r = convertToColorVal(-100 * weights [(y * newTex.width + x) * 3]);
+				float g = convertToColorVal(-100 * weights [(y * newTex.width + x) * 3 + 1]);
+				float b = convertToColorVal(-100 * weights [(y * newTex.width + x) * 3 + 2]);
 				Color c = new Color(r,g,b);
 				newTex.SetPixel (x, y, c);
 			}

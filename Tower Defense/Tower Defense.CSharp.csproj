@@ -98,8 +98,11 @@
     <Compile Include="Assets\Scripts\GrayscaleNode.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\HealthManager.cs" />
+    <Compile Include="Assets\Scripts\InfoManager.cs" />
+    <Compile Include="Assets\Scripts\LevelSpawner.cs" />
     <Compile Include="Assets\Scripts\MoneyManager.cs" />
     <Compile Include="Assets\Scripts\NeuralNode.cs" />
+    <Compile Include="Assets\Scripts\NodeManager.cs" />
     <Compile Include="Assets\Scripts\PhantomUnit.cs" />
     <Compile Include="Assets\Scripts\PlaceableBuilding.cs" />
     <Compile Include="Assets\Scripts\Projectile.cs" />
@@ -110,6 +113,9 @@
     <Compile Include="Assets\Scripts\SplashRadius.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <Compile Include="Assets\Scripts\UnitGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\Levels\1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

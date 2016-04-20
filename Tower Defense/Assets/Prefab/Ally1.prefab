@@ -67,7 +67,7 @@ GameObject:
   - 114: {fileID: 11471472}
   m_Layer: 0
   m_Name: Ally1
-  m_TagString: Untagged
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,6 +230,10 @@ MonoBehaviour:
   healthBar: {fileID: 196186}
   damage: 10
   money: 13
+  armor: 0
+  timePerStop: 0
+  timeBetweenStop: 0
+  stopped: 0
 --- !u!114 &11475746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,6 +449,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Ally
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

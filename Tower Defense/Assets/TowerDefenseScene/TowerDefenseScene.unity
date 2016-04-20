@@ -16179,6 +16179,8 @@ GameObject:
   - 224: {fileID: 612254530}
   - 114: {fileID: 612254529}
   - 114: {fileID: 612254531}
+  - 114: {fileID: 612254532}
+  - 114: {fileID: 612254533}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -16227,6 +16229,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountMoney: {fileID: 1931559792}
+--- !u!114 &612254532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 612254528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b47985c24c64834dab43658ca51c0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  z: {fileID: 897272752}
+  b: {fileID: 1313671560}
+  ally: {fileID: 1101701960}
+  enemy: {fileID: 796902668}
+  target: {fileID: 573117183}
+--- !u!114 &612254533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 612254528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e6256408ad7a948bf7ef0e1186885f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerName: {fileID: 818046851}
+  towerSellPrice: {fileID: 222644398}
+  enemies: {fileID: 1763346321}
+  allies: {fileID: 1805678822}
+  towerImage: {fileID: 1757298613}
 --- !u!1 &613644704
 GameObject:
   m_ObjectHideFlags: 0
@@ -41099,6 +41133,19 @@ MonoBehaviour:
   subfolder: Levels
   level: 0
   isRunningLevel: 0
+  enemyScalingPower: 1.8
+  enemyScalingScalar: 0.5
+  allyScalingPower: 0.7
+  allyScalingScalar: 5
+  rushContuationScalingPower: 0.5
+  startingDelay: 3
+  delayScalingFactor: 0.75
+  noiseScalingFactor: 0.8
+  rushIncrease: 5
+  numEnemiesSpawned: 0
+  numAlliesSpawned: 0
+  numEnemiesToSpawn: 0
+  numAlliesToSpawn: 0
 --- !u!1 &1503500584
 GameObject:
   m_ObjectHideFlags: 0
@@ -55172,11 +55219,47 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 439168, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 439168, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.23
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 133916, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 133916, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 413410, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 478884, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 478884, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 478884, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 13521756, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
+      propertyPath: m_Radius
+      value: 0.625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9e0102ce5b555844948a3e6b80251c2, type: 2}
