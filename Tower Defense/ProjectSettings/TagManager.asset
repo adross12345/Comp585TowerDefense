@@ -10,6 +10,7 @@ TagManager:
   - BaseGround
   - BuildingPlacement
   - Castle
+  - Turret
   layers:
   - Default
   - TransparentFX

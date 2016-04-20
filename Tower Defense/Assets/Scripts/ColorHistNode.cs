@@ -38,6 +38,7 @@ public class ColorHistNode : NeuralNode {
 					double[] unitFeatures = new double[featureLength+1];
 					int divisor = 256 / numBins;
 					double increment = 1.0 / (unitWidth * unitHeight);
+					increment = 1.0;
 
 					//Assigns the pixel values for each of the colors in the pattern increasing green, then increasing blue, then increasing red
 					for (int i = 0; i < pixels.Length; i++) {

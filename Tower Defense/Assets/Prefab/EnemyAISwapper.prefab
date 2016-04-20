@@ -239,15 +239,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
-  speed: 3
+  speed: 1.5
   acceleration: 8
   maxHealth: 1
   curHealth: 1
   healthBar: {fileID: 143672}
   damage: 10
   money: 13
+  armor: 0
+  timePerStop: 3
+  timeBetweenStop: 2
+  stopped: 0
   range: 5
-  confoundInterval: 0.5
+  confoundInterval: 0.00001
+  intendedConfoundingTime: 4
   rangeSpeed: 75
 --- !u!114 &11422940
 MonoBehaviour:
@@ -523,7 +528,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: confoundInterval
-      value: 0.5
+      value: 0.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timePerStop
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timeBetweenStop
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: stopped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: intendedConfoundingTime
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

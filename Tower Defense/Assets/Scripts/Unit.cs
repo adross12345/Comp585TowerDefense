@@ -18,6 +18,14 @@ public abstract class Unit : MonoBehaviour {
 	public float armor = 0f;
 	protected float noise;
 
+	public float timePerStop = 0f;
+	public float timeBetweenStop = 0f;
+	protected float timeOfLastStopOrGo;
+	public bool stopped;
+	protected NavMeshAgent nav;
+
+	protected Vector3 destination;
+
 	protected List<Projectile> aimedAtMe;
 
 	// Use this for initialization
@@ -28,13 +36,16 @@ public abstract class Unit : MonoBehaviour {
 		//Moves enemy toward castle
 		GameObject castle = GameObject.Find ("Castle");
 		if (castle) {
-			NavMeshAgent nav = GetComponent<NavMeshAgent> ();
+			nav = GetComponent<NavMeshAgent> ();
 			if (nav.enabled) {
 				nav.destination = castle.transform.position;
+				this.destination = castle.transform.position;
 				nav.speed = speed;
 				nav.acceleration = acceleration;
 			}
 		}
+		timeOfLastStopOrGo = Time.time;
+		stopped = false;
 	}
 
 	//Decreases health when enemy gets hit.
@@ -138,7 +149,17 @@ public abstract class Unit : MonoBehaviour {
 	//	}
 
 	protected virtual void Update(){
-
+		if (timePerStop > 0) {
+			if (!stopped && Time.time > timeOfLastStopOrGo + timeBetweenStop) {
+				stopped = true;
+				timeOfLastStopOrGo = Time.time;
+				nav.SetDestination (transform.position);
+			}else if(stopped && Time.time > timeOfLastStopOrGo + timePerStop) {
+				stopped = false;
+				timeOfLastStopOrGo = Time.time;
+				nav.SetDestination (destination);
+			}
+		}
 	}
 
 	public virtual void SetSplitsRemaining(int splitsRemaining){

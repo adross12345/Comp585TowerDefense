@@ -3,7 +3,6 @@ using System.Collections;
 
 public class ProjectileSplash : Projectile {
 	public SplashRadius splashObject;
-	public float splashDamage = 0.25f;
 	public float splashRadius = 2f;
 	
 	protected override void OnTriggerEnter(Collider other){	

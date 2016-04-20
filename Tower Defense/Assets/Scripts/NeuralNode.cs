@@ -47,6 +47,7 @@ public abstract class NeuralNode : ScriptableObject {
 		enemiesToInform = new List<EnemyAIConfound> ();
 		weights = new double[unitWidth * unitHeight * 3];
 		targetTex = new Texture2D (unitWidth, unitHeight);
+		learningRate = 1.0 / iters;
 	}
 
 	public abstract void LearnUnits ();
@@ -126,10 +127,12 @@ public abstract class NeuralNode : ScriptableObject {
 	protected void SetNonzeroIndices(){
 		List<int> nonzeros = new List<int> ();
 		for (int i = 0; i < actualWeights.Length; i++) {
-			if (actualWeights [i] != 0) {
-				nonzeros.Add (i);
-			}
+//			if (actualWeights [i] != 0) {
+//				nonzeros.Add (i);
+//			}
+			nonzeros.Add(i);
 		}
+		nonzeros.Add (-1);
 		nonzeroIndices = new int[nonzeros.Count];
 		int j = 0;
 		foreach (int index in nonzeros) {
@@ -144,7 +147,11 @@ public abstract class NeuralNode : ScriptableObject {
 
 	public void ResetWeights(List<int> indices){
 		foreach (int index in indices) {
-			weights [index] = actualWeights [index];
+			if (index == -1) {
+				b = actualB;
+			} else {
+				weights [index] = actualWeights [index];
+			}
 			confoundedIndices.Remove (index);
 		}
 	}

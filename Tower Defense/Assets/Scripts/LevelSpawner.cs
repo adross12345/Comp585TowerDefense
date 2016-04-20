@@ -8,6 +8,22 @@ public class LevelSpawner : MonoBehaviour {
 	public int level;
 	public bool isRunningLevel;
 
+	public float enemyScalingPower = 1.8f;
+	public float enemyScalingScalar = .5f;
+	public float allyScalingPower = 0.7f;
+	public float allyScalingScalar = 5f;
+	public float rushContuationScalingPower = 0.5f;
+	public float startingDelay = 3f;
+	public float delayScalingFactor = 0.75f;
+	public float noiseScalingFactor = 0.8f;
+	private float noiseScalingScalar;
+	public float rushIncrease = 5f;
+
+	public int numEnemiesSpawned;
+	public int numAlliesSpawned;
+	public int numEnemiesToSpawn;
+	public int numAlliesToSpawn;
+
 	private UnitGenerator uGen;
 	private Vector3 spawn;
 
@@ -22,6 +38,8 @@ public class LevelSpawner : MonoBehaviour {
 		} else {
 			Debug.Log ("Spawn not found");
 		}
+		//Makes it so the noise is 0.25 at level 50.
+		noiseScalingScalar = 0.25f / Mathf.Pow (50f, noiseScalingFactor);
 	}
 
 	public void StartNextLevel(){
@@ -32,7 +50,7 @@ public class LevelSpawner : MonoBehaviour {
 			StartCoroutine (RunTextLevel ());
 		} else {
 			Debug.Log ("Procedural Generation");
-			//TODO add procedural generation method here
+			StartCoroutine(RunProceduralGeneration ());
 		}
 	}
 
@@ -103,4 +121,87 @@ public class LevelSpawner : MonoBehaviour {
 		Debug.Log ("Incorrect text formatting at line " + lineNumber);
 		yield return new WaitForEndOfFrame ();
 	}
+
+	private IEnumerator RunProceduralGeneration(){
+		isRunningLevel = true;
+		numAlliesSpawned = 0;
+		numEnemiesSpawned = 0;
+		numEnemiesToSpawn = CalcEnemiesToSpawn();
+		numAlliesToSpawn = CalcAlliesToSpawn ();
+		float delay = CalcDelay ();
+		float noise = CalcNoise();
+		float rushNum = CalcRushNum ();
+		//TODO add full rush levels, etc.
+		while (numAlliesSpawned < numAlliesToSpawn && numEnemiesToSpawn > numEnemiesSpawned) {
+			float enemySpawnChance = (float) numEnemiesToSpawn / (numAlliesToSpawn + numEnemiesToSpawn);
+			Debug.Log (enemySpawnChance);
+			bool spawnEnemy = false;
+			if (enemySpawnChance > Random.Range (0f, 1f)) {
+				spawnEnemy = true;
+			}
+			yield return SpawnUnit (spawnEnemy, noise, delay, rushNum);
+		}
+		level += 1;
+		isRunningLevel = false;
+	}
+
+	private IEnumerator SpawnUnit(bool spawnEnemy, float noise, float delay, float rushNum){
+		if ((startingDelay * 4 / rushNum) < Random.Range (0, 1)) {
+			yield return SpawnRush (spawnEnemy, noise, delay, rushNum, 0);
+			yield return new WaitForSeconds (delay * 5f);
+		} else {
+			uGen.MakeUnit (spawnEnemy, spawn, noise);
+			AddToNumSpawned (spawnEnemy);
+			yield return new WaitForSeconds (delay);
+		}
+	}
+
+	private IEnumerator SpawnRush(bool spawnEnemy, float noise, float delay, float rushNum, int numUnitsSpawned){
+		numUnitsSpawned++;
+		if(ContinueRush(numUnitsSpawned, rushNum)){
+			yield return SpawnRush (spawnEnemy, noise, delay, rushNum, numUnitsSpawned);
+		}
+		uGen.MakeUnit (spawnEnemy, spawn, noise);
+		AddToNumSpawned (spawnEnemy);
+		yield return new WaitForSeconds (delay / 5f);
+	}
+
+	private bool ContinueRush(int numUnitsSpawned, float rushNum){
+		float cutOff = rushNum /(float) numUnitsSpawned;
+		float rand = Random.Range (0, 1);
+		if (rand > cutOff) {
+			return false;
+		}
+		return true;
+	}
+
+	private void AddToNumSpawned(bool isEnemy){
+		if (isEnemy) {
+			numEnemiesSpawned++;
+		} else {
+			numAlliesSpawned++;
+		}
+	}
+
+	private int CalcEnemiesToSpawn(){
+		return (int) (enemyScalingScalar*Mathf.Pow((float) level, enemyScalingPower));
+	}
+
+	private int CalcAlliesToSpawn(){
+		return (int) (allyScalingScalar*Mathf.Pow((float) level, allyScalingPower));
+	}
+
+	private float CalcRushNum(){
+		return (4 * Mathf.Pow ((float)level, rushContuationScalingPower));
+	}
+
+	private float CalcDelay(){
+		return (int) 3f/Mathf.Pow((float) level, delayScalingFactor);
+	}
+
+	private float CalcNoise(){
+		return (int) noiseScalingScalar * Mathf.Pow((float) level, noiseScalingFactor);
+	}
+
+
 }

@@ -289,8 +289,13 @@ MonoBehaviour:
   healthBar: {fileID: 103282}
   damage: 10
   money: 13
-  range: 5
-  confoundInterval: 0.5
+  armor: 0
+  timePerStop: 0
+  timeBetweenStop: 0
+  stopped: 0
+  range: 7
+  confoundInterval: 0.00001
+  intendedConfoundingTime: 3
   rangeSpeed: 75
 --- !u!114 &11436376
 MonoBehaviour:
@@ -527,11 +532,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: confoundInterval
-      value: 0.5
+      value: 0.00001
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: range
-      value: 5
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: intendedConfoundingTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -24,7 +24,6 @@ public class EnemyHydra : Enemy {
 			Destroy (gameObject);
 			return false;
 		}
-		GameObject castle = GameObject.Find ("Castle");
 		Texture2D myTex = (Texture2D) GetComponent<MeshRenderer> ().material.mainTexture;
 		Color[] myPixels = myTex.GetPixels ();
 		int myWidth = myTex.width;
@@ -59,9 +58,7 @@ public class EnemyHydra : Enemy {
 			Vector3 offsetPos = new Vector3 (curPos.x + ((i - 1) * 0.75f), curPos.y, curPos.z + ((i - 1) * 0.75f));
 			subUnits [i].transform.position = offsetPos;
 			newNav.enabled = true;
-			if (castle) {
-				newNav.destination = castle.transform.position;
-			}
+			newNav.destination = destination;
 
 		}//for(i<3)
 

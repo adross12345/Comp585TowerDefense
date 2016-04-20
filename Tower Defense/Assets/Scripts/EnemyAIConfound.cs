@@ -6,6 +6,7 @@ public class EnemyAIConfound : Enemy {
 	protected Dictionary<NeuralNode, List<int>> towersToConfound;
 	public float range;
 	public float confoundInterval;
+	public float intendedConfoundingTime = 2f;
 	protected float nextConfoundingTime;
 	protected Transform rangeIndicator;
 	public float rangeSpeed = 50;
@@ -27,12 +28,20 @@ public class EnemyAIConfound : Enemy {
 				NeuralNode node = kvp.Key;
 				int[] nonzeroIndices = node.GetNonzeroIndices ();
 				if (nonzeroIndices != null && nonzeroIndices.Length > 0) {
-					List<int> preconfoundedIndices = node.GetConfoundedIndices ();
-					int index = nonzeroIndices [Random.Range (0, nonzeroIndices.Length)];
-					if (!kvp.Value.Contains (index) && !preconfoundedIndices.Contains(index)) {
-						ConfoundWeights (node.weights, index);
-						kvp.Value.Add (index);
-						node.AddToConfoundedIndices (index);
+					float numCallsToConfound = intendedConfoundingTime / Time.deltaTime;
+					int numConfoundings = (int) (nonzeroIndices.Length / numCallsToConfound);
+					for (int i = 0; i < numConfoundings; i++) {
+						List<int> preconfoundedIndices = node.GetConfoundedIndices ();
+						int index = nonzeroIndices [Random.Range (0, nonzeroIndices.Length)];
+						if (!kvp.Value.Contains (index) && !preconfoundedIndices.Contains (index)) {
+							if (index == -1) {
+								node.b = ConfoundB (node.b);
+							} else {
+								ConfoundWeights (node.weights, index);
+							}
+							kvp.Value.Add (index);
+							node.AddToConfoundedIndices (index);
+						}
 					}
 				}
 			}
@@ -54,6 +63,10 @@ public class EnemyAIConfound : Enemy {
 
 	protected virtual void ConfoundWeights(double[] weights, int index){
 
+	}
+
+	protected virtual double ConfoundB (double curB){
+		return 0.0;
 	}
 
 	protected override void OnTriggerEnter(Collider co) {

@@ -110,9 +110,10 @@ GameObject:
   - 4: {fileID: 490220}
   - 135: {fileID: 13536682}
   - 114: {fileID: 11476096}
+  - 65: {fileID: 6506234}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9948163, y: 0.25, z: 0.7280555}
+  m_LocalPosition: {x: 3.9948163, y: 0.5, z: 0.7280555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 490220}
@@ -632,6 +633,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6506234
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6559734
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -675,6 +688,9 @@ MonoBehaviour:
   projectile: {fileID: 11456498, guid: d922c6a0fcdb5463893767639c4f61e7, type: 2}
   firePoints:
   - {fileID: 115064}
+  fireInterval: 0.5
+  myDamage: 0.5
+  mySplashDamage: 0.25
   aimPoint: {fileID: 158616, guid: 4bbbce203bc543e408f43f597e4c62e9, type: 2}
   numEnemiesInRange: 0
   numAlliesInRange: 0
@@ -748,7 +764,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125418}

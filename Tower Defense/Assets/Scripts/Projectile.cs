@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour {
 	protected bool startFire = false;
 	//	protected CannonFire source;
 
+	public float splashDamage = 0.25f;
+
 	protected float distance;
 
 	protected virtual void Start(){
@@ -39,6 +41,14 @@ public class Projectile : MonoBehaviour {
 		this.target = u;
 		u.addToAimedAtMe (this);
 		startFire = true;
+	}
+
+	public virtual void SetDamage(float damage){
+		this.myDamage = damage;
+	}
+
+	public virtual void SetSplashDamage(float spDam){
+		this.splashDamage = spDam;
 	}
 
 	public void killYourself(){

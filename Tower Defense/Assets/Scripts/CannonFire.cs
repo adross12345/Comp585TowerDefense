@@ -12,9 +12,10 @@ public class CannonFire : MonoBehaviour {
 
 	public Projectile projectile;
 	public GameObject[] firePoints;
-	float firePauseTime = .25f;
 
-	protected float fireInterval = 0.5f;
+	public float fireInterval = 0.5f;
+	public float myDamage = 0.5f;
+	public float mySplashDamage = 0.25f;
 	protected float nextFireTime;
 	public GameObject aimPoint;
 
@@ -78,7 +79,10 @@ public class CannonFire : MonoBehaviour {
 					transform.LookAt (aimPoint.transform);
 				}
 				Projectile proj = Instantiate (projectile, go.transform.position, go.transform.rotation) as Projectile;
+				proj.SetDamage (myDamage);
 				proj.setTarget (myTarget);
+				//Will do nothing with most projectiles.
+				proj.SetSplashDamage (mySplashDamage);
 			}
 		}
 	}﻿

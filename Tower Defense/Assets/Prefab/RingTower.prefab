@@ -27,9 +27,10 @@ GameObject:
   - 4: {fileID: 406514}
   - 135: {fileID: 13578078}
   - 114: {fileID: 11401878}
+  - 65: {fileID: 6520828}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Building
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +44,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 472782}
   - 33: {fileID: 3396522}
-  - 136: {fileID: 13698614}
   - 23: {fileID: 2329344}
   m_Layer: 0
   m_Name: Base
@@ -76,7 +76,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 414482}
   - 33: {fileID: 3379172}
-  - 136: {fileID: 13678132}
   - 23: {fileID: 2398018}
   m_Layer: 0
   m_Name: Cannon
@@ -94,7 +93,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 491674}
   - 33: {fileID: 3327194}
-  - 136: {fileID: 13614262}
   - 23: {fileID: 2348402}
   m_Layer: 0
   m_Name: Cannon
@@ -202,7 +200,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 496884}
   - 33: {fileID: 3347056}
-  - 136: {fileID: 13618730}
   - 23: {fileID: 2374428}
   m_Layer: 0
   m_Name: Cannon
@@ -268,7 +265,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400220}
   - 33: {fileID: 3370088}
-  - 136: {fileID: 13644930}
   - 23: {fileID: 2335872}
   m_Layer: 0
   m_Name: Cannon
@@ -450,7 +446,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.7810807, y: 0.25, z: -3.97044}
+  m_LocalPosition: {x: -5.7810807, y: 0.5, z: -3.97044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406514}
@@ -710,6 +706,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6520828
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11401878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -733,6 +741,9 @@ MonoBehaviour:
   - {fileID: 153876}
   - {fileID: 181658}
   - {fileID: 168190}
+  fireInterval: 0.5
+  myDamage: 0.5
+  mySplashDamage: 0.25
   aimPoint: {fileID: 158616, guid: 4bbbce203bc543e408f43f597e4c62e9, type: 2}
   numEnemiesInRange: 0
   numAlliesInRange: 0
@@ -775,71 +786,6 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.75
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13614262
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 148652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13618730
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 168548}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13644930
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190244}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13678132
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &13698614
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:

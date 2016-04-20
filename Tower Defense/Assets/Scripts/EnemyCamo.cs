@@ -10,12 +10,10 @@ public class EnemyCamo : Enemy {
 	protected UnitGenerator uGen;
 	protected Texture2D myTex;
 	protected bool stealthed;
-	protected Vector3 destination;
 
 	// Use this for initialization
 	protected override void Awake () {
 		base.Awake ();
-		destination = this.GetComponent<NavMeshAgent> ().destination;
 		uGen = Camera.main.GetComponent<UnitGenerator> ();
 		nextStealthTime = -10f;
 		stealthed = false;
