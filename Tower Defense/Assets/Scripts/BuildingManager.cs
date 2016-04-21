@@ -8,6 +8,7 @@ public class BuildingManager : MonoBehaviour {
 	private bool initOnce = false;
 	private GameObject currentTower;
 
+
 	// Use this for initialization
 	void Start () {
 		buildingPlacement = GetComponent<BuildingPlacement>();
@@ -15,6 +16,7 @@ public class BuildingManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		// buildPlacement.hasPlaced == true
 		if (buildingPlacement.hasPlaced == true && !initOnce) {
 			ShowTowerPopup.Init (currentTower);
 			initOnce = true;
@@ -45,7 +47,7 @@ public class BuildingManager : MonoBehaviour {
 		CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
 		if (castle.canPurchase(300)) {
 			Debug.Log("spawnTower2() triggered");
-			buildingPlacement.SetItem(buildings[1]);
+			currentTower = buildingPlacement.SetItem(buildings[1]);
 			castle.makePurchase(300);
 			initOnce = false;
 		} else {
@@ -55,10 +57,9 @@ public class BuildingManager : MonoBehaviour {
 
 	public void spawnTower3() {
 		CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
-		if (castle.canPurchase(300))
-		{
+		if (castle.canPurchase(300)) {
 			Debug.Log("spawnTower3() triggered");
-			buildingPlacement.SetItem(buildings[2]);
+			currentTower = buildingPlacement.SetItem(buildings[2]);
 			castle.makePurchase(500);
 			initOnce = false;
 		}
@@ -72,7 +73,7 @@ public class BuildingManager : MonoBehaviour {
 		if (castle.canPurchase(750))
 		{
 			Debug.Log("spawnTower4() triggered");
-			buildingPlacement.SetItem(buildings[3]);
+			currentTower = buildingPlacement.SetItem(buildings[3]);
 			castle.makePurchase(750);
 			initOnce = false;
 		}
@@ -86,7 +87,7 @@ public class BuildingManager : MonoBehaviour {
 		if (castle.canPurchase(1000))
 		{
 			Debug.Log("spawnTower5() triggered");
-			buildingPlacement.SetItem(buildings[4]);
+			currentTower = buildingPlacement.SetItem(buildings[4]);
 			castle.makePurchase(1000);
 			initOnce = false;
 		}

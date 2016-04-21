@@ -9,6 +9,7 @@ public class ShowTowerPopup : EditorWindow {
 	private static UnitGenerator uGen;
 	private Vector3 farOff = new Vector3 (-500, -500, -500);
 	string myName = "";
+	string warning = "Your tower has no training data";
 	bool isLearned;
 	List<bool> learnedUnits = new List<bool>();
 	float noiseScale = 0.0f;
@@ -38,6 +39,7 @@ public class ShowTowerPopup : EditorWindow {
 	int quantity9;
 	int quantity10;
 
+	bool isTrainingEmpty = true;
 
 	public static string towerName = "";
 	public Transform trainable;
@@ -62,22 +64,22 @@ public class ShowTowerPopup : EditorWindow {
 	void InstantiatePrimitive() {
 		// define node types
 		switch(nodeType) {
-		case 0:  
-			// grayscale
-			neuralNodeType = NeuralNode.NodeType.GRAYSCALE;
-			break;
-		case 1: 
-			// full color
-			neuralNodeType = NeuralNode.NodeType.FULLCOLOR;
-			break;
-		case 2:
-			// color histogram
-			neuralNodeType = NeuralNode.NodeType.COLORHIST;
-			break;
-		default:
-			// grayscale
-			neuralNodeType = NeuralNode.NodeType.GRAYSCALE;
-			break;
+			case 0:  
+				// grayscale
+				neuralNodeType = NeuralNode.NodeType.GRAYSCALE;
+				break;
+			case 1: 
+				// full color
+				neuralNodeType = NeuralNode.NodeType.FULLCOLOR;
+				break;
+			case 2:
+				// color histogram
+				neuralNodeType = NeuralNode.NodeType.COLORHIST;
+				break;
+			default:
+				// grayscale
+				neuralNodeType = NeuralNode.NodeType.GRAYSCALE;
+				break;
 		}
 	}
 
@@ -160,74 +162,94 @@ public class ShowTowerPopup : EditorWindow {
 		EditorGUILayout.EndHorizontal ();
 
 		// Start training!
+		InstantiatePrimitive ();
 		NeuralNode node = NeuralNode.create (neuralNodeType);
 		cFire.node = node;
 		GUILayout.Space(45);
-		if (GUILayout.Button ("Done!")) {
+		if (GUILayout.Button ("Train!")) {
 
 			for (int i = 0; i < quantity1; i++) {
 				Unit unit = uGen.MakeUnit (false, 0, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned1);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
 			for (int i = 0; i < quantity2; i++) {
 				Unit unit = uGen.MakeUnit (false, 1, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned2);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
 			for (int i = 0; i < quantity3; i++) {
 				Unit unit = uGen.MakeUnit (true, 0, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned3);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
 			for (int i = 0; i < quantity4; i++) {
 				Unit unit = uGen.MakeUnit (true, 1, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned4);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
 			for (int i = 0; i < quantity5; i++) {
 				Unit unit = uGen.MakeUnit (true, 2, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned5);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
 			for (int i = 0; i < quantity6; i++) {
 				Unit unit = uGen.MakeUnit (true, 4, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned6);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
 			for (int i = 0; i < quantity7; i++) {
 				Unit unit = uGen.MakeUnit (true, 6, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned6);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
 			for (int i = 0; i < quantity8; i++) {
 				Unit unit = uGen.MakeUnit (true, 5, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned8);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
 			for (int i = 0; i < quantity9; i++) {
 				Unit unit = uGen.MakeUnit (true, 9, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned9);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
 			for (int i = 0; i < quantity10; i++) {
 				Unit unit = uGen.MakeUnit (true, 3, farOff, noiseScale, true);
 				node.AddToTrainingSet (unit, isLearned10);
 				unit.DestroyMe ();
+				isTrainingEmpty = false;
 			}
 
-			node.LearnUnits ();
-			this.Close ();
-			Time.timeScale = 1;
+			if (!isTrainingEmpty) {
+				node.LearnUnits ();
+				this.Close ();
+				Time.timeScale = 1;
+			} else {
+				// alert that no training is going to be done
+				// default
+				Debug.Log("Training set is empty!");
+				warning = EditorGUILayout.TextField (warning);
+				ShowNotification(new GUIContent(warning));
+			}
+				
 		}
 
 	}
