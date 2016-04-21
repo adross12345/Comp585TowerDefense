@@ -80,6 +80,7 @@ public class GrayscaleNode : NeuralNode {
 			Destroy (u);
 		}
 		trainingSet.Clear();
+		isAILearned = true;
 	}
 
 	public override double calculateZ(double[] features){

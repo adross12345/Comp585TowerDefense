@@ -15,6 +15,7 @@ public abstract class NeuralNode : ScriptableObject {
 	protected int[] nonzeroIndices;
 	protected List<EnemyAIConfound> enemiesToInform;
 	protected List<int> confoundedIndices;
+	public bool isAILearned = false;
 
 	public Texture2D targetTex;
 
@@ -102,6 +103,18 @@ public abstract class NeuralNode : ScriptableObject {
 		trainingSet.Add (pu);
 	}
 
+	public void AddToTrainingSet(Unit unit, bool isEnemy){
+		double identity = 1.0;
+		if (isEnemy) {
+			identity = 0.0;
+		}
+		MeshRenderer mr = unit.GetComponent<MeshRenderer> ();
+		Texture tex = mr.material.mainTexture;
+		PhantomUnit pu = ScriptableObject.CreateInstance<PhantomUnit>();
+		pu.Initialize (tex, identity);
+		trainingSet.Add (pu);
+	}
+
 	public void AddToTrainingSet(PhantomUnit pu){
 		trainingSet.Add (pu);
 	}
@@ -127,9 +140,9 @@ public abstract class NeuralNode : ScriptableObject {
 	protected void SetNonzeroIndices(){
 		List<int> nonzeros = new List<int> ();
 		for (int i = 0; i < actualWeights.Length; i++) {
-//			if (actualWeights [i] != 0) {
-//				nonzeros.Add (i);
-//			}
+			//			if (actualWeights [i] != 0) {
+			//				nonzeros.Add (i);
+			//			}
 			nonzeros.Add(i);
 		}
 		nonzeros.Add (-1);

@@ -8,7 +8,6 @@ public class CannonFire : MonoBehaviour {
 	protected Unit myTarget;
 	protected List<Unit> targetsInRange;
 	protected int targetsSeen;
-	protected bool isAILearned;
 
 	public Projectile projectile;
 	public GameObject[] firePoints;
@@ -23,7 +22,6 @@ public class CannonFire : MonoBehaviour {
 		targetsInRange = new List<Unit> ();
 		node = NeuralNode.create (NeuralNode.NodeType.FULLCOLOR);
 		targetsSeen = 0;
-		isAILearned = false;
 		SetRange (this.range);
 		transform.Find ("Range").gameObject.GetComponent<MeshRenderer> ().enabled = false;
 		this.aimPoint = Instantiate (aimPoint);
@@ -88,12 +86,11 @@ public class CannonFire : MonoBehaviour {
 	}﻿
 
 	protected virtual void Update(){
-		if (targetsSeen >= 4 && !isAILearned) {
+		if (targetsSeen >= 4 && !node.isAILearned) {
 			node.LearnUnits ();
 			Debug.Log ("Stuff learned");
-			isAILearned = true;
 		}
-		if (isAILearned) {
+		if (node.isAILearned) {
 			if (myTarget == null) {
 				try{
 					if (targetsInRange.Count > 0) {

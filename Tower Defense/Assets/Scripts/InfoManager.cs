@@ -10,7 +10,6 @@ public class InfoManager : MonoBehaviour {
     public Image towerImage;
     private string tname;
     private string price;
-    private string 
 
 	// Use this for initialization
 	void Start () {

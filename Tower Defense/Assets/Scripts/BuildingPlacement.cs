@@ -2,24 +2,24 @@ using UnityEngine;
 using System.Collections;
 
 public class BuildingPlacement : MonoBehaviour {
-	
+
 	public float scrollSensitivity;
-	
+
 	private PlaceableBuilding placeableBuilding;
 	private Transform currentBuilding;
 	public bool hasPlaced;
-	
+
 	public LayerMask buildingsMask;
 	public LayerMask groundMask;
-	
+
 	private PlaceableBuilding placeableBuildingOld;
-	
+
 	// Update is called once per frame
 	void Update () {
 		Camera mainCam = GetComponent<Camera> ();
 		Vector3 m = Input.mousePosition;
-//		m = new Vector3(m.x,m.y,transform.position.y);
-//		Vector3 p = mainCam.ScreenToWorldPoint(m);
+		//		m = new Vector3(m.x,m.y,transform.position.y);
+		//		Vector3 p = mainCam.ScreenToWorldPoint(m);
 
 		Ray ray = mainCam.ScreenPointToRay (m);
 		Plane xz = new Plane(Vector3.up, new Vector3(0,0.5f,0));
@@ -28,12 +28,12 @@ public class BuildingPlacement : MonoBehaviour {
 		Vector3 p = ray.GetPoint (distance);
 
 
-//		Vector3 p = new Vector3 (0, 0, 0);
-//		Ray ray = mainCam.ScreenPointToRay (m);
-//		if (Physics.Raycast (ray, out hit, Mathf.Infinity, groundMask)) {
-//			m = new Vector3(m.x,m.y,hit.distance);
-//			p = mainCam.ScreenToWorldPoint(m);
-//		}
+		//		Vector3 p = new Vector3 (0, 0, 0);
+		//		Ray ray = mainCam.ScreenPointToRay (m);
+		//		if (Physics.Raycast (ray, out hit, Mathf.Infinity, groundMask)) {
+		//			m = new Vector3(m.x,m.y,hit.distance);
+		//			p = mainCam.ScreenToWorldPoint(m);
+		//		}
 
 
 		if (currentBuilding != null && !hasPlaced) {
@@ -87,20 +87,22 @@ public class BuildingPlacement : MonoBehaviour {
 		return res;
 	}
 
-	public void SetItem(GameObject b) {
+	public GameObject SetItem(GameObject b) {
 		if (currentBuilding != null) {
 			Destroy (currentBuilding.gameObject);
 		}
 		hasPlaced = false;
 		Debug.Log ("Set Item");
-		currentBuilding = ((GameObject)Instantiate(b)).transform;
-//		GameObject go = transform.Find ("BuildingFootprint").gameObject;
-//		placeableBuilding = (PlaceableBuilding)go;
+		GameObject res = (GameObject)Instantiate(b);
+		currentBuilding = res.transform;
+		//		GameObject go = transform.Find ("BuildingFootprint").gameObject;
+		//		placeableBuilding = (PlaceableBuilding)go;
 		placeableBuilding = currentBuilding.GetComponentsInChildren<PlaceableBuilding>()[0];
 		placeableBuilding.SetSelected (true);
+		return res;
 	}
 
 	public void PlaceItem(GameObject b) {
-		
+
 	}
 }

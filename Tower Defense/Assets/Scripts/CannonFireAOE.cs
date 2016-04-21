@@ -30,12 +30,11 @@ public class CannonFireAOE : CannonFire {
 	}//Start
 
 	protected override void Update(){
-		if (targetsSeen >= 4 && !isAILearned) {
+		if (targetsSeen >= 4 && !node.isAILearned) {
 			node.LearnUnits ();
 			Debug.Log ("Stuff learned");
-			isAILearned = true;
 		}
-		if (isAILearned && myTarget == null && targetsInRange.Count > 0) {
+		if (node.isAILearned && myTarget == null && targetsInRange.Count > 0) {
 			try{
 				if(cutoffRatio < 0){
 					myTarget = targetsInRange[0];
@@ -83,7 +82,7 @@ public class CannonFireAOE : CannonFire {
 				targetsInRange.Add (u);
 				if (targetsSeen < 4) {
 					node.AddToTrainingSet (u);
-				} else if (isAILearned) {
+				} else { // else if (isAILearned)
 					double z = node.calculateZ (u);
 					Debug.Log (z+" "+node.b);
 					UnitID uID = UnitID.Enemy;
