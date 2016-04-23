@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2347150}
   - 195: {fileID: 19525930}
   - 54: {fileID: 5470326}
-  - 114: {fileID: 11449374}
+  - 114: {fileID: 11411724}
   m_Layer: 0
   m_Name: EnemyHydra
   m_TagString: Enemy
@@ -190,6 +190,27 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11411724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49678542ac8d2b64893fb8dd6937c193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identity: 0
+  speed: 3
+  acceleration: 8
+  maxHealth: 1
+  curHealth: 1
+  healthBar: {fileID: 192668}
+  damage: 10
+  money: 13
+  armor: 0
+  splitsRemaining: 2
 --- !u!114 &11417334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,26 +227,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &11449374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7b4f171ab30f24d90cb87f5651acb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  identity: 0
-  speed: 3
-  acceleration: 8
-  maxHealth: 1
-  curHealth: 1
-  healthBar: {fileID: 192668}
-  damage: 10
-  money: 13
-  splitsRemaining: 2
 --- !u!114 &11466542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,7 +435,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 192668}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125556}

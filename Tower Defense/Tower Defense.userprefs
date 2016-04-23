@@ -1,27 +1,22 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Levels\1.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelSpawner.cs">
     <Files>
-      <File FileName="Assets\Scripts\EnemyAIConfound.cs" Line="31" Column="58" />
-      <File FileName="Assets\Scripts\Buildspace.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CannonFire.cs" Line="24" Column="58" />
-      <File FileName="Assets\Scripts\LevelSpawner.cs" Line="33" Column="12" />
-      <File FileName="Assets\Scripts\Spawn.cs" Line="25" Column="20" />
-      <File FileName="Assets\Scripts\UnitGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BuildingPlacement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyHydra.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CannonFire.cs" Line="24" Column="19" />
+      <File FileName="Assets\Scripts\LevelSpawner.cs" Line="66" Column="15" />
+      <File FileName="Assets\Scripts\Spawn.cs" Line="27" Column="19" />
       <File FileName="Assets\Scripts\NeuralNode.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Unit.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\Levels\1.txt" Line="12" Column="14" />
-      <File FileName="Assets\Scripts\EnemyCamo.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ColorNode.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ColorHistNode.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GrayscaleNode.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ConvolvedNode.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CombinationNode.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CannonFireAOE.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\Levels\1.txt" Line="13" Column="1" />
+      <File FileName="Assets\Scripts\CannonFireAOE.cs" Line="87" Column="29" />
       <File FileName="Assets\Scripts\ProjectileSplash.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Projectile.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Unit.cs" Line="63" Column="1" />
+      <File FileName="Assets\Scripts\EnemyAIConfound.cs" Line="89" Column="11" />
+      <File FileName="Assets\Scripts\UnitBasic.cs" Line="4" Column="23" />
+      <File FileName="Assets\Scripts\UnitHydra.cs" Line="53" Column="23" />
+      <File FileName="Assets\Scripts\EnemySnake.cs" Line="5" Column="20" />
+      <File FileName="Assets\Scripts\ShowTowerPopup.cs" Line="25" Column="17" />
+      <File FileName="Assets\Scripts\UnitGenerator.cs" Line="20" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

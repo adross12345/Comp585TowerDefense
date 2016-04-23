@@ -22,8 +22,8 @@ public class Spawn : MonoBehaviour {
 		numSpawned = 0;
 		uGen = Camera.main.GetComponent<UnitGenerator> ();
 
-		lvlSpawn = Camera.main.GetComponent<LevelSpawner> ();
-		lvlSpawn.StartNextLevel ();
+//		lvlSpawn = Camera.main.GetComponent<LevelSpawner> ();
+//		lvlSpawn.StartNextLevel ();
 //		InvokeRepeating("SpawnNext", 0, interval);
 
 //				SpawnNext ();

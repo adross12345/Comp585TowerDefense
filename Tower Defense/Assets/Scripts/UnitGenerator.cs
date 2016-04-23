@@ -17,12 +17,12 @@ public class UnitGenerator : MonoBehaviour {
 		if (enemy) {
 			if (index < enemies.Length) {
 				unit = Instantiate (enemies [index], position, Quaternion.LookRotation(forward, up)) as Unit;
-				Debug.Log ("Made enemy type " + index);
+//				Debug.Log ("Made enemy type " + index);
 			}
 		} else {
 			if (index < allies.Length) {
 				unit = Instantiate (allies [index], position, Quaternion.LookRotation(forward, up)) as Unit;
-				Debug.Log ("Made ally type " + index);
+//				Debug.Log ("Made ally type " + index);
 			}
 		}
 		return unit;

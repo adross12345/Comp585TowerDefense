@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LevelSpawner : MonoBehaviour {
@@ -24,6 +25,9 @@ public class LevelSpawner : MonoBehaviour {
 	public int numEnemiesToSpawn;
 	public int numAlliesToSpawn;
 
+	public GameObject guiButton;
+	public Text guiTextLevel;
+
 	private UnitGenerator uGen;
 	private Vector3 spawn;
 
@@ -43,6 +47,7 @@ public class LevelSpawner : MonoBehaviour {
 	}
 
 	public void StartNextLevel(){
+		guiButton.SetActive (false);
 		currentLevelText = Resources.Load (subfolder + "/" + level) as TextAsset;
 		if (currentLevelText) {
 			string fullText = currentLevelText.text;
@@ -54,13 +59,20 @@ public class LevelSpawner : MonoBehaviour {
 		}
 	}
 
+	private void FinishLevel (){
+		level += 1;
+		isRunningLevel = false;
+		guiButton.transform.FindChild ("LevelNumber").GetComponent<Text> ().text = "" + level;
+		guiTextLevel.text = "Level " + level;
+		guiButton.SetActive (true);
+	}
+
 	private IEnumerator RunTextLevel(){
 		isRunningLevel = true;
 		for (int i = 0; i < currentLevelStrings.Length; i++) {
 			yield return StartCoroutine (RunLine (i));
 		}
-		level += 1;
-		isRunningLevel = false;
+		FinishLevel ();
 	}
 
 	private IEnumerator RunLine(int lineNumber){
@@ -141,8 +153,7 @@ public class LevelSpawner : MonoBehaviour {
 			}
 			yield return SpawnUnit (spawnEnemy, noise, delay, rushNum);
 		}
-		level += 1;
-		isRunningLevel = false;
+		FinishLevel ();
 	}
 
 	private IEnumerator SpawnUnit(bool spawnEnemy, float noise, float delay, float rushNum){

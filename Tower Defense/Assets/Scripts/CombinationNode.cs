@@ -55,9 +55,9 @@ public class CombinationNode : NeuralNode {
 			NeuralNode.Shuffle (features);
 			foreach(double[] fs in features){
 				int trueIdentity = (int) Mathf.Round((float)fs [featureLength]);
-				int f = (int) Ally.ALLY_IDENTITY;
+				int f = (int) Unit.ALLY_IDENTITY;
 				if (calculateZ (fs) < 0) {
-					f = (int) Enemy.ENEMY_IDENTITY;
+					f = (int) Unit.ENEMY_IDENTITY;
 				}
 				misses += Mathf.Abs (f - trueIdentity);
 				for (int i = 0; i < featureLength; i++) {

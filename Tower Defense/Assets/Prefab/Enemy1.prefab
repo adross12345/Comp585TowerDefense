@@ -30,7 +30,7 @@ GameObject:
   - 23: {fileID: 2304160}
   - 195: {fileID: 19594510}
   - 54: {fileID: 5456410}
-  - 114: {fileID: 11449050}
+  - 114: {fileID: 11487172}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -184,25 +184,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11449050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 137874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71f1a8a9870444b06b7fd009f890d2fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  identity: 0
-  speed: 3
-  acceleration: 8
-  maxHealth: 1
-  curHealth: 0
-  healthBar: {fileID: 159406}
-  damage: 10
-  money: 0
 --- !u!114 &11454498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,6 +254,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11487172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14132f1fd0a8fcb4c85cc6cfd30b66b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identity: 0
+  speed: 3
+  acceleration: 8
+  maxHealth: 1
+  curHealth: 1
+  healthBar: {fileID: 159406}
+  damage: 10
+  money: 13
+  armor: 0
 --- !u!114 &11487840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -482,6 +483,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.7071067
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 159406}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 137874}

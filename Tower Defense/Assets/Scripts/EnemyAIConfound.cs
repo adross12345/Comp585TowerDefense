@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class EnemyAIConfound : Enemy {
+public class EnemyAIConfound : Unit {
 	protected Dictionary<NeuralNode, List<int>> towersToConfound;
 	public float range;
 	public float confoundInterval;
@@ -11,6 +11,11 @@ public class EnemyAIConfound : Enemy {
 	protected Transform rangeIndicator;
 	public float rangeSpeed = 50;
 
+	public float timePerStop = 0f;
+	public float timeBetweenStop = 0f;
+	protected float timeOfLastStopOrGo;
+	protected bool stopped;
+
 	// Use this for initialization
 	protected override void Awake () {
 		base.Awake ();
@@ -18,11 +23,23 @@ public class EnemyAIConfound : Enemy {
 		nextConfoundingTime = -10f;
 		this.gameObject.GetComponent<SphereCollider> ().radius = range;
 		rangeIndicator = transform.Find ("Range");
+		timeOfLastStopOrGo = Time.time;
+		stopped = false;
 	}
 
 	// Update is called once per frame
-	protected override void Update () {
-		base.Update ();
+	void Update () {
+		if (timePerStop > 0) {
+			if (!stopped && Time.time > timeOfLastStopOrGo + timeBetweenStop) {
+				stopped = true;
+				timeOfLastStopOrGo = Time.time;
+				nav.SetDestination (transform.position);
+			}else if(stopped && Time.time > timeOfLastStopOrGo + timePerStop) {
+				stopped = false;
+				timeOfLastStopOrGo = Time.time;
+				nav.SetDestination (destination);
+			}
+		}
 		if (Time.time >= nextConfoundingTime) {
 			foreach (KeyValuePair<NeuralNode, List<int>> kvp in towersToConfound) {
 				NeuralNode node = kvp.Key;
@@ -69,7 +86,7 @@ public class EnemyAIConfound : Enemy {
 		return 0.0;
 	}
 
-	protected override void OnTriggerEnter(Collider co) {
+	protected void OnTriggerEnter(Collider co) {
 		if (co.tag == "Turret" && co is BoxCollider) {
 			CannonFire cf = co.gameObject.GetComponent<CannonFire> ();
 			if (cf != null) {

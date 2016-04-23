@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyCamo : Enemy {
+public class EnemyCamo : Unit {
 	protected float nextUnstealthTime;
 	protected float nextStealthTime;
 	public float stealthTime;
@@ -41,7 +41,7 @@ public class EnemyCamo : Enemy {
 	}
 	
 	// Update is called once per frame
-	protected override void Update () {
+	void Update () {
 		if (stealthed && Time.time >= nextUnstealthTime) {
 			StartCoroutine (ChangeTexture (myTex));
 			stealthed = false;

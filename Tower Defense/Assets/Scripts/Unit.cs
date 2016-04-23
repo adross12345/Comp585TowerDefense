@@ -18,10 +18,6 @@ public abstract class Unit : MonoBehaviour {
 	public float armor = 0f;
 	protected float noise;
 
-	public float timePerStop = 0f;
-	public float timeBetweenStop = 0f;
-	protected float timeOfLastStopOrGo;
-	public bool stopped;
 	protected NavMeshAgent nav;
 
 	protected Vector3 destination;
@@ -29,7 +25,7 @@ public abstract class Unit : MonoBehaviour {
 	protected List<Projectile> aimedAtMe;
 
 	// Use this for initialization
-	protected virtual void Start () {
+	protected virtual void Awake () {
 
 		curHealth = maxHealth;
 		aimedAtMe = new List<Projectile> ();
@@ -44,8 +40,7 @@ public abstract class Unit : MonoBehaviour {
 				nav.acceleration = acceleration;
 			}
 		}
-		timeOfLastStopOrGo = Time.time;
-		stopped = false;
+		setHealthBar (curHealth / maxHealth);
 	}
 
 	//Decreases health when enemy gets hit.
@@ -65,8 +60,9 @@ public abstract class Unit : MonoBehaviour {
 
 	public void setHealthBar(float healthPercent)
 	{
-		this.healthBar.transform.GetChild(2).localScale = new Vector3(curHealth, 
-			this.healthBar.transform.localScale.y, this.healthBar.transform.localScale.z);
+		Transform bar = this.healthBar.transform;
+		bar.GetChild(2).localScale = new Vector3(healthPercent, 
+			bar.localScale.y, bar.localScale.z);
 	}
 
 	public void addNoise(float noise){
@@ -148,24 +144,8 @@ public abstract class Unit : MonoBehaviour {
 	//		transform.position = new Vector3 (0, -500, 0);
 	//	}
 
-	protected virtual void Update(){
-		if (timePerStop > 0) {
-			if (!stopped && Time.time > timeOfLastStopOrGo + timeBetweenStop) {
-				stopped = true;
-				timeOfLastStopOrGo = Time.time;
-				nav.SetDestination (transform.position);
-			}else if(stopped && Time.time > timeOfLastStopOrGo + timePerStop) {
-				stopped = false;
-				timeOfLastStopOrGo = Time.time;
-				nav.SetDestination (destination);
-			}
-		}
-	}
-
 	public virtual void SetSplitsRemaining(int splitsRemaining){
 		//For most units this will do nothing.
 	}
-
-	protected abstract void OnTriggerEnter (Collider co);
-
+		
 }

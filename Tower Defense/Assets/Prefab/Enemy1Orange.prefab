@@ -48,7 +48,7 @@ GameObject:
   - 23: {fileID: 2355602}
   - 195: {fileID: 19512836}
   - 54: {fileID: 5464140}
-  - 114: {fileID: 11404874}
+  - 114: {fileID: 11409816}
   m_Layer: 0
   m_Name: Enemy1Orange
   m_TagString: Enemy
@@ -163,7 +163,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11404874
+--- !u!114 &11409816
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -171,17 +171,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 133908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71f1a8a9870444b06b7fd009f890d2fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 14132f1fd0a8fcb4c85cc6cfd30b66b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
   speed: 3
   acceleration: 8
   maxHealth: 1
-  curHealth: 0
+  curHealth: 1
   healthBar: {fileID: 112228}
   damage: 10
   money: 13
+  armor: 0
 --- !u!114 &11435000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,6 +447,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.7071067
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 112228}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 133908}
