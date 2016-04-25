@@ -84,6 +84,7 @@ public class CannonFireAOE : CannonFire {
 					node.AddToTrainingSet (u);
 				} else { // else if (isAILearned)
 					double z = node.calculateZ (u);
+					node.lastZ = z;
 //					Debug.Log (z+" "+node.b);
 					UnitID uID = UnitID.Enemy;
 					//Do AI animation

@@ -7,6 +7,7 @@ public abstract class NeuralNode : ScriptableObject {
 	protected double[] actualWeights;
 	public double b;
 	protected double actualB;
+	public double lastZ;
 	protected double learningRate = 0.1;
 	protected int unitWidth = 32;
 	protected int unitHeight = 32;

@@ -1,0 +1,17 @@
+//Command parameters
+//Spawn float(delay after) float(noise) bool("0" for enemy, "1" for ally) int(index of Unit in UnitGenerator [optional])
+//Spawn delay noise isEnemy index
+//Execute(Executes number of commands before it) float(delay before) int(indices above the execute command you want to start) int(number of times you want the line to execute)
+//Execute delay numCommands numTimesToExecute
+//Wait float(delay after)
+//Wait delay
+//After the End command, the next rest of the lines will be displayed in the informational text.
+Spawn 2 0 0 0
+Spawn 2 0 1 0
+Spawn 2 1 1 0
+Spawn 2 1 0 0
+Spawn 2 0 1 0
+Execute 0 2 3
+End
+Certain AI types will be more useful at differentiating certain units.
+For example, the Grayscale AI is not useful for the new units, because their features in grayscale are the same, but they look very different to the Full Color and Color Histogram types.

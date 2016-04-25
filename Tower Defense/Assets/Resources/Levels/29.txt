@@ -1,0 +1,73 @@
+//Command parameters
+//Spawn float(delay after) float(noise) bool("0" for enemy, "1" for ally) int(index of Unit in UnitGenerator [optional])
+//Spawn delay noise isEnemy index
+//Execute(Executes number of commands before it) float(delay before) int(indices above the execute command you want to start) int(number of times you want the line to execute)
+//Execute delay numCommands numTimesToExecute
+//Wait float(delay after)
+//Wait delay
+//After the End command, the next rest of the lines will be displayed in the informational text.
+Spawn 0.05 0.22 0 0
+Execute 0 1 4
+Wait 3
+Spawn 0.08 0.22 0 1
+Execute 0 1 4
+Wait 3
+Spawn 0.1 0.22 0 2
+Execute 0 1 3
+Wait 3
+Spawn 0.11 0.22 0 3
+Execute 0 1 3
+Wait 3
+Spawn 0.13 0.22 0 4
+Execute 0 1 2
+Wait 3
+Spawn 0.15 0.22 0 6
+Execute 0 1 1
+Wait 3
+Spawn 0.17 0.22 0 7
+Wait 3
+Spawn 0.18 0.22 0 9
+Wait 3
+Spawn 0.2 0.22 0 8
+Execute 0 1 1
+Wait 3
+Spawn 0.22 0.22 0 5
+Wait 3
+Spawn 0.02 0.22 1 0
+Execute 0 1 14
+Wait 3
+Spawn 0.03 0.22 1 1
+Execute 0 1 14
+Wait 3
+Spawn 0.05 0.22 1 10
+Execute 0 1 12
+Wait 3
+Spawn 0.05 0.22 1 11
+Execute 0 1 12
+Wait 3
+Spawn 0.08 0.22 1 5
+Execute 0 1 9
+Wait 3
+Spawn 0.1 0.22 1 2
+Execute 0 1 7
+Wait 3
+Spawn 0.1 0.22 1 4
+Execute 0 1 7
+Wait 3
+Spawn 0.15 0.22 1 13
+Execute 0 1 4
+Wait 3
+Spawn 0.1 0.22 1 3
+Execute 0 1 6
+Wait 3
+Spawn 0.1 0.22 1 12
+Execute 0 1 6
+Wait 3
+Spawn 0.15 0.22 1 6
+Execute 0 1 4
+Wait 3
+Spawn 0.1 0.22 1 9
+Execute 0 1 6
+Wait 3
+End
+Last level, coming up. If you're Indian Jones you might not like it. Me, I hate panthers.

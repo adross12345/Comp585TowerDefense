@@ -1,0 +1,30 @@
+//Command parameters
+//Spawn float(delay after) float(noise) bool("0" for enemy, "1" for ally) int(index of Unit in UnitGenerator [optional])
+//Spawn delay noise isEnemy index
+//Execute(Executes number of commands before it) float(delay before) int(indices above the execute command you want to start) int(number of times you want the line to execute)
+//Execute delay numCommands numTimesToExecute
+//Wait float(delay after)
+//Wait delay
+//After the End command, the next rest of the lines will be displayed in the informational text.
+Spawn 0.08 0.25 1 13
+Spawn 0.08 0.25 1 13
+Spawn 0.04 0.25 1 9
+Spawn 0.08 0.25 1 6
+Execute 0 4 4
+Wait 1.5
+Spawn 0.08 0.25 1 6
+Spawn 0.08 0.25 1 9
+Execute 0 2 14
+Wait 1.5
+Spawn 0.01 0.25 1 2
+Execute 0 1 4
+Spawn 0.05 0.25 1 3
+Spawn 0.05 0.25 1 9
+Execute 0 4 1
+Spawn 0.3 0.25 1 6
+Execute 0 6 4
+Spawn 0.1 0.25 1 6
+Execute 0 1 15
+End
+Congratulations!
+I am a Two-Toed Sloth.

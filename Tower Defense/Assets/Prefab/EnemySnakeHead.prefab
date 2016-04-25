@@ -273,6 +273,7 @@ MonoBehaviour:
   healthBar: {fileID: 109192}
   damage: 10
   money: 0
+  armor: 0
   timeBetweenSpawns: 0.47
   spawnChance: 3
 --- !u!114 &11467260

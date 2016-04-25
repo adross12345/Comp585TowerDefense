@@ -1,0 +1,36 @@
+//Command parameters
+//Spawn float(delay after) float(noise) bool("0" for enemy, "1" for ally) int(index of Unit in UnitGenerator [optional])
+//Spawn delay noise isEnemy index
+//Execute(Executes number of commands before it) float(delay before) int(indices above the execute command you want to start) int(number of times you want the line to execute)
+//Execute delay numCommands numTimesToExecute
+//Wait float(delay after)
+//Wait delay
+//After the End command, the next rest of the lines will be displayed in the informational text.
+Spawn 1.5 0 0 5
+Spawn 1.5 0 0 6
+Spawn 0.3 0.09 1 10
+Spawn 0.3 0.09 1 11
+Execute 0 2 2
+Spawn 0.15 0.09 0 2
+Spawn 0.15 0.09 0 3
+Execute 0 2 2
+Spawn 0.15 0.09 1 10
+Spawn 0.15 0.09 1 11
+Execute 0 8 4
+Wait 1
+Spawn 0.3 0.09 1 1
+Spawn 0.2 0.09 0 1
+Execute 0 1 4
+Execute 0 3 2
+Spawn 0.2 0.09 1 1
+Execute 0 1 1
+Spawn 0.2 0.09 1 0
+Spawn 0.2 0.09 0 0
+Spawn 0.2 0.09 1 1
+Execute 0 5 4
+Spawn 1 0.09 1 5
+Spawn 1 0.2 1 5
+Spawn 1 0.09 0 6
+Spawn 1 0.09 0 6
+End
+I prefer some nice Cecropia buds and shoots, spiced with the odd lizard, now and again. Takes a while to get it all down though.

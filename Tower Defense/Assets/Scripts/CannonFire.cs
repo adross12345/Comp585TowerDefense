@@ -105,6 +105,7 @@ public class CannonFire : MonoBehaviour {
 							}
 						}
 						double z = node.calculateZ (u);
+						node.lastZ = z;
 						//						Debug.Log(z);
 						//Do AI animation
 						if (z <=0) {

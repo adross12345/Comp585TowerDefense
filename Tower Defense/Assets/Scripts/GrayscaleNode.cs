@@ -129,9 +129,9 @@ public class GrayscaleNode : NeuralNode {
 			string s = "";
 			//			Debug.Log ("Column:" + x);
 			for (int y = 0; y < newTex.height; y++) {
-				float r = convertToColorVal(10 * weights [(y * newTex.width + x)]);
-				float g = convertToColorVal(10 * weights [(y * newTex.width + x)]);
-				float b = convertToColorVal(10 * weights [(y * newTex.width + x)]);
+				float r = convertToColorVal(50 * weights [(y * newTex.width + x)]);
+				float g = convertToColorVal(50 * weights [(y * newTex.width + x)]);
+				float b = convertToColorVal(50 * weights [(y * newTex.width + x)]);
 				//				float r = convertToColorVal(1 * weights [(y * newTex.width + x)]);
 				//				float g = convertToColorVal(1 * weights [(y * newTex.width + x)]);
 				//				float b = convertToColorVal(1 * weights [(y * newTex.width + x)]);
@@ -154,9 +154,9 @@ public class GrayscaleNode : NeuralNode {
 				//				float r = convertToColorVal(-1 * weights [(y * newTex.width + x)]);
 				//				float g = convertToColorVal(-1 * weights [(y * newTex.width + x)]);
 				//				float b = convertToColorVal(-1 * weights [(y * newTex.width + x)]);
-				float r = convertToColorVal(-10 * weights [(y * newTex.width + x)]);
-				float g = convertToColorVal(-10 * weights [(y * newTex.width + x)]);
-				float b = convertToColorVal(-10 * weights [(y * newTex.width + x)]);
+				float r = convertToColorVal(-50 * weights [(y * newTex.width + x)]);
+				float g = convertToColorVal(-50 * weights [(y * newTex.width + x)]);
+				float b = convertToColorVal(-50 * weights [(y * newTex.width + x)]);
 				Color c = new Color(r,g,b);
 				newTex.SetPixel (x, y, c);
 				s = r + "," + g + "," + b + " ";

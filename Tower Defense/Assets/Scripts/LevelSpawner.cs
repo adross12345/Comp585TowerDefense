@@ -8,6 +8,8 @@ public class LevelSpawner : MonoBehaviour {
 	public string subfolder = "Levels";
 	public int level;
 	public bool isRunningLevel;
+	private bool isFinished;
+	private bool endReached = false;
 
 	public float enemyScalingPower = 1.8f;
 	public float enemyScalingScalar = .5f;
@@ -27,6 +29,7 @@ public class LevelSpawner : MonoBehaviour {
 
 	public GameObject guiButton;
 	public Text guiTextLevel;
+	public GameObject informationalText;
 
 	private UnitGenerator uGen;
 	private Vector3 spawn;
@@ -48,7 +51,10 @@ public class LevelSpawner : MonoBehaviour {
 
 	public void StartNextLevel(){
 		guiButton.SetActive (false);
+		informationalText.SetActive (false);
 		currentLevelText = Resources.Load (subfolder + "/" + level) as TextAsset;
+		endReached = false;
+		isFinished = false;
 		if (currentLevelText) {
 			string fullText = currentLevelText.text;
 			currentLevelStrings = fullText.Split (new string[] { "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
@@ -59,27 +65,49 @@ public class LevelSpawner : MonoBehaviour {
 		}
 	}
 
+	void Update(){
+		if (isRunningLevel && isFinished && GameObject.FindObjectOfType<Unit> () == null) {
+			FinishLevel ();
+		}
+	}
+
 	private void FinishLevel (){
 		level += 1;
 		isRunningLevel = false;
 		guiButton.transform.FindChild ("LevelNumber").GetComponent<Text> ().text = "" + level;
 		guiTextLevel.text = "Level " + level;
 		guiButton.SetActive (true);
+		informationalText.SetActive (true);
+		GameObject.FindObjectOfType<Unit> ();
 	}
 
 	private IEnumerator RunTextLevel(){
 		isRunningLevel = true;
 		for (int i = 0; i < currentLevelStrings.Length; i++) {
 			yield return StartCoroutine (RunLine (i));
+			if (endReached) {
+				string newText = "";
+				for (int j = 1; j + i < currentLevelStrings.Length; j++) {
+					newText += currentLevelStrings [i + j];
+					if (i + j != currentLevelStrings.Length - 1) {
+						newText += "\n";
+					}
+				}
+				informationalText.transform.FindChild ("RelevantText").GetComponent<Text> ().text = newText;
+				break;
+			}
 		}
-		FinishLevel ();
+		isFinished = true;
 	}
 
 	private IEnumerator RunLine(int lineNumber){
 		string line = currentLevelStrings [lineNumber];
 		string[] lineParts = line.Split (default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
 		if (lineParts.Length < 4) {
-			if (lineParts.Length >= 2 && "Wait".Equals (lineParts [0])) {
+			if(lineParts.Length >= 1 && "End".Equals (lineParts [0])){
+				endReached = true;
+				yield return new WaitForEndOfFrame ();
+			} else if (lineParts.Length >= 2 && "Wait".Equals (lineParts [0])) {
 				float delay = float.Parse (lineParts [1]);
 				yield return new WaitForSeconds (delay);
 			} else {

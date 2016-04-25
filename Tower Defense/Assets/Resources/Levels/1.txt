@@ -5,8 +5,10 @@
 //Execute delay numCommands numTimesToExecute
 //Wait float(delay after)
 //Wait delay
+//After the End command, the next rest of the lines will be displayed in the informational text.
 Spawn 2 0 0 0
 Spawn 2 0 1 0
 Execute 0 2 3
-Wait 2
-Spawn 0 0 0 1
+End
+As the game progresses, each new level will have more enemies to defeat and more allies to give you money.
+Enemies will get stronger and do more damage, and Allies will give more money.

@@ -1,0 +1,28 @@
+//Command parameters
+//Spawn float(delay after) float(noise) bool("0" for enemy, "1" for ally) int(index of Unit in UnitGenerator [optional])
+//Spawn delay noise isEnemy index
+//Execute(Executes number of commands before it) float(delay before) int(indices above the execute command you want to start) int(number of times you want the line to execute)
+//Execute delay numCommands numTimesToExecute
+//Wait float(delay after)
+//Wait delay
+//After the End command, the next rest of the lines will be displayed in the informational text.
+Spawn 0.5 0.15 1 2
+Spawn 0.3 0.15 1 4
+Execute 0 2 4
+Wait 0.2
+Spawn 1 0.15 1 13
+Spawn 0.3 0.15 0 7
+Spawn 0.15 0.15 0 4
+Spawn 0.15 0.15 1 2
+Spawn 0.15 0.15 0 3
+Spawn 0.15 0.15 1 2
+Spawn 0.3 0.15 0 2
+Execute 0 7 3
+Spawn 0.2 0.18 1 5
+Execute 0 1 4
+Spawn 0.2 0.15 1 13
+Execute 0 3 4
+Spawn 0.5 0.15 1 2
+End
+At this point, you've probably got a training regime down. Now to change all that.
+The next Enemy will systematically change the weights of all AIs in its range to 0. You'll be able to see this on the Ally and Enemy Masks. The changed weights will be reset if the tower leaves the AIs range, either by the Enemy moving past or being destroyed.

@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\ColorNode.cs" />
      <Compile Include="Assets\Scripts\CombinationNode.cs" />
      <Compile Include="Assets\Scripts\ConvolvedNode.cs" />
+     <Compile Include="Assets\Scripts\DisableableButton.cs" />
      <Compile Include="Assets\Scripts\EnemyAIConfound.cs" />
      <Compile Include="Assets\Scripts\EnemyAISwapper.cs" />
      <Compile Include="Assets\Scripts\EnemyAIZeroer.cs" />
@@ -83,7 +84,36 @@
      <Compile Include="Assets\Scripts\UnitBasic.cs" />
      <Compile Include="Assets\Scripts\UnitGenerator.cs" />
      <Compile Include="Assets\Scripts\UnitHydra.cs" />
+     <None Include="Assets\Resources\Levels\13.txt" />
+     <None Include="Assets\Resources\Levels\3.txt" />
+     <None Include="Assets\Resources\Levels\11.txt" />
+     <None Include="Assets\Resources\Levels\2.txt" />
+     <None Include="Assets\Resources\Levels\17.txt" />
+     <None Include="Assets\Resources\Levels\19.txt" />
+     <None Include="Assets\Resources\Levels\8.txt" />
+     <None Include="Assets\Resources\Levels\20.txt" />
+     <None Include="Assets\Resources\Levels\16.txt" />
+     <None Include="Assets\Resources\Levels\18.txt" />
+     <None Include="Assets\Resources\Levels\12.txt" />
+     <None Include="Assets\Resources\Levels\15.txt" />
+     <None Include="Assets\Resources\Levels\22.txt" />
+     <None Include="Assets\Resources\Levels\14.txt" />
+     <None Include="Assets\Resources\Levels\7.txt" />
+     <None Include="Assets\Resources\Levels\28.txt" />
      <None Include="Assets\Resources\Levels\1.txt" />
+     <None Include="Assets\Resources\Levels\30.txt" />
+     <None Include="Assets\Resources\Levels\10.txt" />
+     <None Include="Assets\Resources\Levels\9.txt" />
+     <None Include="Assets\Resources\Levels\23.txt" />
+     <None Include="Assets\Resources\Levels\26.txt" />
+     <None Include="Assets\Resources\Levels\24.txt" />
+     <None Include="Assets\Resources\Levels\4.txt" />
+     <None Include="Assets\Resources\Levels\27.txt" />
+     <None Include="Assets\Resources\Levels\29.txt" />
+     <None Include="Assets\Resources\Levels\21.txt" />
+     <None Include="Assets\Resources\Levels\5.txt" />
+     <None Include="Assets\Resources\Levels\25.txt" />
+     <None Include="Assets\Resources\Levels\6.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

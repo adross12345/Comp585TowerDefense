@@ -1,0 +1,22 @@
+//Command parameters
+//Spawn float(delay after) float(noise) bool("0" for enemy, "1" for ally) int(index of Unit in UnitGenerator [optional])
+//Spawn delay noise isEnemy index
+//Execute(Executes number of commands before it) float(delay before) int(indices above the execute command you want to start) int(number of times you want the line to execute)
+//Execute delay numCommands numTimesToExecute
+//Wait float(delay after)
+//Wait delay
+//After the End command, the next rest of the lines will be displayed in the informational text.
+Spawn 1 0 1 11
+Spawn 1 0 0 0
+Spawn 1 0 1 0
+Spawn 1 0 0 1
+Spawn 1 0 1 1
+Spawn 1 0 0 2
+Spawn 1 0 1 10
+Spawn 1 0 0 3
+Spawn 1 0 1 11
+Spawn 1 0 0 4
+Spawn 1 0 1 10
+Execute 0 11 3
+End
+The units' textures are going to start having noise now. It'll start with a small amount of noise and increase as the game progresses.
