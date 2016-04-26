@@ -36,6 +36,7 @@ public class LevelSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		Time.timeScale = 5f;
 		isRunningLevel = false;
 		level = 1;
 		uGen = Camera.main.GetComponent<UnitGenerator> ();
@@ -117,7 +118,7 @@ public class LevelSpawner : MonoBehaviour {
 			if ("Spawn".Equals (lineParts [0])) {
 				float delay = float.Parse (lineParts [1]);
 				float noise = float.Parse (lineParts [2]);
-				bool enemy = "0".Equals (lineParts [3]);
+				bool enemy = "1".Equals (lineParts [3]);
 				int index = -1;
 				if (lineParts.Length >= 5) {
 					index = int.Parse (lineParts [4]);

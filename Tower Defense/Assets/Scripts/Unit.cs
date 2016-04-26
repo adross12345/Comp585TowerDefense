@@ -132,6 +132,10 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	public void SetArmor(float newArmor){
+		this.armor = newArmor;
+	}
+
 	public virtual bool EnterTower(){
 		return false;
 		//Fill this in in submethods.

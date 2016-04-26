@@ -268,11 +268,11 @@ MonoBehaviour:
   identity: 0
   speed: 3
   acceleration: 8
-  maxHealth: 1
+  maxHealth: 3
   curHealth: 1
   healthBar: {fileID: 159406}
-  damage: 10
-  money: 13
+  damage: 1
+  money: 0
   armor: 0
 --- !u!114 &11487840
 MonoBehaviour:
@@ -469,7 +469,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: money
@@ -487,6 +487,10 @@ Prefab:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 159406}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 137874}

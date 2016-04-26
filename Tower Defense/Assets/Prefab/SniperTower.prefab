@@ -566,9 +566,9 @@ MonoBehaviour:
   projectile: {fileID: 11497784, guid: 7096447b7403a445298a7bc4dba2cf92, type: 2}
   firePoints:
   - {fileID: 194224}
-  fireInterval: 0.5
-  myDamage: 0.5
-  mySplashDamage: 0.25
+  fireInterval: 5
+  myDamage: 7.5
+  mySplashDamage: 0
   aimPoint: {fileID: 158616, guid: 4bbbce203bc543e408f43f597e4c62e9, type: 2}
   numEnemiesInRange: 0
   numAlliesInRange: 0
@@ -652,6 +652,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: myDamage
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mySplashDamage
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

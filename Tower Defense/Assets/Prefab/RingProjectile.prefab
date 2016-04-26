@@ -77,7 +77,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySpeed: 10
   myDamage: 0.5
-  myRange: 10
+  myRange: 4.05
+  splashDamage: 0
 --- !u!135 &13571574
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -99,11 +100,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: myRange
-      value: 10
+      value: 4.05
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: mySpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: splashDamage
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

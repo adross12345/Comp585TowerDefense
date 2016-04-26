@@ -85,7 +85,6 @@
      <Compile Include="Assets\Scripts\UnitGenerator.cs" />
      <Compile Include="Assets\Scripts\UnitHydra.cs" />
      <None Include="Assets\Resources\Levels\13.txt" />
-     <None Include="Assets\Resources\Levels\3.txt" />
      <None Include="Assets\Resources\Levels\11.txt" />
      <None Include="Assets\Resources\Levels\2.txt" />
      <None Include="Assets\Resources\Levels\17.txt" />
@@ -95,6 +94,7 @@
      <None Include="Assets\Resources\Levels\16.txt" />
      <None Include="Assets\Resources\Levels\18.txt" />
      <None Include="Assets\Resources\Levels\12.txt" />
+     <None Include="Assets\Resources\Levels\3.txt" />
      <None Include="Assets\Resources\Levels\15.txt" />
      <None Include="Assets\Resources\Levels\22.txt" />
      <None Include="Assets\Resources\Levels\14.txt" />

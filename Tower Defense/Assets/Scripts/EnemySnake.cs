@@ -36,15 +36,17 @@ public class EnemySnake : Unit {
 			if (chanceForExtraBody > randNum) {
 				timeOfLastSpawn = Time.time;
 				UnitAnimated body = (UnitAnimated) uGen.MakeUnit (true, 7, spawn, this.noise);
+				bodyAndTail.Add (body);
 				body.SetTimePerTexture (9999f);
 				body.SetSpeedAndAccel (this.speed, this.acceleration);
-				bodyAndTail.Add (body);
+				body.SetArmor (900f);
 				numBodiesSpawned++;
 			} else {
 				UnitAnimated tail = (UnitAnimated) uGen.MakeUnit (true, 8, spawn, this.noise);
+				bodyAndTail.Add (tail);
 				tail.SetTimePerTexture (9999f);
 				tail.SetSpeedAndAccel (this.speed, this.acceleration);
-				bodyAndTail.Add (tail);
+				tail.SetArmor (1400f);
 				keepSpawning = false;
 			}
 		}
@@ -64,6 +66,7 @@ public class EnemySnake : Unit {
 				bodyPart.indexTexture += 2;
 			}
 			bodyPart.SetSpeedAndAccel (bodyPart.speed / 4, bodyPart.acceleration);
+			bodyPart.SetArmor (0f);
 			i++;
 		}
 		yield return new WaitForSeconds(0.1f);

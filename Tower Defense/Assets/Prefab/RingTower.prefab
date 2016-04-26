@@ -741,9 +741,9 @@ MonoBehaviour:
   - {fileID: 153876}
   - {fileID: 181658}
   - {fileID: 168190}
-  fireInterval: 0.5
+  fireInterval: 0.35
   myDamage: 0.5
-  mySplashDamage: 0.25
+  mySplashDamage: 0
   aimPoint: {fileID: 158616, guid: 4bbbce203bc543e408f43f597e4c62e9, type: 2}
   numEnemiesInRange: 0
   numAlliesInRange: 0
@@ -793,7 +793,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: mySplashDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireInterval
+      value: 0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152812}

@@ -58,6 +58,8 @@ public class UnitHydra : Unit {
 			Vector3 offsetPos = new Vector3 (curPos.x + ((i - 1) * 0.75f), curPos.y, curPos.z + ((i - 1) * 0.75f));
 			subUnits [i].transform.position = offsetPos;
 			subUnits [i].SetSpeedAndAccel (this.speed, this.acceleration + ((i-1) * 0.5f));
+			subUnits [i].SetArmor (this.armor / 2);
+			subUnits [i].damage = this.damage/2;
 			newNav.enabled = true;
 			newNav.destination = destination;
 

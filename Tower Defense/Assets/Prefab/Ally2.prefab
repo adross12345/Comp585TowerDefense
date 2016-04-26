@@ -266,13 +266,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 1
-  speed: 3
+  speed: 5
   acceleration: 8
-  maxHealth: 1
-  curHealth: 1
+  maxHealth: 4
+  curHealth: 4
   healthBar: {fileID: 109062}
   damage: 10
-  money: 13
+  money: 40
   armor: 0
 --- !u!114 &11493988
 MonoBehaviour:
@@ -437,7 +437,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: speed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: acceleration
@@ -463,6 +463,18 @@ Prefab:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 109062}
+    - target: {fileID: 0}
+      propertyPath: curHealth
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: money
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 148188}

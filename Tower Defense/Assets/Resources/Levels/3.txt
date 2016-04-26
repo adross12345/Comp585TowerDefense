@@ -8,8 +8,8 @@
 //After the End command, the next rest of the lines will be displayed in the informational text.
 Spawn 2 0 0 0
 Spawn 2 0 1 0
-Spawn 2 1 1 0
-Spawn 2 1 0 0
+Spawn 2 0 1 1
+Spawn 2 0 0 1
 Spawn 2 0 1 0
 Execute 0 2 3
 End

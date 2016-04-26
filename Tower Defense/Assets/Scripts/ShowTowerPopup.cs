@@ -21,6 +21,8 @@ public class ShowTowerPopup : EditorWindow {
 	public int nodeType = 0;
 	NeuralNode.NodeType neuralNodeType;
 
+	private static float previousTimeScale = 1f;
+
 	bool isTarget1;
 	bool isTarget2;
 	bool isTarget3;
@@ -57,6 +59,7 @@ public class ShowTowerPopup : EditorWindow {
 		window.ShowPopup ();
 
 		// pause game
+		previousTimeScale = Time.timeScale;
 		Time.timeScale = 0;
 
 	}
@@ -245,7 +248,7 @@ public class ShowTowerPopup : EditorWindow {
 				node.LearnUnits ();
 				castle.makePurchase (price);
 				this.Close ();
-				Time.timeScale = 1;
+				Time.timeScale = previousTimeScale;
 			} else if (!castle.canPurchase(price)) {
 				Debug.Log (price);
 				priceWarning = EditorGUILayout.TextField (priceWarning);

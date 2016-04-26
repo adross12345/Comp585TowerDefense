@@ -177,11 +177,12 @@ MonoBehaviour:
   identity: 0
   speed: 3
   acceleration: 8
-  maxHealth: 1
-  curHealth: 1
+  maxHealth: 3
+  curHealth: 3
   healthBar: {fileID: 199390}
-  damage: 10
-  money: 13
+  damage: 15
+  money: 0
+  armor: 0
   stealthTime: 5
   rechargeTime: 2
   disappearTime: 0.25
@@ -436,7 +437,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: curHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: money
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182472}

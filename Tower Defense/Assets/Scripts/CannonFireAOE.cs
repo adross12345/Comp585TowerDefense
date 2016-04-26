@@ -14,26 +14,12 @@ public class CannonFireAOE : CannonFire {
 	// Use this for initialization
 	protected override void Awake () {
 		base.Awake ();
-		//		for (int i = 0; i < 4; i++) {
-		//			Unit unit = null;
-		//			if (i % 2 == 0) {
-		//				unit = Instantiate (enemy, new Vector3(0,-200,0), Quaternion.identity) as Unit;
-		//			} else {
-		//				unit = Instantiate (ally, new Vector3(0,-200,0), Quaternion.identity) as Unit;
-		//			}
-		//			unit.addNoise (0.1F);
-		//			node.AddToTrainingSet (unit);
-		//		}
 		identities = new Dictionary<Unit, UnitID> ();
 		numEnemiesInRange = 0;
 		numAlliesInRange = 0;
 	}//Start
 
 	protected override void Update(){
-		if (targetsSeen >= 4 && !node.isAILearned) {
-			node.LearnUnits ();
-			Debug.Log ("Stuff learned");
-		}
 		if (node.isAILearned && myTarget == null && targetsInRange.Count > 0) {
 			try{
 				if(cutoffRatio < 0){
@@ -74,17 +60,13 @@ public class CannonFireAOE : CannonFire {
 	{
 		Unit u = other.gameObject.GetComponent<Unit> ();
 		if(u != null && other is BoxCollider){
-			if (myTarget == null) {
-				node.SetTargetTex ((Texture2D) u.GetComponent<MeshRenderer> ().material.mainTexture);
-			}
 			bool willDisappear = u.EnterTower ();
 			if (!willDisappear) {
 				targetsInRange.Add (u);
-				if (targetsSeen < 4) {
-					node.AddToTrainingSet (u);
-				} else { // else if (isAILearned)
+				if (node.isAILearned) { // else if (isAILearned)
 					double z = node.calculateZ (u);
 					node.lastZ = z;
+					node.SetTargetTex ((Texture2D) u.GetComponent<MeshRenderer> ().material.mainTexture);
 //					Debug.Log (z+" "+node.b);
 					UnitID uID = UnitID.Enemy;
 					//Do AI animation

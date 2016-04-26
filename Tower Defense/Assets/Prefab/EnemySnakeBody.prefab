@@ -268,11 +268,11 @@ MonoBehaviour:
   identity: 0
   speed: 0.75
   acceleration: 8
-  maxHealth: 1
+  maxHealth: 3
   curHealth: 1
   healthBar: {fileID: 138910}
   damage: 10
-  money: 13
+  money: 0
   armor: 0
   textures:
   - {fileID: 2800000, guid: cfe848db78c782a4ea8668f4294b9694, type: 3}
@@ -461,6 +461,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: timePerTexture
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: money
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

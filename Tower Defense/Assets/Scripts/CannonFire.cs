@@ -44,9 +44,6 @@ public class CannonFire : MonoBehaviour {
 				bool willDisappear = u.EnterTower ();
 				if (!willDisappear) {
 					targetsInRange.Add (u);
-					if (targetsSeen < 4) {
-						node.AddToTrainingSet (u);
-					}
 					targetsSeen++;
 				}
 			}
@@ -86,10 +83,6 @@ public class CannonFire : MonoBehaviour {
 	}﻿
 
 	protected virtual void Update(){
-		if (targetsSeen >= 4 && !node.isAILearned) {
-			node.LearnUnits ();
-			Debug.Log ("Stuff learned");
-		}
 		if (node.isAILearned) {
 			if (myTarget == null) {
 				try{

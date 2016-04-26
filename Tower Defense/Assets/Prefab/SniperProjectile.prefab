@@ -75,9 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721be61019e7b46a0803ba3fb6a0310e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySpeed: 5
+  mySpeed: 20
   myDamage: 0.7
-  myRange: 40
+  myRange: 999
+  splashDamage: 0
 --- !u!135 &13516238
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -99,7 +100,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: myRange
-      value: 40
+      value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: myDamage
@@ -107,7 +108,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: mySpeed
-      value: 5
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: splashDamage
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

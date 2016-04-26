@@ -268,10 +268,10 @@ MonoBehaviour:
   identity: 0
   speed: 3
   acceleration: 8
-  maxHealth: 1
-  curHealth: 1
+  maxHealth: 100
+  curHealth: 100
   healthBar: {fileID: 109192}
-  damage: 10
+  damage: 50
   money: 0
   armor: 0
   timeBetweenSpawns: 0.47
@@ -440,6 +440,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: timeBetweenSpawns
       value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: curHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

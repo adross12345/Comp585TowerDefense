@@ -295,12 +295,12 @@ MonoBehaviour:
   identity: 0
   speed: 3
   acceleration: 8
-  maxHealth: 1
+  maxHealth: 10
   curHealth: 1
   healthBar: {fileID: 120882}
-  damage: 10
-  money: 13
-  armor: 0
+  damage: 5
+  money: 0
+  armor: 51
 --- !u!195 &19585658
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -434,7 +434,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: armor
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: money
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149750}
