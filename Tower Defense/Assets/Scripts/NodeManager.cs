@@ -9,11 +9,17 @@ public class NodeManager : MonoBehaviour
     public Image ally;
     public Image enemy;
     public Image target;
+	public Text enemiesInRange;
+	public Text alliesInRange;
     private Sprite allySprite;
     private Sprite enemySprite;
     private Sprite targetSprite;
-    private string zvalue;
-    private string bvalue;
+    private double zvalue;
+    private double bvalue;
+	public int numEneInRange;
+	public int numAllyInRange;
+	public GameObject allyBackground;
+	public GameObject enemyBackground;
 
     // Use this for initialization
     void Start() {
@@ -23,16 +29,30 @@ public class NodeManager : MonoBehaviour
         ally.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
         enemy.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
         target.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
+		allyBackground.SetActive (false);
+		enemyBackground.SetActive (false);
     }
 
     // Update is called once per frame
     void Update() {
-        if (allySprite != null && enemySprite != null && targetSprite != null && zvalue != null && bvalue != null) {
+        if (allySprite != null && enemySprite != null && targetSprite != null && zvalue != 9001 && bvalue != 9001) {
             ally.sprite = allySprite;
             enemy.sprite = enemySprite;
             target.sprite = targetSprite;
-            z.text = "z = " + zvalue;
-            b.text = "b = " + bvalue;
+			z.text = "z = " + zvalue.ToString("0.####");
+			b.text = "b = " + bvalue.ToString("0.####");
+			enemiesInRange.text = "" + numEneInRange;
+			alliesInRange.text = "" + numAllyInRange;
+			if (zvalue > 0) {
+				allyBackground.SetActive (true);
+				enemyBackground.SetActive (false);
+			} else if (zvalue < 0) {
+				allyBackground.SetActive (false);
+				enemyBackground.SetActive (true);
+			} else {
+				allyBackground.SetActive (false);
+				enemyBackground.SetActive (false);
+			}
         } else {
             //ally.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
             //enemy.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
@@ -42,6 +62,8 @@ public class NodeManager : MonoBehaviour
             target.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
             z.text = "z = ";
             b.text = "b = ";
+			allyBackground.SetActive (false);
+			enemyBackground.SetActive (false);
         }
     }
 
@@ -57,19 +79,19 @@ public class NodeManager : MonoBehaviour
         targetSprite = s;
     }
 
-    public void setZ(string s) {
-        zvalue = s;
+    public void setZ(double d) {
+        zvalue = d;
     }
 
-    public void setB(string s) {
-        bvalue = s;
+    public void setB(double d) {
+        bvalue = d;
     }
 
     public void resetAll() {
         allySprite = null;
         enemySprite = null;
         targetSprite = null;
-        zvalue = null;
-        bvalue = null;
+        zvalue = 9001;
+        bvalue = 9001;
 }
 }

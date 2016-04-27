@@ -8,7 +8,7 @@ public class CastleHealth : MonoBehaviour {
 	public float curHealth = 0f;
 	public GameObject healthBar;
     public int curMoney;
-    public int startMoney = 1000;
+    public int startMoney = 510;
 
 	[SerializeField]
 	private Text healthText = null;

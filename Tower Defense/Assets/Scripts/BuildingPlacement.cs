@@ -14,6 +14,8 @@ public class BuildingPlacement : MonoBehaviour {
 
 	private PlaceableBuilding placeableBuildingOld;
 
+	private BuildingManager manager;
+
 	// Update is called once per frame
 	void Update () {
 		Camera mainCam = GetComponent<Camera> ();
@@ -40,14 +42,20 @@ public class BuildingPlacement : MonoBehaviour {
 			Debug.Log ("Not null");
 			currentBuilding.position = new Vector3(p.x,p.y,p.z);
 
-			if (Input.GetMouseButtonDown(0)) {
-				if (IsLegalPosition(p)) {
+			if (Input.GetMouseButtonDown (0)) {
+				if (IsLegalPosition (p)) {
 					Debug.Log ("Placing Building");
 					hasPlaced = true;	
-					placeableBuilding.SetSelected (false);
+//					placeableBuilding.SetSelected (false);
 					placeableBuilding.SetPlaced (true);
 					currentBuilding = null;
 				}
+			} else if (Input.GetMouseButtonDown (1)) {
+				Destroy (currentBuilding.gameObject);
+				if (manager != null) {
+					manager.Refund ();
+				}
+				currentBuilding = null;
 			}
 		}
 		else {
@@ -90,6 +98,9 @@ public class BuildingPlacement : MonoBehaviour {
 	public GameObject SetItem(GameObject b) {
 		if (currentBuilding != null) {
 			Destroy (currentBuilding.gameObject);
+			if (manager != null) {
+				manager.Refund ();
+			}
 		}
 		hasPlaced = false;
 		Debug.Log ("Set Item");
@@ -104,5 +115,9 @@ public class BuildingPlacement : MonoBehaviour {
 
 	public void PlaceItem(GameObject b) {
 
+	}
+
+	public void SetManager(BuildingManager man){
+		this.manager = man;
 	}
 }

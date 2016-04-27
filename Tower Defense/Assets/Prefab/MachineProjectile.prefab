@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721be61019e7b46a0803ba3fb6a0310e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySpeed: 20
+  mySpeed: 15
   myDamage: 0.15
   myRange: 999
   splashDamage: 0
@@ -100,7 +100,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: mySpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: myDamage

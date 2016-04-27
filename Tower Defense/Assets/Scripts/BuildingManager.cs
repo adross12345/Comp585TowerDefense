@@ -7,11 +7,15 @@ public class BuildingManager : MonoBehaviour {
 	private BuildingPlacement buildingPlacement;
 	private bool initOnce = false;
 	private GameObject currentTower;
+	private CastleHealth castle;
+	private int lastPurchaseAmount = 0;
 
 
 	// Use this for initialization
 	void Start () {
 		buildingPlacement = GetComponent<BuildingPlacement>();
+		buildingPlacement.SetManager (this);
+		castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
 	}
 
 	// Update is called once per frame
@@ -32,11 +36,11 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower1() {
-		CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
 		if (castle.canPurchase(200)) {
 			Debug.Log("spawnTower1() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[0]);
 			castle.makePurchase(200);
+			lastPurchaseAmount = 200;
 			initOnce = false;
 		} else {
 			// TODO Produce an alert that says you cannot make that purchase
@@ -44,11 +48,11 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower2() {
-		CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
 		if (castle.canPurchase(300)) {
 			Debug.Log("spawnTower2() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[1]);
 			castle.makePurchase(300);
+			lastPurchaseAmount = 300;
 			initOnce = false;
 		} else {
 			// TODO Produce an alert that says you cannot make that purchase
@@ -56,11 +60,11 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower3() {
-		CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
-		if (castle.canPurchase(300)) {
+		if (castle.canPurchase(500)) {
 			Debug.Log("spawnTower3() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[2]);
 			castle.makePurchase(500);
+			lastPurchaseAmount = 500;
 			initOnce = false;
 		}
 		else {
@@ -70,11 +74,12 @@ public class BuildingManager : MonoBehaviour {
 
 	public void spawnTower4() {
 		CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
-		if (castle.canPurchase(750))
+		if (castle.canPurchase(500))
 		{
 			Debug.Log("spawnTower4() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[3]);
-			castle.makePurchase(750);
+			castle.makePurchase(500);
+			lastPurchaseAmount = 500;
 			initOnce = false;
 		}
 		else {
@@ -84,15 +89,20 @@ public class BuildingManager : MonoBehaviour {
 
 	public void spawnTower5() {
 		CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
-		if (castle.canPurchase(1000))
+		if (castle.canPurchase(750))
 		{
 			Debug.Log("spawnTower5() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[4]);
-			castle.makePurchase(1000);
+			castle.makePurchase(750);
+			lastPurchaseAmount = 750;
 			initOnce = false;
 		}
 		else {
 			// TODO Produce an alert that says you cannot make that purchase
 		}
+	}
+
+	public void Refund(){
+		castle.makePurchase (-1 * lastPurchaseAmount);
 	}
 }

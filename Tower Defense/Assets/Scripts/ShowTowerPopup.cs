@@ -184,63 +184,123 @@ public class ShowTowerPopup : EditorWindow {
 				// Start training!
 				NeuralNode node = NeuralNode.create (neuralNodeType);
 				cFire.node = node;
-				
+
 				for (int i = 0; i < quantity1; i++) {
 					Unit unit = uGen.MakeUnit (false, 0, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget1);
 					unit.DestroyMe ();
 				}
 
 				for (int i = 0; i < quantity2; i++) {
 					Unit unit = uGen.MakeUnit (false, 1, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget2);
 					unit.DestroyMe ();
 				}
 
 				for (int i = 0; i < quantity3; i++) {
 					Unit unit = uGen.MakeUnit (true, 0, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget3);
 					unit.DestroyMe ();
 				}
 
 				for (int i = 0; i < quantity4; i++) {
 					Unit unit = uGen.MakeUnit (true, 1, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget4);
 					unit.DestroyMe ();
 				}
 
 				for (int i = 0; i < quantity5; i++) {
 					Unit unit = uGen.MakeUnit (true, 2, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget5);
 					unit.DestroyMe ();
 				}
 
 				for (int i = 0; i < quantity6; i++) {
 					Unit unit = uGen.MakeUnit (true, 4, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget6);
 					unit.DestroyMe ();
 				}
 
 				for (int i = 0; i < quantity7; i++) {
 					Unit unit = uGen.MakeUnit (true, 6, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget6);
 					unit.DestroyMe ();
 				}
 
 				for (int i = 0; i < quantity8; i++) {
 					Unit unit = uGen.MakeUnit (true, 5, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget8);
 					unit.DestroyMe ();
 				}
 
 				for (int i = 0; i < quantity9; i++) {
 					Unit unit = uGen.MakeUnit (true, 9, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget9);
 					unit.DestroyMe ();
 				}
 
 				for (int i = 0; i < quantity10; i++) {
 					Unit unit = uGen.MakeUnit (true, 3, farOff, noiseScale, true);
+					if (unit is UnitAnimated) {
+						UnitAnimated ua = (UnitAnimated)unit;
+						Texture2D[] texes = ua.textures;
+						int texIdx = i % texes.Length;
+						ua.setTexture (texes [texIdx]);
+					}
 					node.AddToTrainingSet (unit, isTarget10);
 					unit.DestroyMe ();
 				}

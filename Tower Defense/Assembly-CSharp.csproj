@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\ProjectileSplash.cs" />
      <Compile Include="Assets\Scripts\ShowTowerPopup.cs" />
      <Compile Include="Assets\Scripts\Spawn.cs" />
+     <Compile Include="Assets\Scripts\SpeedChangeButton.cs" />
      <Compile Include="Assets\Scripts\SplashRadius.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
      <Compile Include="Assets\Scripts\UnitAnimated.cs" />
@@ -95,6 +96,7 @@
      <None Include="Assets\Resources\Levels\18.txt" />
      <None Include="Assets\Resources\Levels\12.txt" />
      <None Include="Assets\Resources\Levels\3.txt" />
+     <None Include="Assets\Resources\Levels\4.txt" />
      <None Include="Assets\Resources\Levels\15.txt" />
      <None Include="Assets\Resources\Levels\22.txt" />
      <None Include="Assets\Resources\Levels\14.txt" />
@@ -107,7 +109,6 @@
      <None Include="Assets\Resources\Levels\23.txt" />
      <None Include="Assets\Resources\Levels\26.txt" />
      <None Include="Assets\Resources\Levels\24.txt" />
-     <None Include="Assets\Resources\Levels\4.txt" />
      <None Include="Assets\Resources\Levels\27.txt" />
      <None Include="Assets\Resources\Levels\29.txt" />
      <None Include="Assets\Resources\Levels\21.txt" />

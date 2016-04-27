@@ -36,7 +36,7 @@ public class LevelSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		Time.timeScale = 5f;
+		Time.timeScale = 1f;
 		isRunningLevel = false;
 		level = 1;
 		uGen = Camera.main.GetComponent<UnitGenerator> ();
@@ -51,6 +51,7 @@ public class LevelSpawner : MonoBehaviour {
 	}
 
 	public void StartNextLevel(){
+		Debug.Log (Time.timeScale);
 		guiButton.SetActive (false);
 		informationalText.SetActive (false);
 		currentLevelText = Resources.Load (subfolder + "/" + level) as TextAsset;

@@ -12,6 +12,11 @@ public class PlaceableBuilding : MonoBehaviour {
 	private bool isPlaced;
 	private bool isShowingRange;
 	public string bName;
+	private NodeManager nodeMan;
+
+	void Start(){
+		nodeMan = GameObject.Find ("UIManager").GetComponent<NodeManager> ();
+	}
 
 	void OnGUI() {
 		if (isSelected) {
@@ -26,24 +31,28 @@ public class PlaceableBuilding : MonoBehaviour {
 				isShowingRange = true;
             }
 			// Add nodes to UI
-			NeuralNode n = transform.parent.Find("Turret").GetComponent<CannonFire>().GetNode();
+			CannonFireAOE cnfire = transform.parent.Find("Turret").GetComponent<CannonFireAOE>();
+			NeuralNode n = cnfire.GetNode();
 			Texture2D a = n.getAllyTexture();
 			Texture2D e = n.getEnemyTexture();
 			Texture2D c = n.GetTargetTex();
 			Sprite sa = Sprite.Create(a, new Rect(0, 0, a.width, a.height), new Vector2(0.5f, 0.5f));
 			Sprite se = Sprite.Create(e, new Rect(0, 0, e.width, e.height), new Vector2(0.5f, 0.5f));
 			Sprite sc = Sprite.Create(c, new Rect(0, 0, c.width, c.height), new Vector2(0.5f, 0.5f));
-			GameObject.Find("UIManager").GetComponent<NodeManager>().setAllySprite(sa);
-			GameObject.Find("UIManager").GetComponent<NodeManager>().setEnemySprite(se);
-			GameObject.Find("UIManager").GetComponent<NodeManager>().setTargetSprite(sc);
-			GameObject.Find("UIManager").GetComponent<NodeManager>().setB("" + n.b);
-			GameObject.Find("UIManager").GetComponent<NodeManager>().setZ("");
+			nodeMan.setAllySprite(sa);
+			nodeMan.setEnemySprite(se);
+			nodeMan.setTargetSprite(sc);
+			nodeMan.setB(n.b);
+			nodeMan.setZ(n.lastZ);
+			nodeMan.numEneInRange = cnfire.numEnemiesInRange;
+			nodeMan.numAllyInRange = cnfire.numAlliesInRange;
         } else if(isShowingRange) {
 			transform.parent.Find("Turret").Find ("Range").gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			isShowingRange = false;
 
             // Remove nodes from UI
-            GameObject.Find("UIManager").GetComponent<NodeManager>().resetAll();
+			//I'm not so sure we want to do that. We may as well let the player casually look at the masks and z.
+//            nodeMan.resetAll();
 		}
 
 	}
