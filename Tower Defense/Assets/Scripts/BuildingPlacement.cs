@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BuildingPlacement : MonoBehaviour {
 
@@ -39,7 +40,6 @@ public class BuildingPlacement : MonoBehaviour {
 
 
 		if (currentBuilding != null && !hasPlaced) {
-			Debug.Log ("Not null");
 			currentBuilding.position = new Vector3(p.x,p.y,p.z);
 
 			if (Input.GetMouseButtonDown (0)) {
@@ -48,6 +48,7 @@ public class BuildingPlacement : MonoBehaviour {
 					hasPlaced = true;	
 //					placeableBuilding.SetSelected (false);
 					placeableBuilding.SetPlaced (true);
+                    placeableBuildingOld = placeableBuilding;
 					currentBuilding = null;
 				}
 			} else if (Input.GetMouseButtonDown (1)) {
@@ -112,6 +113,15 @@ public class BuildingPlacement : MonoBehaviour {
 		placeableBuilding.SetSelected (true);
 		return res;
 	}
+
+    public void SetCutOff() {
+        string str = GameObject.Find("InputFieldText").GetComponent<Text>().text;
+        //Debug.Log("SetCutoff was called -> " + str);
+        if (placeableBuildingOld != null) {
+            placeableBuildingOld.SetSelected(true);
+            placeableBuildingOld.transform.parent.FindChild("Turret").GetComponent<CannonFireAOE>().setCutoff(str);
+        }
+    }
 
 	public void PlaceItem(GameObject b) {
 

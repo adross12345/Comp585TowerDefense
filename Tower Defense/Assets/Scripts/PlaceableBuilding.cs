@@ -20,7 +20,7 @@ public class PlaceableBuilding : MonoBehaviour {
 
 	void OnGUI() {
 		if (isSelected) {
-			Debug.Log ("Selected");
+			//Debug.Log ("Selected");
 //			GUI.Button(new Rect(Screen.width /2, Screen.height / 20, 100, 30), bName);	
 			if (!isShowingRange) {
 //				Transform t = transform.parent;
@@ -46,13 +46,48 @@ public class PlaceableBuilding : MonoBehaviour {
 			nodeMan.setZ(n.lastZ);
 			nodeMan.numEneInRange = cnfire.numEnemiesInRange;
 			nodeMan.numAllyInRange = cnfire.numAlliesInRange;
+
+            // Place tower picture and name
+
+            GameObject.Find("UIManager").GetComponent<InfoManager>().setTowerName(bName);
+            Sprite icon = null;
+            string sellPrice = "";
+            if (bName == "Basic Tower") {
+                //Debug.Log("Basic Tower Selected");
+                icon = Resources.Load<Sprite>("Sprites/BasicTower");
+                sellPrice = "$140";
+            } else if (bName == "Radial Tower") {
+                //Debug.Log("Radial Tower Selected");
+                icon = Resources.Load<Sprite>("Sprites/RadialTower");
+                sellPrice = "$210";
+            } else if (bName == "Sniper Tower") {
+                //Debug.Log("Sniper Tower Selected");
+                icon = Resources.Load<Sprite>("Sprites/SniperTower");
+                sellPrice = "$350";
+            } else if (bName == "Machine Tower") {
+                //Debug.Log("Machine Tower Selected");
+                icon = Resources.Load<Sprite>("Sprites/MachineTower");
+                sellPrice = "$350";
+            } else if (bName == "Splash Tower") {
+                //Debug.Log("Splash Tower Selected");
+                icon = Resources.Load<Sprite>("Sprites/SplashTower");
+                sellPrice = "$525";
+            } else {
+                icon = Resources.Load<Sprite>("Sprites/black");
+                sellPrice = "";
+            }
+            //Debug.Log(sellPrice);
+            GameObject.Find("UIManager").GetComponent<InfoManager>().setTowerImage(icon);
+            GameObject.Find("UIManager").GetComponent<InfoManager>().setTowerPrice(sellPrice);
         } else if(isShowingRange) {
 			transform.parent.Find("Turret").Find ("Range").gameObject.GetComponent<MeshRenderer> ().enabled = false;
 			isShowingRange = false;
 
             // Remove nodes from UI
-			//I'm not so sure we want to do that. We may as well let the player casually look at the masks and z.
-//            nodeMan.resetAll();
+            // I'm not so sure we want to do that. We may as well let the player casually look at the masks and z.
+            // nodeMan.resetAll();
+
+            GameObject.Find("UIManager").GetComponent<InfoManager>().resetAll();
 		}
 
 	}

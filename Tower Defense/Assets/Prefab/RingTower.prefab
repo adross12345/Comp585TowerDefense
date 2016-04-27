@@ -762,7 +762,7 @@ MonoBehaviour:
   allySprite: {fileID: 0}
   enemySprite: {fileID: 0}
   colliders: []
-  bName: Ring Tower
+  bName: Radial Tower
 --- !u!135 &13578078
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -801,6 +801,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: fireInterval
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bName
+      value: Radial Tower
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

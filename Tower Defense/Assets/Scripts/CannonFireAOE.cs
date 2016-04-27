@@ -7,7 +7,7 @@ public class CannonFireAOE : CannonFire {
 	private Dictionary<Unit, UnitID> identities;
 	public int numEnemiesInRange;
 	public int numAlliesInRange;
-	public float cutoffRatio = 1;
+	public float cutoffRatio = 0;
 
 	enum UnitID{Enemy, Ally	};
 
@@ -130,4 +130,14 @@ public class CannonFireAOE : CannonFire {
 			}
 		} 
 	}
+
+    public void setCutoff(string input) {
+        float value;
+        if (float.TryParse(input, out value)) {
+            cutoffRatio = Convert.ToSingle(input);
+            Debug.Log("Cutoff Ratio is now " + cutoffRatio);
+        } else {
+            Debug.Log("Number in input field is not a number");
+        }
+    }
 }

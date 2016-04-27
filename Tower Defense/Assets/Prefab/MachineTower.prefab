@@ -671,7 +671,7 @@ MonoBehaviour:
   allySprite: {fileID: 0}
   enemySprite: {fileID: 0}
   colliders: []
-  bName: Basic Tower
+  bName: Machine Tower
 --- !u!114 &11476096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -780,6 +780,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: mySplashDamage
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bName
+      value: Machine Tower
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
