@@ -24,6 +24,7 @@ public class BuildingManager : MonoBehaviour {
 		// buildPlacement.hasPlaced == true
 		if (buildingPlacement.hasPlaced == true && !initOnce) {
             //ShowTowerPopup.Init (currentTower);
+			// PopUpUI.Init(currentTower);
             GameObject.Find("TrainingWindow").GetComponent<Canvas>().enabled = true;
             GameObject.Find("Main Camera").GetComponent<PopUpUI>().Init(currentTower);
             initOnce = true;

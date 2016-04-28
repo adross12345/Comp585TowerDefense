@@ -50,13 +50,13 @@ public class ShowTowerPopup : EditorWindow {
 
 	[MenuItem("Example/ShowPopup Example")]
 	public static void Init(GameObject tower) {
-		ShowTowerPopup window = ScriptableObject.CreateInstance<ShowTowerPopup> ();
-		window.position = new Rect (Screen.width / 2 + 100, Screen.height / 2 - 50, 300, 300);
+		//ShowTowerPopup window = ScriptableObject.CreateInstance<ShowTowerPopup> ();
+		//window.position = new Rect (Screen.width / 2 + 100, Screen.height / 2 - 50, 300, 300);
 
 		castle = GameObject.Find ("Castle").GetComponent<CastleHealth> ();
 		uGen = Camera.main.GetComponent<UnitGenerator>();
 		cFire = tower.transform.FindChild("Turret").GetComponent<CannonFire>();
-		window.ShowPopup ();
+		// window.ShowPopup ();
 
 		// pause game
 		previousTimeScale = Time.timeScale;
