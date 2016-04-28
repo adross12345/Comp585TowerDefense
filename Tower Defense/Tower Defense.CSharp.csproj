@@ -114,6 +114,7 @@
     <Compile Include="Assets\Scripts\UnitBasic.cs" />
     <Compile Include="Assets\Scripts\UnitGenerator.cs" />
     <Compile Include="Assets\Scripts\UnitHydra.cs" />
+    <Compile Include="Assets\StartMenuScene\Menu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Levels\1.txt" />

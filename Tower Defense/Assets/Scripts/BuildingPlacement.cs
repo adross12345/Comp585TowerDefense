@@ -135,6 +135,20 @@ public class BuildingPlacement : MonoBehaviour {
         }
     }
 
+    public void retrainTower() {
+        /*if (placeableBuildingOld != null) {
+            placeableBuildingOld.SetSelected(true);
+            ShowTowerPopup.Init();
+        }*/
+    }
+
+    public void sellTower() {
+        /*if (placeableBuildingOld != null) {
+            placeableBuildingOld.SetSelected(true);
+            Destroy(placeableBuildingOld);
+        }*/
+    }
+
 	public void PlaceItem(GameObject b) {
 
 	}
