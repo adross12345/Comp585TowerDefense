@@ -136,17 +136,35 @@ public class BuildingPlacement : MonoBehaviour {
     }
 
     public void retrainTower() {
-        /*if (placeableBuildingOld != null) {
+        if (placeableBuildingOld != null) {
             placeableBuildingOld.SetSelected(true);
-            ShowTowerPopup.Init();
-        }*/
+            ShowTowerPopup.Init(placeableBuildingOld.transform.parent.gameObject);
+        }
     }
 
     public void sellTower() {
-        /*if (placeableBuildingOld != null) {
+        if (placeableBuildingOld != null) {
             placeableBuildingOld.SetSelected(true);
-            Destroy(placeableBuildingOld);
-        }*/
+            if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Basic Tower") {
+                manager.MakePurchase(-140);
+            }
+            else if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Radial Tower") {
+                manager.MakePurchase(-210);
+            }
+            else if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Sniper Tower")
+            {
+                manager.MakePurchase(-350);
+            }
+            else if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Machine Tower")
+            {
+                manager.MakePurchase(-350);
+            }
+            else if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Splash Tower") {
+                manager.MakePurchase(-525);
+            }
+
+            Destroy(placeableBuildingOld.transform.parent.gameObject);
+        }
     }
 
 	public void PlaceItem(GameObject b) {

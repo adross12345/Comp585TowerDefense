@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/StartMenuScene/Start Menu.unity
+- path: Assets/TowerDefenseScene/TowerDefenseScene.unity
   isLoaded: 1
   isActive: 1
