@@ -294,8 +294,8 @@ MonoBehaviour:
   confoundInterval: 0.00001
   intendedConfoundingTime: 3
   rangeSpeed: 75
-  timePerStop: 0
-  timeBetweenStop: 0
+  timePerStop: 1
+  timeBetweenStop: 2
 --- !u!114 &11436376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -540,6 +540,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: intendedConfoundingTime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timePerStop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timeBetweenStop
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

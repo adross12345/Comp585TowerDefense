@@ -8,11 +8,11 @@
 //After the End command, the next rest of the lines will be displayed in the informational text.
 Spawn 2 0.15 1 13
 Spawn 2 0.15 1 13
-Spawn 0.5 0.14 1 4
-Spawn 0.2 0.14 1 4
+Spawn 0.5 0.14 1 12
+Spawn 0.2 0.14 1 12
 Spawn 0.15 0.14 0 7
 Spawn 0.15 0.14 0 7
-Spawn 0.5 0.14 1 4
+Spawn 0.5 0.14 1 11
 Spawn 0.5 0.14 1 4
 Execute 0 6 4
 Spawn 2.3 0.14 1 13

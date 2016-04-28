@@ -251,7 +251,7 @@ MonoBehaviour:
   confoundInterval: 0.00001
   intendedConfoundingTime: 4
   rangeSpeed: 75
-  timePerStop: 2.25
+  timePerStop: 2.5
   timeBetweenStop: 2
 --- !u!114 &11422940
 MonoBehaviour:
@@ -531,7 +531,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: timePerStop
-      value: 2.25
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: timeBetweenStop

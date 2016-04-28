@@ -33,6 +33,7 @@ public class LevelSpawner : MonoBehaviour {
 
 	private UnitGenerator uGen;
 	private Vector3 spawn;
+	private Vector3 farOff = new Vector3(-500,-500,-500);
 
 	// Use this for initialization
 	void Awake () {
@@ -68,7 +69,13 @@ public class LevelSpawner : MonoBehaviour {
 	}
 
 	void Update(){
-		if (isRunningLevel && isFinished && GameObject.FindObjectOfType<Unit> () == null) {
+		Unit survivingUnit = GameObject.FindObjectOfType<Unit> ();
+		if (isRunningLevel && isFinished && survivingUnit != null) {
+			if (survivingUnit.transform.position == farOff) {
+				survivingUnit.DestroyMe ();
+			}
+		}
+		if (isRunningLevel && isFinished && survivingUnit == null) {
 			FinishLevel ();
 		}
 	}

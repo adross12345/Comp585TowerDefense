@@ -123,9 +123,7 @@ public class BuildingPlacement : MonoBehaviour {
 			string[] parts = str.Split(new char[]{'I'},2);
 			int level = 0;
 			if(int.TryParse(parts[1], out level)){
-				if(level > 0){
-					Camera.main.GetComponent<LevelSpawner>().level = level;
-				}
+				Camera.main.GetComponent<LevelSpawner>().level = level;
 			}
 		}
         //Debug.Log("SetCutoff was called -> " + str);

@@ -19,6 +19,7 @@ public abstract class NeuralNode : ScriptableObject {
 	public bool isAILearned = false;
 
 	public Texture2D targetTex;
+	public Unit target;
 
 	public enum NodeType{FULLCOLOR, COLORHIST, GRAYSCALE, CONVOLVED, COMBINATION}
 
@@ -199,8 +200,13 @@ public abstract class NeuralNode : ScriptableObject {
 		return targetTex;
 	}
 
-	public void SetTargetTex(Texture2D tex){
-		this.targetTex = tex;
+	public Unit GetTarget(){
+		return target;
+	}
+
+	public void SetTarget(Unit u){
+		this.target = u;
+		this.targetTex = (Texture2D) u.GetComponent<MeshRenderer>().material.mainTexture;
 	}
 
 	// Update is called once per frame

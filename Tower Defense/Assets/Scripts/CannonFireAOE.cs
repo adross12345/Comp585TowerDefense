@@ -20,8 +20,18 @@ public class CannonFireAOE : CannonFire {
 	}//Start
 
 	protected override void Update(){
+		if (myTarget != null) {
+			double z = node.calculateZ (myTarget);
+			if (myTarget == node.GetTarget ()) {
+				node.lastZ = z;
+			}
+			if (z > 0) {
+				myTarget = null;
+			}
+		}
 		if (node.isAILearned && myTarget == null && targetsInRange.Count > 0) {
 			try{
+				RecalculateIdentities();
 				if(cutoffRatio < 0){
 					myTarget = targetsInRange[0];
 				}else if(numEnemiesInRange/numAlliesInRange >= cutoffRatio && numEnemiesInRange>0){
@@ -55,6 +65,34 @@ public class CannonFireAOE : CannonFire {
 		}
 	}
 
+	protected void RecalculateIdentities(){
+		numEnemiesInRange = 0;
+		numAlliesInRange = 0;
+		foreach (Unit u in targetsInRange) {
+			double z = node.calculateZ (u);
+			UnitID uID = UnitID.Enemy;
+			//Do AI animation
+			if (z < 0) {
+				//Target is an enemy
+				numEnemiesInRange++;
+			} else if (z == 0) {
+				//Randomly picks if unit is ally or enemy.
+				int rand = UnityEngine.Random.Range (0, 2);
+				if (rand == 0) {
+					numEnemiesInRange++;
+				} else {
+					numAlliesInRange++;
+					uID = UnitID.Ally;
+				}
+			} else {
+				//Target is an ally. Next update will find another target.
+				numAlliesInRange++;
+				uID = UnitID.Ally;
+			}
+			identities [u] = uID;
+		}
+	}
+
 	//Picks up the target that comes into the turrets range
 	protected override void OnTriggerEnter(Collider other)
 	{
@@ -66,7 +104,7 @@ public class CannonFireAOE : CannonFire {
 				if (node.isAILearned) { // else if (isAILearned)
 					double z = node.calculateZ (u);
 					node.lastZ = z;
-					node.SetTargetTex ((Texture2D) u.GetComponent<MeshRenderer> ().material.mainTexture);
+					node.SetTarget (u);
 //					Debug.Log (z+" "+node.b);
 					UnitID uID = UnitID.Enemy;
 					//Do AI animation
@@ -89,18 +127,6 @@ public class CannonFireAOE : CannonFire {
 					}
 					identities [u] = uID;
 				}
-				//			Debug.Log (targetsSeen + " " + identities.Keys.Count);
-				//				foreach (UnitID uID in identities.Values) {
-				//				numEnemiesInRange = 0;
-				//				numAlliesInRange = 0;
-				//				if(uID == UnitID.Enemy){
-				//					numEnemiesInRange++;
-				//				}else{
-				//					numAlliesInRange++;
-				//				}
-				//				Debug.Log (targetsSeen + " " + uID);
-				//
-				//				}
 				targetsSeen++;
 			}
 		}

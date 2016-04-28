@@ -30,7 +30,7 @@ public class EnemySnake : Unit {
 	
 	// Update is called once per frame
 	void Update () {
-		if (keepSpawning && Time.time >= timeOfLastSpawn + timeBetweenSpawns) {
+		if (keepSpawning && nav.enabled && Time.time >= timeOfLastSpawn + timeBetweenSpawns) {
 			float chanceForExtraBody = spawnChance / numBodiesSpawned;
 			float randNum = Random.Range (0f, 1f);
 			if (chanceForExtraBody > randNum) {
