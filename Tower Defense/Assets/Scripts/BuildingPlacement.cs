@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class BuildingPlacement : MonoBehaviour {
-
 	public float scrollSensitivity;
 
 	private PlaceableBuilding placeableBuilding;
@@ -115,7 +114,20 @@ public class BuildingPlacement : MonoBehaviour {
 	}
 
     public void SetCutOff() {
-        string str = GameObject.Find("InputFieldText").GetComponent<Text>().text;
+		string str = GameObject.Find("InputField").GetComponent<InputField>().text;
+		if ("HOLYGRAIL".Equals (str)) {
+			manager.MakePurchase (-10000);
+		} else if ("IMNOTDEADYET".Equals (str)) {
+			manager.AddHealth (10);
+		} else if (str.StartsWith ("NI")) {
+			string[] parts = str.Split(new char[]{'I'},2);
+			int level = 0;
+			if(int.TryParse(parts[1], out level)){
+				if(level > 0){
+					Camera.main.GetComponent<LevelSpawner>().level = level;
+				}
+			}
+		}
         //Debug.Log("SetCutoff was called -> " + str);
         if (placeableBuildingOld != null) {
             placeableBuildingOld.SetSelected(true);

@@ -24,5 +24,5 @@ Spawn 0.2 0.15 1 13
 Execute 0 3 4
 Spawn 0.5 0.15 1 2
 End
-At this point, you've probably got a training regime down. Now to change all that.
+By now, you've probably got a training regime down. Time to change that.
 The next Enemy will systematically change the weights of all AIs in its range to 0. You'll be able to see this on the Ally and Enemy Masks. The changed weights will be reset if the tower leaves the AIs range, either by the Enemy moving past or being destroyed.

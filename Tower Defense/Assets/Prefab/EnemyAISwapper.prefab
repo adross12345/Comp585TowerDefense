@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: 0
-  speed: 2
+  speed: 2.5
   acceleration: 8
   maxHealth: 1
   curHealth: 1
@@ -251,7 +251,7 @@ MonoBehaviour:
   confoundInterval: 0.00001
   intendedConfoundingTime: 4
   rangeSpeed: 75
-  timePerStop: 3
+  timePerStop: 2.25
   timeBetweenStop: 2
 --- !u!114 &11422940
 MonoBehaviour:
@@ -531,7 +531,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: timePerStop
-      value: 3
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: timeBetweenStop
@@ -539,7 +539,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: stopped

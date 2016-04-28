@@ -7,7 +7,7 @@
 //Wait delay
 //After the End command, the next rest of the lines will be displayed in the informational text.
 Spawn 0.8 0 0 4
-Execute 0 1 2
+Execute 0 1 1
 Wait 1
 Spawn 0.8 0 1 1
 Execute 0 1 11

@@ -13,6 +13,9 @@ public class UnitHydra : Unit {
 			p.killYourself ();
 		}
 		NavMeshAgent nav = gameObject.GetComponent<NavMeshAgent> ();
+		if (!nav.enabled) {
+			splitsRemaining = 0;
+		}
 		nav.enabled = false;
 		Vector3 curPos = transform.position;
 		Vector3 farOff = new Vector3 (-500, -500, -500);
@@ -55,9 +58,9 @@ public class UnitHydra : Unit {
 			tex.SetPixels(newPixels);
 			tex.Apply ();
 			NavMeshAgent newNav = subUnits [i].GetComponent<NavMeshAgent> ();
-			Vector3 offsetPos = new Vector3 (curPos.x + ((i - 1) * 0.75f), curPos.y, curPos.z + ((i - 1) * 0.75f));
+			Vector3 offsetPos = new Vector3 (curPos.x + ((i - 1) * 0.3f), curPos.y, curPos.z + ((i - 1) * 0.3f));
 			subUnits [i].transform.position = offsetPos;
-			subUnits [i].SetSpeedAndAccel (this.speed, this.acceleration + ((i-1) * 0.5f));
+			subUnits [i].SetSpeedAndAccel (this.speed, this.acceleration + ((i-1) * 1f));
 			subUnits [i].SetArmor (this.armor / 2);
 			subUnits [i].damage = this.damage/2;
 			newNav.enabled = true;

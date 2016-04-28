@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GrayscaleNode : NeuralNode {
+	int itersUsed = 1;
 
 	public override void LearnUnits(){
 		//I should probably make this a float array. 
@@ -51,6 +52,7 @@ public class GrayscaleNode : NeuralNode {
 		b = 0;
 
 		for (int it = 0; it < iters; it++) {
+			itersUsed = it + 1;
 			int misses = 0;
 			//Shuffles the feature list 
 			NeuralNode.Shuffle (features);
@@ -123,15 +125,37 @@ public class GrayscaleNode : NeuralNode {
 		return res;
 	}
 
+	public override Texture2D getFeatureTexture(){
+		Texture2D newTex = new Texture2D (unitWidth, unitHeight);
+		if (targetTex == null) {
+			return newTex;
+		}
+		Color[] pixels = targetTex.GetPixels ();
+		Color[] newPixels = new Color[pixels.Length];
+		int i = 0;
+		foreach(Color p in pixels){
+			Color c = new Color(p.grayscale, p.grayscale, p.grayscale);
+			newPixels[i] = c;
+			i++;
+		}
+		newTex.SetPixels (newPixels);
+		newTex.Apply ();
+		return newTex;
+	}
+
 	public override Texture2D getAllyTexture(){
 		Texture2D newTex = new Texture2D (unitWidth, unitHeight);
+		float multiplyWeight = 1.0f / ((float) learningRate * itersUsed);
+		if (multiplyWeight < 15) {
+			multiplyWeight = 15;
+		}
 		for (int x = 0; x < newTex.width; x++) {
 			string s = "";
 			//			Debug.Log ("Column:" + x);
 			for (int y = 0; y < newTex.height; y++) {
-				float r = convertToColorVal(50 * weights [(y * newTex.width + x)]);
-				float g = convertToColorVal(50 * weights [(y * newTex.width + x)]);
-				float b = convertToColorVal(50 * weights [(y * newTex.width + x)]);
+				float r = convertToColorVal(multiplyWeight * weights [(y * newTex.width + x)]);
+				float g = convertToColorVal(multiplyWeight * weights [(y * newTex.width + x)]);
+				float b = convertToColorVal(multiplyWeight * weights [(y * newTex.width + x)]);
 				//				float r = convertToColorVal(1 * weights [(y * newTex.width + x)]);
 				//				float g = convertToColorVal(1 * weights [(y * newTex.width + x)]);
 				//				float b = convertToColorVal(1 * weights [(y * newTex.width + x)]);
@@ -147,6 +171,10 @@ public class GrayscaleNode : NeuralNode {
 
 	public override Texture2D getEnemyTexture(){
 		Texture2D newTex = new Texture2D (unitWidth, unitHeight);
+		float multiplyWeight = 1.0f / ((float) learningRate * itersUsed);
+		if (multiplyWeight < 15) {
+			multiplyWeight = 15;
+		}
 		for (int x = 0; x < newTex.width; x++) {
 			string s = "";
 			//			Debug.Log ("Column:" + x);
@@ -154,9 +182,9 @@ public class GrayscaleNode : NeuralNode {
 				//				float r = convertToColorVal(-1 * weights [(y * newTex.width + x)]);
 				//				float g = convertToColorVal(-1 * weights [(y * newTex.width + x)]);
 				//				float b = convertToColorVal(-1 * weights [(y * newTex.width + x)]);
-				float r = convertToColorVal(-50 * weights [(y * newTex.width + x)]);
-				float g = convertToColorVal(-50 * weights [(y * newTex.width + x)]);
-				float b = convertToColorVal(-50 * weights [(y * newTex.width + x)]);
+				float r = convertToColorVal(-multiplyWeight * weights [(y * newTex.width + x)]);
+				float g = convertToColorVal(-multiplyWeight * weights [(y * newTex.width + x)]);
+				float b = convertToColorVal(-multiplyWeight * weights [(y * newTex.width + x)]);
 				Color c = new Color(r,g,b);
 				newTex.SetPixel (x, y, c);
 				s = r + "," + g + "," + b + " ";

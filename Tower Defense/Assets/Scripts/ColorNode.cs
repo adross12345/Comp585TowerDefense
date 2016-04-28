@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ColorNode : NeuralNode {
+	int itersUsed = 1;
 
 	public override void LearnUnits(){
 		//I should probably make this a float array. 
@@ -52,6 +53,7 @@ public class ColorNode : NeuralNode {
 		b = 0;
 
 		for (int it = 0; it < iters; it++) {
+			itersUsed = it+1;
 			int misses = 0;
 			//Shuffles the feature list 
 			NeuralNode.Shuffle (features);
@@ -127,13 +129,22 @@ public class ColorNode : NeuralNode {
 		return res;
 	}
 
+	public override Texture2D getFeatureTexture(){
+		Texture2D newTex = new Texture2D (unitWidth, unitHeight);
+		if (targetTex == null) {
+			return newTex;
+		}
+		return targetTex;
+	}
+
 	public override Texture2D getAllyTexture(){
 		Texture2D newTex = new Texture2D (unitWidth, unitHeight);
+		float multiplyWeight = 1.0f / ((float) learningRate * itersUsed);
 		for (int x = 0; x < newTex.width; x++) {
 			for (int y = 0; y < newTex.height; y++) {
-				float r = convertToColorVal(50 * weights [(y * newTex.width + x) * 3]);
-				float g = convertToColorVal(50 * weights [(y * newTex.width + x) * 3 + 1]);
-				float b = convertToColorVal(50 * weights [(y * newTex.width + x) * 3 + 2]);
+				float r = convertToColorVal(multiplyWeight * weights [(y * newTex.width + x) * 3]);
+				float g = convertToColorVal(multiplyWeight * weights [(y * newTex.width + x) * 3 + 1]);
+				float b = convertToColorVal(multiplyWeight * weights [(y * newTex.width + x) * 3 + 2]);
 				//				float r = convertToColorVal(1 * weights [(y * newTex.width + x) * 3]);
 				//				float g = convertToColorVal(1 * weights [(y * newTex.width + x) * 3 + 1]);
 				//				float b = convertToColorVal(1 * weights [(y * newTex.width + x) * 3 + 2]);
@@ -147,14 +158,15 @@ public class ColorNode : NeuralNode {
 
 	public override Texture2D getEnemyTexture(){
 		Texture2D newTex = new Texture2D (unitWidth, unitHeight);
+		float multiplyWeight = 1.0f / ((float) learningRate * itersUsed);
 		for (int x = 0; x < newTex.width; x++) {
 			for (int y = 0; y < newTex.height; y++) {
 				//				float r = convertToColorVal(-1 * weights [(y * newTex.width + x) * 3]);
 				//				float g = convertToColorVal(-1 * weights [(y * newTex.width + x) * 3 + 1]);
 				//				float b = convertToColorVal(-1 * weights [(y * newTex.width + x) * 3 + 2]);
-				float r = convertToColorVal(-50 * weights [(y * newTex.width + x) * 3]);
-				float g = convertToColorVal(-50 * weights [(y * newTex.width + x) * 3 + 1]);
-				float b = convertToColorVal(-50 * weights [(y * newTex.width + x) * 3 + 2]);
+				float r = convertToColorVal(-multiplyWeight * weights [(y * newTex.width + x) * 3]);
+				float g = convertToColorVal(-multiplyWeight * weights [(y * newTex.width + x) * 3 + 1]);
+				float b = convertToColorVal(-multiplyWeight * weights [(y * newTex.width + x) * 3 + 2]);
 				Color c = new Color(r,g,b);
 				newTex.SetPixel (x, y, c);
 			}

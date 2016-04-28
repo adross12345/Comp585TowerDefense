@@ -6,9 +6,9 @@
 //Wait float(delay after)
 //Wait delay
 //After the End command, the next rest of the lines will be displayed in the informational text.
-Spawn 2 0 0 0
 Spawn 2 0 1 0
+Spawn 2 0 0 0
 Execute 0 2 3
 End
 As the game progresses, each new level will have more enemies to defeat and more allies to give you money.
-Enemies will get stronger and do more damage, and Allies will give more money.
+The Enemy:Ally ratio cutoff defines what ratio of Enemies to Allies the tower must meet to shoot. 0 will shoot if any Enemy is present. 1 will shoot if Enemies equals Allies, and -1 will shoot at everything.

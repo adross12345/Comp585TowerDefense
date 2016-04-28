@@ -146,6 +146,49 @@ public class ColorHistNode : NeuralNode {
 		return res;
 	}
 
+	public override Texture2D getFeatureTexture(){
+		Texture2D newTex = new Texture2D (unitWidth, unitHeight);
+		if (targetTex == null) {
+			return newTex;
+		}
+		Color[] pixels = targetTex.GetPixels ();
+		double[] unitFeatures = new double[numBins * numBins * numBins];
+		int divisor = 256 / numBins;
+		double increment = 1.0;
+
+		//Assigns the pixel values for each of the colors in the pattern increasing green, then increasing blue, then increasing red
+		for (int i = 0; i < pixels.Length; i++) {
+			Color c = pixels [i];
+			unitFeatures [(((int)(c.r * 255)) / divisor * numBins * numBins) + (((int)(c.b * 255))/divisor * numBins) + (((int)(c.g * 255)) / divisor)] += increment;
+		}
+		int weightIndex = 0;
+		double weightValue = unitFeatures[0];
+		if (weightValue < 0) {
+			weightValue = 0.0;
+		}
+
+		double singlePixelValue = 1.0;
+		for (int x = 0; x < newTex.width; x++) {
+			for (int y = 0; y < newTex.height; y++) {
+				while (weightValue < singlePixelValue) {
+					weightIndex++;
+					if (weightIndex >= weights.Length) {
+						weightIndex = weights.Length-1;
+						weightValue += 1;
+					}
+					if (unitFeatures [weightIndex] > 0) {
+						weightValue += unitFeatures [weightIndex];
+					}
+				}
+				weightValue -= singlePixelValue;
+				Color c = findHistogramColor(weightIndex);
+				newTex.SetPixel (x, y, c);
+			}
+		}
+		newTex.Apply ();
+		return newTex;
+	}
+
 	public override Texture2D getAllyTexture(){
 		double singlePixelValue = totalPositiveWeights / (unitWidth * unitHeight);
 		Texture2D newTex = new Texture2D (unitWidth, unitHeight);

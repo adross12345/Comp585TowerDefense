@@ -6,12 +6,13 @@
 //Wait float(delay after)
 //Wait delay
 //After the End command, the next rest of the lines will be displayed in the informational text.
-Spawn 2 0 0 0
-Spawn 2 0 1 0
-Spawn 2 0 1 1
 Spawn 2 0 0 1
 Spawn 2 0 1 0
+Spawn 2 0 0 1
+Spawn 2 0 1 0
+Spawn 2 0 0 0
 Execute 0 2 3
+Spawn 2 0 1 1
 End
 Certain AI types will be more useful at differentiating certain units.
 For example, the Grayscale AI is not useful for the new units, because their features in grayscale are the same, but they look very different to the Full Color and Color Histogram types.

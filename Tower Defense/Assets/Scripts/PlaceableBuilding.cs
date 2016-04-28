@@ -36,12 +36,15 @@ public class PlaceableBuilding : MonoBehaviour {
 			Texture2D a = n.getAllyTexture();
 			Texture2D e = n.getEnemyTexture();
 			Texture2D c = n.GetTargetTex();
+			Texture2D f = n.getFeatureTexture ();
 			Sprite sa = Sprite.Create(a, new Rect(0, 0, a.width, a.height), new Vector2(0.5f, 0.5f));
 			Sprite se = Sprite.Create(e, new Rect(0, 0, e.width, e.height), new Vector2(0.5f, 0.5f));
 			Sprite sc = Sprite.Create(c, new Rect(0, 0, c.width, c.height), new Vector2(0.5f, 0.5f));
+			Sprite sf = Sprite.Create(f, new Rect(0, 0, f.width, f.height), new Vector2(0.5f, 0.5f));
 			nodeMan.setAllySprite(sa);
 			nodeMan.setEnemySprite(se);
 			nodeMan.setTargetSprite(sc);
+			nodeMan.setFeatureSprite (sf);
 			nodeMan.setB(n.b);
 			nodeMan.setZ(n.lastZ);
 			nodeMan.numEneInRange = cnfire.numEnemiesInRange;

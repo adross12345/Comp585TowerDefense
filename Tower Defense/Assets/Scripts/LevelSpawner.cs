@@ -51,7 +51,7 @@ public class LevelSpawner : MonoBehaviour {
 	}
 
 	public void StartNextLevel(){
-		Debug.Log (Time.timeScale);
+		Time.timeScale = 1f;
 		guiButton.SetActive (false);
 		informationalText.SetActive (false);
 		currentLevelText = Resources.Load (subfolder + "/" + level) as TextAsset;
@@ -80,7 +80,10 @@ public class LevelSpawner : MonoBehaviour {
 		guiTextLevel.text = "Level " + level;
 		guiButton.SetActive (true);
 		informationalText.SetActive (true);
-		GameObject.FindObjectOfType<Unit> ();
+		Projectile[] projectiles = GameObject.FindObjectsOfType<Projectile> ();
+		foreach (Projectile p in projectiles) {
+			p.killYourself ();
+		}
 	}
 
 	private IEnumerator RunTextLevel(){

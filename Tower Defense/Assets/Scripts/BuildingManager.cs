@@ -105,4 +105,12 @@ public class BuildingManager : MonoBehaviour {
 	public void Refund(){
 		castle.makePurchase (-1 * lastPurchaseAmount);
 	}
+
+	public void MakePurchase(int cost){
+		castle.makePurchase (cost);
+	}
+
+	public void AddHealth(int health){
+		castle.curHealth += health;
+	}
 }

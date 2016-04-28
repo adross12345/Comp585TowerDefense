@@ -9,11 +9,13 @@ public class NodeManager : MonoBehaviour
     public Image ally;
     public Image enemy;
     public Image target;
+	public Image features;
 	public Text enemiesInRange;
 	public Text alliesInRange;
     private Sprite allySprite;
     private Sprite enemySprite;
     private Sprite targetSprite;
+	private Sprite featureSprite;
     private double zvalue;
     private double bvalue;
 	public int numEneInRange;
@@ -39,6 +41,7 @@ public class NodeManager : MonoBehaviour
             ally.sprite = allySprite;
             enemy.sprite = enemySprite;
             target.sprite = targetSprite;
+			features.sprite = featureSprite;
 			z.text = "z = " + zvalue.ToString("0.####");
 			b.text = "b = " + bvalue.ToString("0.####");
 			enemiesInRange.text = "" + numEneInRange;
@@ -60,6 +63,7 @@ public class NodeManager : MonoBehaviour
             ally.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
             enemy.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
             target.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
+			features.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
             z.text = "z = ";
             b.text = "b = ";
 			allyBackground.SetActive (false);
@@ -86,6 +90,10 @@ public class NodeManager : MonoBehaviour
     public void setB(double d) {
         bvalue = d;
     }
+
+	public void setFeatureSprite(Sprite s){
+		featureSprite = s;
+	}
 
     public void resetAll() {
         allySprite = null;

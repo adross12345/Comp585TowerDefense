@@ -8,7 +8,7 @@ public abstract class NeuralNode : ScriptableObject {
 	public double b;
 	protected double actualB;
 	public double lastZ;
-	protected double learningRate = 0.1;
+	protected double learningRate = 0.01;
 	protected int unitWidth = 32;
 	protected int unitHeight = 32;
 	protected int iters = 100;
@@ -30,11 +30,12 @@ public abstract class NeuralNode : ScriptableObject {
 			res = ScriptableObject.CreateInstance<ColorHistNode> ();
 		}else if (nodeType == NodeType.GRAYSCALE) {
 			res = ScriptableObject.CreateInstance<GrayscaleNode> ();
-		}else if (nodeType == NodeType.CONVOLVED) {
-			res = ScriptableObject.CreateInstance<ConvolvedNode> ();
-		}else if (nodeType == NodeType.COMBINATION) {
-			res = ScriptableObject.CreateInstance<CombinationNode> ();
 		}
+//		else if (nodeType == NodeType.CONVOLVED) {
+//			res = ScriptableObject.CreateInstance<ConvolvedNode> ();
+//		}else if (nodeType == NodeType.COMBINATION) {
+//			res = ScriptableObject.CreateInstance<CombinationNode> ();
+//		}
 		return res;
 	}
 
@@ -63,6 +64,8 @@ public abstract class NeuralNode : ScriptableObject {
 	public abstract Texture2D getAllyTexture ();
 
 	public abstract Texture2D getEnemyTexture ();
+
+	public abstract Texture2D getFeatureTexture ();
 
 	public abstract NeuralNode Clone ();
 
