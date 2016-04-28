@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.3.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -74,6 +76,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\PopUpUI.cs" />
     <Compile Include="Assets\Scripts\Bar.cs" />
     <Compile Include="Assets\Scripts\BuildingManager.cs" />
     <Compile Include="Assets\Scripts\BuildingPlacement.cs" />
@@ -117,6 +120,7 @@
     <Compile Include="Assets\StartMenuScene\Menu.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Resources\Levels\0.txt" />
     <None Include="Assets\Resources\Levels\1.txt" />
     <None Include="Assets\Resources\Levels\10.txt" />
     <None Include="Assets\Resources\Levels\11.txt" />

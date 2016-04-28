@@ -136,7 +136,9 @@ public class BuildingPlacement : MonoBehaviour {
     public void retrainTower() {
         if (placeableBuildingOld != null) {
             placeableBuildingOld.SetSelected(true);
-            ShowTowerPopup.Init(placeableBuildingOld.transform.parent.gameObject);
+            //ShowTowerPopup.Init(placeableBuildingOld.transform.parent.gameObject);
+            GameObject.Find("TrainingWindow").GetComponent<Canvas>().enabled = true;
+            GameObject.Find("Main Camera").GetComponent<PopUpUI>().Init(placeableBuildingOld.transform.parent.gameObject);
         }
     }
 

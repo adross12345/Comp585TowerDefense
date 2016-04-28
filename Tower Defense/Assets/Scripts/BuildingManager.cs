@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BuildingManager : MonoBehaviour {
 
@@ -22,8 +23,10 @@ public class BuildingManager : MonoBehaviour {
 	void Update () {
 		// buildPlacement.hasPlaced == true
 		if (buildingPlacement.hasPlaced == true && !initOnce) {
-			ShowTowerPopup.Init (currentTower);
-			initOnce = true;
+            //ShowTowerPopup.Init (currentTower);
+            GameObject.Find("TrainingWindow").GetComponent<Canvas>().enabled = true;
+            GameObject.Find("Main Camera").GetComponent<PopUpUI>().Init(currentTower);
+            initOnce = true;
 		}
 	}
 
