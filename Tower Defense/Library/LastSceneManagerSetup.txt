@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/TowerDefenseScene/TowerDefenseScene.unity
+- path: Assets/GameOverScreen/GameOver.unity
   isLoaded: 1
   isActive: 1
