@@ -45,9 +45,9 @@ public class BuildingPlacement : MonoBehaviour {
 				if (IsLegalPosition (p)) {
 					Debug.Log ("Placing Building");
 					hasPlaced = true;	
-//					placeableBuilding.SetSelected (false);
+					//					placeableBuilding.SetSelected (false);
 					placeableBuilding.SetPlaced (true);
-                    placeableBuildingOld = placeableBuilding;
+					placeableBuildingOld = placeableBuilding;
 					currentBuilding = null;
 				}
 			} else if (Input.GetMouseButtonDown (1)) {
@@ -113,7 +113,7 @@ public class BuildingPlacement : MonoBehaviour {
 		return res;
 	}
 
-    public void SetCutOff() {
+	public void SetCutOff() {
 		string str = GameObject.Find("InputField").GetComponent<InputField>().text;
 		if ("HOLYGRAIL".Equals (str)) {
 			manager.MakePurchase (-10000);
@@ -126,46 +126,44 @@ public class BuildingPlacement : MonoBehaviour {
 				Camera.main.GetComponent<LevelSpawner>().level = level;
 			}
 		}
-        //Debug.Log("SetCutoff was called -> " + str);
-        if (placeableBuildingOld != null) {
-            placeableBuildingOld.SetSelected(true);
-            placeableBuildingOld.transform.parent.FindChild("Turret").GetComponent<CannonFireAOE>().setCutoff(str);
-        }
-    }
+		//Debug.Log("SetCutoff was called -> " + str);
+		if (placeableBuildingOld != null) {
+			placeableBuildingOld.SetSelected(true);
+			placeableBuildingOld.transform.parent.FindChild("Turret").GetComponent<CannonFireAOE>().setCutoff(str);
+		}
+	}
 
-    public void retrainTower() {
-        if (placeableBuildingOld != null) {
-            placeableBuildingOld.SetSelected(true);
-            //ShowTowerPopup.Init(placeableBuildingOld.transform.parent.gameObject);
-            GameObject.Find("TrainingWindow").GetComponent<Canvas>().enabled = true;
-            GameObject.Find("Main Camera").GetComponent<PopUpUI>().Init(placeableBuildingOld.transform.parent.gameObject);
-        }
-    }
+	public void retrainTower() {
+		if (!GameObject.Find ("TrainingWindow").GetComponent<Canvas> ().enabled) {
+			if (placeableBuildingOld != null) {
+				placeableBuildingOld.SetSelected (true);
+				//ShowTowerPopup.Init(placeableBuildingOld.transform.parent.gameObject);
+				GameObject.Find ("TrainingWindow").GetComponent<Canvas> ().enabled = true;
+				GameObject.Find ("Main Camera").GetComponent<PopUpUI> ().Init (placeableBuildingOld.transform.parent.gameObject);
+			}
+		}
+	}
 
-    public void sellTower() {
-        if (placeableBuildingOld != null) {
-            placeableBuildingOld.SetSelected(true);
-            if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Basic Tower") {
-                manager.MakePurchase(-140);
-            }
-            else if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Radial Tower") {
-                manager.MakePurchase(-210);
-            }
-            else if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Sniper Tower")
-            {
-                manager.MakePurchase(-350);
-            }
-            else if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Machine Tower")
-            {
-                manager.MakePurchase(-350);
-            }
-            else if (placeableBuildingOld.GetComponent<PlaceableBuilding>().bName == "Splash Tower") {
-                manager.MakePurchase(-525);
-            }
+	public void sellTower() {
+		if (!GameObject.Find ("TrainingWindow").GetComponent<Canvas> ().enabled) {
+			if (placeableBuildingOld != null) {
+				placeableBuildingOld.SetSelected (true);
+				if (placeableBuildingOld.GetComponent<PlaceableBuilding> ().bName == "Basic Tower") {
+					manager.MakePurchase (-140);
+				} else if (placeableBuildingOld.GetComponent<PlaceableBuilding> ().bName == "Radial Tower") {
+					manager.MakePurchase (-210);
+				} else if (placeableBuildingOld.GetComponent<PlaceableBuilding> ().bName == "Sniper Tower") {
+					manager.MakePurchase (-350);
+				} else if (placeableBuildingOld.GetComponent<PlaceableBuilding> ().bName == "Machine Tower") {
+					manager.MakePurchase (-350);
+				} else if (placeableBuildingOld.GetComponent<PlaceableBuilding> ().bName == "Splash Tower") {
+					manager.MakePurchase (-525);
+				}
 
-            Destroy(placeableBuildingOld.transform.parent.gameObject);
-        }
-    }
+				Destroy (placeableBuildingOld.transform.parent.gameObject);
+			}
+		}
+	}
 
 	public void PlaceItem(GameObject b) {
 

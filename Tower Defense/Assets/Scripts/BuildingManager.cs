@@ -21,13 +21,10 @@ public class BuildingManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// buildPlacement.hasPlaced == true
 		if (buildingPlacement.hasPlaced == true && !initOnce) {
-            //ShowTowerPopup.Init (currentTower);
-			// PopUpUI.Init(currentTower);
-            GameObject.Find("TrainingWindow").GetComponent<Canvas>().enabled = true;
-            GameObject.Find("Main Camera").GetComponent<PopUpUI>().Init(currentTower);
-            initOnce = true;
+			GameObject.Find("TrainingWindow").GetComponent<Canvas>().enabled = true;
+			GameObject.Find("Main Camera").GetComponent<PopUpUI>().Init(currentTower);
+			initOnce = true;
 		}
 	}
 
@@ -40,7 +37,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower1() {
-		if (castle.canPurchase(200)) {
+		if (castle.canPurchase(200) && !initOnce) {
 			Debug.Log("spawnTower1() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[0]);
 			castle.makePurchase(200);
@@ -52,7 +49,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower2() {
-		if (castle.canPurchase(300)) {
+		if (castle.canPurchase(300) && !initOnce) {
 			Debug.Log("spawnTower2() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[1]);
 			castle.makePurchase(300);
@@ -64,7 +61,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower3() {
-		if (castle.canPurchase(500)) {
+		if (castle.canPurchase(500) && !initOnce) {
 			Debug.Log("spawnTower3() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[2]);
 			castle.makePurchase(500);
@@ -77,8 +74,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower4() {
-		CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
-		if (castle.canPurchase(500))
+		if (castle.canPurchase(500) && !initOnce)
 		{
 			Debug.Log("spawnTower4() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[3]);
@@ -92,8 +88,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower5() {
-		CastleHealth castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
-		if (castle.canPurchase(750))
+		if (castle.canPurchase(750) && !initOnce)
 		{
 			Debug.Log("spawnTower5() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[4]);

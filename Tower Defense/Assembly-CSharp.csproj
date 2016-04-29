@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GameOverScreen\GameOver.cs" />
      <Compile Include="Assets\Scripts\Bar.cs" />
      <Compile Include="Assets\Scripts\BuildingManager.cs" />
      <Compile Include="Assets\Scripts\BuildingPlacement.cs" />
@@ -77,7 +78,7 @@
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\ProjectileDumb.cs" />
      <Compile Include="Assets\Scripts\ProjectileSplash.cs" />
-     <Compile Include="Assets\Scripts\ShowTowerPopup.cs" />
+     <Compile Include="Assets\Scripts\QuitGame.cs" />
      <Compile Include="Assets\Scripts\Spawn.cs" />
      <Compile Include="Assets\Scripts\SpeedChangeButton.cs" />
      <Compile Include="Assets\Scripts\SplashRadius.cs" />
