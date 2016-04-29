@@ -142,7 +142,7 @@ public class PopUpUI : MonoBehaviour {
 		if (castle.canPurchase(cost)) {
 			GameObject.Find ("Cost").GetComponent<Text> ().text = 
 				"$" + cost;
-
+			GameObject.Find ("Cost").GetComponent<Text> ().color = Color.white;
 		} else {
 			Debug.Log ("New price: " + price);
 			GameObject.Find ("Cost").GetComponent<Text> ().text = 
