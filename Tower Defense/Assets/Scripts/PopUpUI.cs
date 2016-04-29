@@ -14,6 +14,7 @@ public class PopUpUI : MonoBehaviour {
 	private static CastleHealth castle;
 	string noDataWarning = "Your tower has no training data";
 	string priceWarning = "You do not have enough money!";
+	int price = 0;
 
     private static UnitGenerator uGen;
     private Vector3 farOff = new Vector3(-500, -500, -500);
@@ -37,6 +38,17 @@ public class PopUpUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		GetComponent<Canvas> ().enabled = false;
+		GameObject.Find ("TrainButton").GetComponent<Button> ()
+			.onClick.AddListener (delegate {
+				if(castle.canPurchase(price)) {
+					train();
+					GetComponent<Canvas> ().enabled = false;
+				} else if(!castle.canPurchase(price)) {
+					Debug.Log("Not enough money");
+				} else if(getTotalUnits() == 0) {
+					Debug.Log("No units to train!");
+				}
+			});
 	}
 
     public void Init(GameObject tower) {
@@ -47,8 +59,7 @@ public class PopUpUI : MonoBehaviour {
         castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
         uGen = Camera.main.GetComponent<UnitGenerator>();
         cFire = tower.transform.FindChild("Turret").GetComponent<CannonFire>();
-        // window.ShowPopup();
-
+		
         // pause game
         previousTimeScale = Time.timeScale;
         Time.timeScale = 0;
@@ -56,18 +67,55 @@ public class PopUpUI : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		Debug.Log (getNoise ());
-		Debug.Log (getNodeType ());
-		Debug.Log (getPrice ());
+		calculateCost ();
+		// setNoiseText (getNoise ());
+		setPrice (price);
+	}
 
+	public void calculateCost() {
+		InstantiatePrimitive ();
+		if (getTotalUnits() <= 4)
+		{
+			price = (int)(10 * (1 - getNoise()) + nodeCost);
+		}
+		else {
+			// $5 for every training unit greater than total of 10
+			price = (int)(10 * (1 - getNoise()) + 5 * (getTotalUnits() - 4) 
+				+ nodeCost);
+		}
+	}
+
+	public int getTotalUnits() {
+		int total = 0;
+		for (int i = 1; i <= TOTAL_ALLY_UNITS; i++) {
+			total += getQuantityOfAlly (i);
+		}
+
+		for (int i = 1; i <= TOTAL_ENEMY_UNITS; i++) {
+			if (isEnemyTarget (i)) {
+				total += getQuantityOfEnemy (i);
+			}
+		}
+
+		return total;
 	}
 
 	public int getQuantityOfEnemy(int i) {
-		return int.Parse(GameObject.Find ("Enemy" + i + "InputField").GetComponent<InputField> ().text);
+		int quantity;
+		if (Int32.TryParse (GameObject.Find ("Enemy" + i + "InputField").GetComponent<InputField> ().text, out quantity)) {
+			return quantity;
+		}
+
+		return 0;
 	}
 
 	public int getQuantityOfAlly(int i) {
-		return int.Parse(GameObject.Find ("Ally" + i + "InputField").GetComponent<InputField> ().text);
+		int quantity;
+		if(Int32.TryParse(GameObject.Find ("Ally" + i + "InputField").GetComponent<InputField> ().text, out quantity)) {
+			return quantity;
+		}
+
+		return 0;
 	}
 
 	public bool isEnemyTarget(int i) {
@@ -86,8 +134,26 @@ public class PopUpUI : MonoBehaviour {
 		return GameObject.Find ("NodeDropdown").GetComponent<Dropdown> ().value;
 	}
 
-	public String getPrice() {
-		return GameObject.Find ("Cost").GetComponent<Text> ().text;
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int cost) {
+		if (castle.canPurchase(cost)) {
+			GameObject.Find ("Cost").GetComponent<Text> ().text = 
+				"$" + cost;
+
+		} else {
+			Debug.Log ("New price: " + price);
+			GameObject.Find ("Cost").GetComponent<Text> ().text = 
+				"$" + cost;
+			GameObject.Find ("Cost").GetComponent<Text> ().color = Color.red;
+		}
+	}
+
+	public void setNoiseText(float n) {
+		GameObject.Find ("NoiseInputFieldText").GetComponent<Text> ().text =
+			n.ToString ();
 	}
 		
     void InstantiatePrimitive() {
@@ -116,122 +182,8 @@ public class PopUpUI : MonoBehaviour {
         }
     }
 
-
-	/*
-    public void getNoiseInput() {
-        float value;
-        string input = GameObject.Find("NoiseInputFieldText").GetComponent<Text>().text;
-        if (float.TryParse(input, out value)) {
-            noiseScale = Convert.ToSingle(input);
-            Debug.Log("Noise is now " + noiseScale);
-        }
-        else {
-            Debug.Log("Number in input field is not a number");
-        }
-    }
-	*/
-
-    /*void OnGUI() {
-
-        // Still need to add pictures
-        // Noise slider
-        noiseScale = EditorGUILayout.Slider("Noise", noiseScale, 1, 0);
-
-        // Node options
-        nodeType = EditorGUILayout.Popup(nodeType, options);
-        InstantiatePrimitive();
-
-        // Unit target and quantity fields
-        EditorGUILayout.BeginHorizontal();
-        isTarget1 = EditorGUILayout.Toggle("Unit 1 (Ally1)", isTarget1);
-        quantity1 = EditorGUILayout.IntField(quantity1);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        isTarget2 = EditorGUILayout.Toggle("Unit 2 (Ally2)", isTarget2);
-        quantity2 = EditorGUILayout.IntField(quantity2);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        isTarget3 = EditorGUILayout.Toggle("Unit 3 (Enemy1)", isTarget3);
-        quantity3 = EditorGUILayout.IntField(quantity3);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        isTarget4 = EditorGUILayout.Toggle("Unit 4 (Enemy2)", isTarget4);
-        quantity4 = EditorGUILayout.IntField(quantity4);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        isTarget5 = EditorGUILayout.Toggle("Unit 5 (EnemyCamo)", isTarget5);
-        quantity5 = EditorGUILayout.IntField(quantity5);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        isTarget6 = EditorGUILayout.Toggle("Unit 6 (EnemyHydra)", isTarget6);
-        quantity6 = EditorGUILayout.IntField(quantity6);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        isTarget7 = EditorGUILayout.Toggle("Unit 7 (EnemySnake)", isTarget7);
-        quantity7 = EditorGUILayout.IntField(quantity7);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        isTarget8 = EditorGUILayout.Toggle("Unit 8 (EnemyAnimated)", isTarget8);
-        quantity8 = EditorGUILayout.IntField(quantity8);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        isTarget9 = EditorGUILayout.Toggle("Unit 9 (EnemyAISwapper)", isTarget9);
-        quantity9 = EditorGUILayout.IntField(quantity9);
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.BeginHorizontal();
-        isTarget10 = EditorGUILayout.Toggle("Unit 10 (EnemyAIZeroer)", isTarget10);
-        quantity10 = EditorGUILayout.IntField(quantity10);
-        EditorGUILayout.EndHorizontal();
-
-        // Training cost field and control
-        GUIStyle red = new GUIStyle(EditorStyles.label);
-        GUIStyle black = new GUIStyle(EditorStyles.label);
-        red.normal.textColor = Color.red;
-        black.normal.textColor = Color.black;
-        EditorGUILayout.LabelField("Cost of Training:", "$" + price.ToString(),
-            castle.canPurchase(price) ? black : red);
-        int sumQuant = quantity1 + quantity2 + quantity3 + quantity4 + quantity5
-                       + quantity6 + quantity7 + quantity8 + quantity9 + quantity10;
-
-        if (sumQuant <= 10)
-        {
-            price = (int)(10 * (1 - noiseScale) + nodeCost);
-        }
-        else {
-            // $5 for every training unit greater than total of 10
-            price = (int)(10 * (1 - noiseScale) + 5 * (sumQuant - 10) + nodeCost);
-        }
-
-        
-		EditorGUILayout.LabelField("Time since start: ",
-			((int)(200 - EditorApplication.timeSinceStartup)).ToString());
-		Repaint ();
-		
-
-        // Train button
-        GUILayout.Space(30);
-        if (GUILayout.Button("Train!"))
-        {
-
-            
-
-        }
-
-    }*/
-
-
 	public void train() {
-		// castle.canPurchase (getPrice())
-		if (castle.canPurchase (1000)) {
+		if (castle.canPurchase (getPrice())) {
 			// Start training!
 			NeuralNode node = NeuralNode.create(neuralNodeType);
 			cFire.node = node;
@@ -267,7 +219,7 @@ public class PopUpUI : MonoBehaviour {
 			}
 
 			node.LearnUnits();
-			castle.makePurchase(1000);
+			castle.makePurchase(getPrice());
 			Time.timeScale = previousTimeScale;
 		
 			// Close window
