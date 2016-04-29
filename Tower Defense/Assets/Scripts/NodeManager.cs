@@ -28,10 +28,10 @@ public class NodeManager : MonoBehaviour
         //ally.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
         //enemy.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
         //target.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
-        ally.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
-        enemy.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
-        target.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
-		allyBackground.SetActive (false);
+        ally.sprite = /*UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");*/ Resources.Load<Sprite>("Sprites/gray");
+        enemy.sprite = /*UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");*/ Resources.Load<Sprite>("Sprites/gray");
+        target.sprite = /*UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");*/ Resources.Load<Sprite>("Sprites/gray");
+        allyBackground.SetActive (false);
 		enemyBackground.SetActive (false);
     }
 
@@ -60,10 +60,10 @@ public class NodeManager : MonoBehaviour
             //ally.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
             //enemy.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
             //target.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
-            ally.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
-            enemy.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
-            target.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
-			features.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
+            ally.sprite = /*UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");*/ Resources.Load<Sprite>("Sprites/gray");
+            enemy.sprite = /*UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");*/ Resources.Load<Sprite>("Sprites/gray");
+            target.sprite = /*UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");*/ Resources.Load<Sprite>("Sprites/gray");
+            features.sprite = /*UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");*/ Resources.Load<Sprite>("Sprites/gray");
             z.text = "z = ";
             b.text = "b = ";
 			allyBackground.SetActive (false);
