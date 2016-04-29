@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/StartMenuScene/Start Menu.unity
   - enabled: 1
     path: Assets/TowerDefenseScene/TowerDefenseScene.unity
+  - enabled: 1
+    path: Assets/GameOverScreen/GameOver.unity

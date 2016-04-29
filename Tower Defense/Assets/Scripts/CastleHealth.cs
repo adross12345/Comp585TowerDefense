@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CastleHealth : MonoBehaviour {
 
@@ -34,9 +35,10 @@ public class CastleHealth : MonoBehaviour {
 		float calcHealth = curHealth / maxHealth;
 		setHealthBar (calcHealth);
 		if (curHealth <= 0f) {
-			Destroy (gameObject);
-			//TODO End the game
-		}
+            Destroy (gameObject);
+            //TODO End the game
+            SceneManager.LoadScene("GameOver");
+        }
 	}
 
 	public void OnTriggerEnter(Collider co) {

@@ -182,6 +182,18 @@ public class PopUpUI : MonoBehaviour {
         }
     }
 
+    public void sliderChange() {
+        //GameObject.Find("NoiseInputField").GetComponent<InputField>().text = Convert.ToString(GameObject.Find("NoiseSlider").GetComponent<Slider>().value);
+        GameObject.Find("NoiseInputField").GetComponent<InputField>().text =  Convert.ToString(Mathf.Round(GameObject.Find("NoiseSlider").GetComponent<Slider>().value * 100f) / 100f);
+    }
+
+    public void inputChange() {
+        float quantity;
+        if (float.TryParse(GameObject.Find("NoiseInputField").GetComponent<InputField>().text, out quantity)) {
+            GameObject.Find("NoiseSlider").GetComponent<Slider>().value = quantity;
+        }
+    }
+
 	public void train() {
 		if (castle.canPurchase (getPrice())) {
 			// Start training!

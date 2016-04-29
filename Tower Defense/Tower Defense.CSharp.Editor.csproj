@@ -137,7 +137,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Editor\ShowTowerPopup.cs" />
+    <Compile Include="Assets\Editor\ShowTowerPopup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Levels\0.txt" />
