@@ -41,7 +41,8 @@ public class PopUpUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
-		GetComponent<Canvas> ().enabled = false;
+        //GetComponent<Canvas> ().enabled = false;
+        GameObject.Find("TrainingWindow").GetComponent<Canvas>().enabled = false;
 		GameObject.Find ("TrainButton").GetComponent<Button> ()
 			.onClick.AddListener (delegate {
 				if(castle.canPurchase(price)) {

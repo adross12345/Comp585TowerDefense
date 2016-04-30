@@ -56608,7 +56608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 754705cd63ee2c24494adfa7bc9c67ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  window: {fileID: 0}
+  window: {fileID: 698857718}
   trainingCost: {fileID: 0}
 --- !u!114 &1491850471
 MonoBehaviour:
