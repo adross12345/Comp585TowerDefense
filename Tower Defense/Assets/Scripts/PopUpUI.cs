@@ -19,15 +19,6 @@ public class PopUpUI : MonoBehaviour {
     private static UnitGenerator uGen;
     private Vector3 farOff = new Vector3(-500, -500, -500);
 	int nodeCost = 0;
-	/*
-    string myName = "";
-    int price = 0;
-    int nodeCost = 0;
-    private static CastleHealth castle;
-    List<bool> leaisTargetUnits = new List<bool>();
-    float noiseScale = 1.0f;
-    public string[] options = new string[] { "Grayscale", "Full Color", "Color Histogram" };
-	*/
 
 	NeuralNode.NodeType neuralNodeType;
     private static float previousTimeScale = 1f;
@@ -37,12 +28,14 @@ public class PopUpUI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		GetComponent<Canvas> ().enabled = false;
+		window = GetComponent<Canvas>();
+		window.enabled = false;
+		castle = GameObject.Find ("Castle").GetComponent<CastleHealth> ();
 		GameObject.Find ("TrainButton").GetComponent<Button> ()
 			.onClick.AddListener (delegate {
 				if(castle.canPurchase(price)) {
 					train();
-					GetComponent<Canvas> ().enabled = false;
+					window.enabled = !window.enabled;
 				} else if(!castle.canPurchase(price)) {
 					Debug.Log("Not enough money");
 				} else if(getTotalUnits() == 0) {
