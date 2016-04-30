@@ -14,7 +14,7 @@ GameObject:
   - 195: {fileID: 19570734}
   - 54: {fileID: 5465074}
   - 114: {fileID: 11433306}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EnemyAniSpikey
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -461,6 +461,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: money
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

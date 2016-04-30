@@ -31,6 +31,7 @@ public class Menu : MonoBehaviour {
 
     public void startGame() {
         SceneManager.LoadScene("TowerDefenseScene");
+		SceneManager.UnloadScene ("Start Menu");
     }
 
     public void quitGame() {

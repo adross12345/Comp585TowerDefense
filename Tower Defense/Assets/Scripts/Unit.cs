@@ -65,7 +65,7 @@ public abstract class Unit : MonoBehaviour {
 			bar.localScale.y, bar.localScale.z);
 	}
 
-	public void addNoise(float noise){
+	public virtual void addNoise(float noise){
 		MeshRenderer mr = this.GetComponent<MeshRenderer> ();
 		Texture tex = mr.material.mainTexture;
 		if (tex is Texture2D) {

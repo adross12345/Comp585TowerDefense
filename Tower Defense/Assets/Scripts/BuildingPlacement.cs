@@ -11,8 +11,9 @@ public class BuildingPlacement : MonoBehaviour {
 
 	public LayerMask buildingsMask;
 	public LayerMask groundMask;
+	public LayerMask unitMask;
 
-	private PlaceableBuilding placeableBuildingOld;
+	public PlaceableBuilding placeableBuildingOld;
 
 	private BuildingManager manager;
 
@@ -65,6 +66,7 @@ public class BuildingPlacement : MonoBehaviour {
 				ray = new Ray(new Vector3(p.x,10,p.z), Vector3.down);
 				if (Physics.Raycast(ray, out hit,Mathf.Infinity,buildingsMask)) {
 					if (placeableBuildingOld != null) {
+						placeableBuildingOld.transform.parent.FindChild ("Turret").GetComponent<CannonFireAOE> ().SetPlayerTarget (null);
 						placeableBuildingOld.SetSelected(false);
 					}
 					hit.collider.gameObject.GetComponent<PlaceableBuilding>().SetSelected(true);
@@ -72,7 +74,18 @@ public class BuildingPlacement : MonoBehaviour {
 				}
 				else {
 					if (placeableBuildingOld != null) {
-						placeableBuildingOld.SetSelected(false);
+						RaycastHit unitHit = new RaycastHit();
+						ray = new Ray(new Vector3(p.x,10,p.z), Vector3.down);
+						if (Physics.Raycast (ray, out unitHit, Mathf.Infinity, unitMask)) {
+							if(unitHit.collider is BoxCollider){
+								Unit u = unitHit.collider.gameObject.GetComponent<Unit> ();
+								placeableBuildingOld.transform.parent.FindChild ("Turret").GetComponent<CannonFireAOE> ().SetPlayerTarget (u);
+							}
+						}else {
+							placeableBuildingOld.transform.parent.FindChild ("Turret").GetComponent<CannonFireAOE> ().SetPlayerTarget (null);
+							placeableBuildingOld.SetSelected(false);
+//							placeableBuildingOld = null;
+						}
 					}
 				}
 			}

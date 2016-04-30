@@ -8,6 +8,9 @@ public class PopUpUI : MonoBehaviour {
 
 	public readonly int TOTAL_ENEMY_UNITS = 14;
 	public readonly int TOTAL_ALLY_UNITS = 10;
+	public static int[] ENEMY_INDICES = { 0, 1, 10, 11, 5, 2, 4, 13, 3, 12, 8, 7, 6, 9 };
+	public static int[] ALLY_INDICES = { 0, 1, 2, 3, 4, 6, 7, 9, 8, 5};
+
 
     public Canvas window;
     public Text trainingCost;
@@ -19,6 +22,15 @@ public class PopUpUI : MonoBehaviour {
     private static UnitGenerator uGen;
     private Vector3 farOff = new Vector3(-500, -500, -500);
 	int nodeCost = 0;
+	/*
+    string myName = "";
+    int price = 0;
+    int nodeCost = 0;
+    private static CastleHealth castle;
+    List<bool> leaisTargetUnits = new List<bool>();
+    float noiseScale = 1.0f;
+    public string[] options = new string[] { "Grayscale", "Full Color", "Color Histogram" };
+	*/
 
 	NeuralNode.NodeType neuralNodeType;
     private static float previousTimeScale = 1f;
@@ -28,14 +40,13 @@ public class PopUpUI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		window = GetComponent<Canvas>();
-		window.enabled = false;
-		castle = GameObject.Find ("Castle").GetComponent<CastleHealth> ();
+		castle = GameObject.Find("Castle").GetComponent<CastleHealth>();
+		GetComponent<Canvas> ().enabled = false;
 		GameObject.Find ("TrainButton").GetComponent<Button> ()
 			.onClick.AddListener (delegate {
 				if(castle.canPurchase(price)) {
 					train();
-					window.enabled = !window.enabled;
+					GetComponent<Canvas> ().enabled = false;
 				} else if(!castle.canPurchase(price)) {
 					Debug.Log("Not enough money");
 				} else if(getTotalUnits() == 0) {
@@ -192,10 +203,11 @@ public class PopUpUI : MonoBehaviour {
 			// Start training!
 			NeuralNode node = NeuralNode.create(neuralNodeType);
 			cFire.node = node;
+			float noise = getNoise ();
 
 			for (int i = 1; i <= TOTAL_ENEMY_UNITS; i++) {
 				for(int j = 0; j < getQuantityOfEnemy(i); j++) {
-					Unit unit = uGen.MakeUnit(true, 0, farOff, getNoise(), true);
+					Unit unit = uGen.MakeUnit(true, ENEMY_INDICES[i-1], farOff, noise, true);
 					if (unit is UnitAnimated) {
 						UnitAnimated ua = (UnitAnimated)unit;
 						Texture2D[] texes = ua.textures;
@@ -210,7 +222,7 @@ public class PopUpUI : MonoBehaviour {
 
 			for (int i = 1; i <= TOTAL_ALLY_UNITS; i++) { 
 				for(int j = 0; j < getQuantityOfAlly(i); j++) {
-					Unit unit = uGen.MakeUnit(false, 0, farOff, getNoise(), true);
+					Unit unit = uGen.MakeUnit(false, ALLY_INDICES[i-1], farOff, noise, true);
 					if (unit is UnitAnimated) {
 						UnitAnimated ua = (UnitAnimated)unit;
 						Texture2D[] texes = ua.textures;
@@ -229,6 +241,7 @@ public class PopUpUI : MonoBehaviour {
 		
 			// Close window
 			GetComponent<Canvas> ().enabled = false;
+			Camera.main.GetComponent<BuildingPlacement> ().placeableBuildingOld.SetSelected (true);
 
 		}
 	}

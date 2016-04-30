@@ -27,4 +27,6 @@ Spawn 0.1 0.25 1 6
 Execute 0 1 15
 End
 Congratulations!
-I am a Two-Toed Sloth.
+
+You beat the main mode, and discovered my secret: I am a Two-Toed Sloth.
+Now, see how far you can go in free-play and brag about your accomplishments!

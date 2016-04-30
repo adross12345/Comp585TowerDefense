@@ -103,8 +103,10 @@ public class CannonFireAOE : CannonFire {
 				targetsInRange.Add (u);
 				if (node.isAILearned) { // else if (isAILearned)
 					double z = node.calculateZ (u);
-					node.lastZ = z;
-					node.SetTarget (u);
+					if (playerTarget == null) {
+						node.lastZ = z;
+						node.SetTarget (u);
+					}
 //					Debug.Log (z+" "+node.b);
 					UnitID uID = UnitID.Enemy;
 					//Do AI animation
@@ -135,6 +137,9 @@ public class CannonFireAOE : CannonFire {
 	protected override void OnTriggerExit(Collider other){
 		Unit u = other.gameObject.GetComponent<Unit> ();
 		if (u != null && other is BoxCollider) {
+			if (playerTarget != null && u == playerTarget) {
+				playerTarget = null;
+			}
 			targetsInRange.Remove (u);
 			if (myTarget == u) {
 				myTarget = null;
@@ -155,6 +160,14 @@ public class CannonFireAOE : CannonFire {
 				//The unit was not in the dictionary list
 			}
 		} 
+	}
+
+	public override void SetPlayerTarget(Unit u){
+		playerTarget = u;
+		if (u != null) {
+			node.lastZ = node.calculateZ (u);
+			node.SetTarget (u);
+		}
 	}
 
     public void setCutoff(string input) {

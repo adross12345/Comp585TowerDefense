@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -66,7 +66,8 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000597, guid: 9b11e88b4dd734e45ba3b7f21ed6b95a,
+    type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
 NavMeshSettings:
@@ -6242,7 +6243,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -15728,7 +15729,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 0.5
+  m_Text: 0
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -16785,7 +16786,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 461699921}
   m_LocalRotation: {x: -0.15010607, y: -0.074704744, z: 0.12411512, w: -0.9779994}
-  m_LocalPosition: {x: -0.17, y: -5.09, z: -21}
+  m_LocalPosition: {x: 1.82, y: -7.13, z: -25.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -28620,7 +28621,7 @@ MonoBehaviour:
 
     Start the next level with the button in the upper-left.
 
-    Click to make this disappear.'
+    I will be your guide through this simulation. Click to make this box disappear.'
 --- !u!222 &789737765
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56507,6 +56508,10 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1024
+  unitMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  placeableBuildingOld: {fileID: 0}
 --- !u!114 &1491850467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63817,7 +63822,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0.5
+  m_Text: 0
 --- !u!222 &1653147652
 CanvasRenderer:
   m_ObjectHideFlags: 0

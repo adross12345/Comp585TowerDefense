@@ -37,7 +37,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower1() {
-		if (castle.canPurchase(200) && !initOnce) {
+		if (castle.canPurchase(200)) {
 			Debug.Log("spawnTower1() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[0]);
 			castle.makePurchase(200);
@@ -49,7 +49,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower2() {
-		if (castle.canPurchase(300) && !initOnce) {
+		if (castle.canPurchase(300)) {
 			Debug.Log("spawnTower2() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[1]);
 			castle.makePurchase(300);
@@ -61,7 +61,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower3() {
-		if (castle.canPurchase(500) && !initOnce) {
+		if (castle.canPurchase(500)) {
 			Debug.Log("spawnTower3() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[2]);
 			castle.makePurchase(500);
@@ -74,7 +74,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower4() {
-		if (castle.canPurchase(500) && !initOnce)
+		if (castle.canPurchase(500))
 		{
 			Debug.Log("spawnTower4() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[3]);
@@ -88,7 +88,7 @@ public class BuildingManager : MonoBehaviour {
 	}
 
 	public void spawnTower5() {
-		if (castle.canPurchase(750) && !initOnce)
+		if (castle.canPurchase(750))
 		{
 			Debug.Log("spawnTower5() triggered");
 			currentTower = buildingPlacement.SetItem(buildings[4]);

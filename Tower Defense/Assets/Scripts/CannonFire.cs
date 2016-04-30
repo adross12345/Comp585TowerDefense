@@ -18,6 +18,8 @@ public class CannonFire : MonoBehaviour {
 	protected float nextFireTime;
 	public GameObject aimPoint;
 
+	protected Unit playerTarget;
+
 	protected virtual void Awake(){
 		targetsInRange = new List<Unit> ();
 		node = NeuralNode.create (NeuralNode.NodeType.FULLCOLOR);
@@ -129,6 +131,9 @@ public class CannonFire : MonoBehaviour {
 
 	public NeuralNode GetNode(){
 		return node;
+	}
+
+	public virtual void SetPlayerTarget(Unit u){
 	}
 
 	protected void OnDestroy(){

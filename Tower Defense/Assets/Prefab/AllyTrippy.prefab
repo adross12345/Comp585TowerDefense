@@ -66,7 +66,7 @@ GameObject:
   - 195: {fileID: 19560862}
   - 54: {fileID: 5447734}
   - 114: {fileID: 11472206}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AllyTrippy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -458,6 +458,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

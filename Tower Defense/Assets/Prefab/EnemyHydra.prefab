@@ -14,7 +14,7 @@ GameObject:
   - 195: {fileID: 19525930}
   - 54: {fileID: 5470326}
   - 114: {fileID: 11411724}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EnemyHydra
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -463,6 +463,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: curHealth
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

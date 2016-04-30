@@ -48,7 +48,7 @@ GameObject:
   - 195: {fileID: 19521274}
   - 54: {fileID: 5460328}
   - 114: {fileID: 11437814}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EnemyAnimated
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -471,6 +471,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: money
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

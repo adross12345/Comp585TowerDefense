@@ -7,7 +7,6 @@ public abstract class NeuralNode : ScriptableObject {
 	protected double[] actualWeights;
 	public double b;
 	protected double actualB;
-	public double lastZ;
 	protected double learningRate = 0.01;
 	protected int unitWidth = 32;
 	protected int unitHeight = 32;
@@ -19,6 +18,8 @@ public abstract class NeuralNode : ScriptableObject {
 	public bool isAILearned = false;
 
 	public Texture2D targetTex;
+	public double lastZ;
+
 	public Unit target;
 
 	public enum NodeType{FULLCOLOR, COLORHIST, GRAYSCALE, CONVOLVED, COMBINATION}

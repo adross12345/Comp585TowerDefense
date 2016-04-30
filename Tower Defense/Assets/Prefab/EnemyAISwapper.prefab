@@ -84,7 +84,7 @@ GameObject:
   - 54: {fileID: 5407094}
   - 135: {fileID: 13518692}
   - 114: {fileID: 11403292}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EnemyAISwapper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -552,6 +552,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: intendedConfoundingTime
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
