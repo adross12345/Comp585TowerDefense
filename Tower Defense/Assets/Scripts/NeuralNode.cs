@@ -175,6 +175,14 @@ public abstract class NeuralNode : ScriptableObject {
 		}
 	}
 
+	public void ResetAllWeights(){
+		for (int i = 0; i < actualWeights.Length; i++) {
+			weights [i] = actualWeights [i];
+		}
+		b = actualB;
+		confoundedIndices.Clear ();
+	}
+
 	public void AddToConfoundedIndices(int index){
 		confoundedIndices.Add (index);
 	}

@@ -241,7 +241,7 @@ MonoBehaviour:
   identity: 0
   speed: 2.5
   acceleration: 8
-  maxHealth: 1
+  maxHealth: 5
   curHealth: 1
   healthBar: {fileID: 143672}
   damage: 10
@@ -547,7 +547,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxHealth
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: intendedConfoundingTime

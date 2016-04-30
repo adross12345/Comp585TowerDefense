@@ -91,6 +91,10 @@ public class LevelSpawner : MonoBehaviour {
 		foreach (Projectile p in projectiles) {
 			p.killYourself ();
 		}
+		NeuralNode[] nodes = GameObject.FindObjectsOfType<NeuralNode> ();
+		foreach (NeuralNode n in nodes) {
+			n.ResetAllWeights ();
+		}
 	}
 
 	private IEnumerator RunTextLevel(){

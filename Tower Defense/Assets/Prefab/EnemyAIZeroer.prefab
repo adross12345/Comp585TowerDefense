@@ -284,11 +284,11 @@ MonoBehaviour:
   identity: 0
   speed: 3
   acceleration: 8
-  maxHealth: 1
+  maxHealth: 10
   curHealth: 1
   healthBar: {fileID: 103282}
   damage: 10
-  money: 13
+  money: 0
   armor: 0
   range: 6
   confoundInterval: 0.00001
@@ -552,6 +552,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: money
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
