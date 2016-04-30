@@ -212,7 +212,7 @@ public class PopUpUI : MonoBehaviour {
 					if (unit is UnitAnimated) {
 						UnitAnimated ua = (UnitAnimated)unit;
 						Texture2D[] texes = ua.textures;
-						int texIdx = i % texes.Length;
+						int texIdx = j % texes.Length;
 						ua.setTexture(texes[texIdx]);
 					}
 
@@ -227,7 +227,7 @@ public class PopUpUI : MonoBehaviour {
 					if (unit is UnitAnimated) {
 						UnitAnimated ua = (UnitAnimated)unit;
 						Texture2D[] texes = ua.textures;
-						int texIdx = i % texes.Length;
+						int texIdx = j % texes.Length;
 						ua.setTexture(texes[texIdx]);
 					}
 
